@@ -6,8 +6,9 @@ body {
 }
 
 .grid-container {
+    /* Up to lg : */
     display: grid;
-    grid-template-columns: repeat(3, minmax(110px 22vw));
+    grid-template-columns: repeat(3, minmax(110px, 22vw));
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     justify-content: center;
@@ -16,7 +17,7 @@ body {
 @media only screen and (min-width: 768px) {
     /* For desktop: */
     .grid-container {
-        grid-template-columns: repeat(4, minmax(100px, 15vw));
+        grid-template-columns: repeat(4, minmax(100px, 13vw));
     }
   }
 
