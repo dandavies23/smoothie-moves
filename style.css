@@ -8,6 +8,8 @@ body {
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, minmax(110px 22vw));
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
     justify-content: center;
 }
 
