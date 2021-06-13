@@ -55,12 +55,18 @@ const fruitVegArray = [
     },
     
 ]
+// Randomise array using Math.random
+fruitVegArray.sort(() => 0.5 - Math.random())
 
+// Constants and empty arrays
 const grid = document.querySelector('.grid-container') // picks up HTML
 const resultDisplay = document.querySelector('#result')
+//progressElem = document.getElementsByClass('#progress-bar') */
 let cardsChosen = []
 let cardsChosenId = []
 let cardsWon = []
+
+
 
 // Create board
 function createSmoothieGrid () {
@@ -91,6 +97,8 @@ function checkForMatch() {
     cardsChosen = []
     cardsChosenId = []
     resultDisplay.textContent = cardsWon.length
+    let score = Math.round((data.cardsWon.length / data.fruitVegArray.length/2) * 100)
+    console.log(score)
     if (cardsWon.length === fruitVegArray.length/2) {
         resultDisplay.textContent = 'Congratulations! Smoothie is made!'
     }
