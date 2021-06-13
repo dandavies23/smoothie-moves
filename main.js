@@ -23,11 +23,11 @@ const fruitVegArray = [
     },
     {
         name: 'blueberries',
-        img: 'images/appletest.png'
+        img: 'images/blueberriestest.png'
     },
     {
         name: 'blueberries',
-        img: 'images/blueberrietest.png'
+        img: 'images/blueberriestest.png'
     },
     {
         name: 'broccoli',
@@ -57,15 +57,53 @@ const fruitVegArray = [
 ]
 
 const grid = document.querySelector('.grid-container') // picks up HTML
+const resultDisplay = document.querySelector('#result')
+let cardsChosen = []
+let cardsChosenId = []
+let cardsWon = []
 
 // Create board
 function createSmoothieGrid () {
     for (let i = 0; i < fruitVegArray.length; i++) {
-        let card = document.createElement('img'); // is let right here? 
+        let card = document.createElement('img');
         card.setAttribute('src', 'images/tumbler.png');
         card.setAttribute('data-id', i);
-      //  card.addEventListener('click', tumblerLift)
-      grid.appendChild(card);
+        card.addEventListener('click', tumblerLift)
+        grid.appendChild(card);
+    }
+}
+
+// check for matches
+function checkForMatch() {
+    let cards = document.querySelectorAll('img')
+    const optionOneId = cardsChosenId[0]
+    const optionTwoId = cardsChosenId[1]
+    if (cardsChosen[0] === cardsChosen[1]) {
+        alert('Match! Added to the smoothie') // definitely need animation here
+        cards[optionOneId].setAttribute('src', 'images/blank.png')
+        cards[optionTwoId].setAttribute('src', 'images/blank.png')
+        cardsWon.push(cardsChosen)
+    } else {
+        cards[optionOneId].setAttribute('src', 'images/tumbler.png')
+        cards[optionTwoId].setAttribute('src', 'images/tumbler.png')
+        alert('Keep looking') // perhaps a web literal with eyeballs move to top of loop?
+    }
+    cardsChosen = []
+    cardsChosenId = []
+    resultDisplay.textContent = cardsWon.length
+    if (cardsWon.length === fruitVegArray.length/2) {
+        resultDisplay.textContent = 'Congratulations! Smoothie is made!'
+    }
+}
+
+// Tumbler lift - if time want to work out lift animation 
+function tumblerLift() {
+    let cardId = this.getAttribute('data-id')
+    cardsChosen.push(fruitVegArray[cardId].name)
+    cardsChosenId.push(cardId)
+    this.setAttribute('src', fruitVegArray[cardId].img)
+    if (cardsChosen.length === 2) {
+        setTimeout(checkForMatch, 500)
     }
 }
 
