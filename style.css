@@ -25,3 +25,12 @@ body {
     height: auto;
     width: 100%;
 }
+
+.alert {
+    height: 40px;
+    line-height: 10px;
+}
+
+#container-box {
+    height: 30px;
+}

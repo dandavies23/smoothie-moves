@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+    // Hide alert bar
+    $('progressAlerts').hide();
+
     /* When the page is loaded start game - consider inserting name and using to start game function*/
 
 // fruit and veg pairs
@@ -61,12 +63,12 @@ fruitVegArray.sort(() => 0.5 - Math.random())
 // Constants and empty arrays
 const grid = document.querySelector('.grid-container') // picks up HTML
 const resultDisplay = document.querySelector('#result')
-//progressElem = document.getElementsByClass('#progress-bar') */
 let cardsChosen = []
 let cardsChosenId = []
 let cardsWon = []
-
-
+let barWidth = 0
+let scorebarelement = document.getElementById('score-bar')
+let scorebar.style.width = barWidth + '%'
 
 // Create board
 function createSmoothieGrid () {
@@ -97,8 +99,9 @@ function checkForMatch() {
     cardsChosen = []
     cardsChosenId = []
     resultDisplay.textContent = cardsWon.length
-    let score = Math.round((data.cardsWon.length / data.fruitVegArray.length/2) * 100)
-    console.log(score)
+    barWidth = Math.round((cardsWon.length / 6) * 100)
+    
+    console.log(barWidth) // 
     if (cardsWon.length === fruitVegArray.length/2) {
         resultDisplay.textContent = 'Congratulations! Smoothie is made!'
     }
