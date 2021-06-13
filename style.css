@@ -1,5 +1,24 @@
-* {
-    padding: 0;
+body {
     margin: 0;
-    box-sizing: border-box;
+    padding: 0;
+    overflow: overflow;
+    background-color: #996633;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(110px 22vw));
+    justify-content: center;
+}
+
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .grid-container {
+        grid-template-columns: repeat(4, minmax(100px, 15vw));
+    }
+  }
+
+.grid-container img {
+    height: auto;
+    width: 100%;
 }
