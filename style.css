@@ -6,18 +6,21 @@ body {
 }
 
 .grid-container {
-    /* Up to lg : */
+    
+    padding-top: 7vh;
+    padding-bottom: 7vh;
     display: grid;
-    grid-template-columns: repeat(3, minmax(110px, 22vw));
+    grid-template-columns: repeat(3, minmax(110px, 22vw)); /* Up to lg grid is 3x4 */
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     justify-content: center;
+
 }
 
 @media only screen and (min-width: 768px) {
     /* For desktop: */
     .grid-container {
-        grid-template-columns: repeat(4, minmax(100px, 13vw));
+        grid-template-columns: repeat(4, minmax(100px, 13vw)); /* grid is now 4x3 */
     }
   }
 
@@ -28,9 +31,9 @@ body {
 
 .alert {
     height: 40px;
-    line-height: 10px;
 }
 
 #container-box {
     height: 30px;
+    justify-content: center;
 }
