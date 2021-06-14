@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Hide alert bar
-    $('progressAlerts').hide();
+    //$('progressAlerts').hide();
 
     /* When the page is loaded start game - consider inserting name and using to start game function*/
 
@@ -67,8 +67,8 @@ let cardsChosen = []
 let cardsChosenId = []
 let cardsWon = []
 let barWidth = 0
-let scorebarelement = document.getElementById('score-bar')
-let scorebar.style.width = barWidth + '%'
+//let scorebarelement = document.getElementById('score-bar')
+//et scorebar.style.width = barWidth + '%'
 
 // Create board
 function createSmoothieGrid () {
