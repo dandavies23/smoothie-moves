@@ -69,8 +69,8 @@ let cardsWon = []
 var barWidth = 0
 
 // Set progress to 0
-document.getElementsByClassName('progress-bar').item(0).setAttribute('aria-valuenow', barWidth);
-document.getElementsByClassName('progress-bar').item(0).setAttribute('style','width:'+Number(barWidth)+'%');
+// document.getElementsByClassName('progress-bar').item(0).setAttribute('aria-valuenow', barWidth);
+// document.getElementsByClassName('progress-bar').item(0).setAttribute('style','width:'+Number(barWidth)+'%');
 
 //let scorebarelement = document.getElementById('score-bar')
 //et scorebar.style.width = barWidth + '%'
@@ -99,7 +99,7 @@ function checkForMatch() {
     } else {
         cards[optionOneId].setAttribute('src', 'images/tumbler.png')
         cards[optionTwoId].setAttribute('src', 'images/tumbler.png')
-        alert('Keep looking') // perhaps a web literal with eyeballs move to top of loop?
+        alert('Keep looking') // perhaps a web literal with eyeballs move to bottom of grid
     }
     cardsChosen = []
     cardsChosenId = []
