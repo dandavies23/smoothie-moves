@@ -67,8 +67,9 @@ let cardsChosen = []
 let cardsChosenId = []
 let cardsWon = []
 var barWidth = 0
-console.log(barWidth)
-document.getElementsByClassName('progress-bar').item(0).setAttribute('aria-valuenow',barWidth);
+
+// Set progress to 0
+document.getElementsByClassName('progress-bar').item(0).setAttribute('aria-valuenow', barWidth);
 document.getElementsByClassName('progress-bar').item(0).setAttribute('style','width:'+Number(barWidth)+'%');
 
 //let scorebarelement = document.getElementById('score-bar')
@@ -106,8 +107,8 @@ function checkForMatch() {
     barWidth = Math.round((cardsWon.length / 6) * 100) // converts cardsWon to percentage
     console.log(barWidth) // remove this when done
     document.getElementsByClassName('progress-bar').item(0).setAttribute('style','width:'+Number(barWidth)+'%'); // 
-    document.getElementsByClassName('progress-bar').item(0).setAttribute('aria-valuenow',barWidth);
-    
+    document.getElementsByClassName('progress-bar').item(0).setAttribute('aria-valuenow', cardsWon.length); // I've been doing this for ages now but probably best to replace
+
     if (cardsWon.length === fruitVegArray.length/2) {
         resultDisplay.textContent = 'Congratulations! Smoothie is made!'
     }
