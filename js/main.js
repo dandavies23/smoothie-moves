@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* When the page is loaded start game - consider inserting name and using to start game function*/
 
-//    function initNewGame() {
         // setup game vars and cards
 
         // fruit and veg pairs
@@ -87,7 +86,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 grid.appendChild(card);
             }
         }
-  //  }
+    
+  // Tumbler lift - if time want to work out lift animation 
+      function tumblerLift() {
+        let cardId = this.getAttribute('data-id')
+        cardsChosen.push(fruitVegArray[cardId].name)
+        cardsChosenId.push(cardId)
+        this.setAttribute('src', fruitVegArray[cardId].img)
+        console.log(fruitVegArray[cardId])
+        if (cardsChosen.length === 2) {
+            setTimeout(checkForMatch, 500)
+        }
+    }
 
     // check for matches
     function checkForMatch() {
@@ -108,26 +118,13 @@ document.addEventListener('DOMContentLoaded', () => {
         cardsChosenId = []
         resultDisplay.textContent = cardsWon.length
         barWidth = Math.round((cardsWon.length / 6) * 100) // converts cardsWon to percentage
-        console.log(barWidth) // remove this when done
-        document.getElementsByClassName('progress-bar').item(0).setAttribute('style', 'width:' + Number(barWidth) + '%'); // 
-        document.getElementsByClassName('progress-bar').item(0).setAttribute('aria-valuenow', cardsWon.length); // I've been doing this for ages now but probably best to replace
+        document.getElementsByClassName('progress-bar').item(0).setAttribute('style', 'width:' + Number(barWidth) + '%'); 
+        document.getElementsByClassName('progress-bar').item(0).setAttribute('aria-valuenow', cardsWon.length); 
 
         if (cardsWon.length === fruitVegArray.length / 2) {
             resultDisplay.textContent = 'Smoothie is made! Press below to drink it up!'
         }
     }
-
-    // Tumbler lift - if time want to work out lift animation 
-    function tumblerLift() {
-        let cardId = this.getAttribute('data-id')
-        cardsChosen.push(fruitVegArray[cardId].name)
-        cardsChosenId.push(cardId)
-        this.setAttribute('src', fruitVegArray[cardId].img)
-        if (cardsChosen.length === 2) {
-            setTimeout(checkForMatch, 500)
-        }
-    }
-
 
     createSmoothieGrid();
 })
