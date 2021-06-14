@@ -5,10 +5,8 @@ body {
     background-color: #996633;
 }
 
-.grid-container {
-    
-    padding-top: 7vh;
-    padding-bottom: 7vh;
+.grid-container {  
+    padding-top: 6vh;
     display: grid;
     grid-template-columns: repeat(3, minmax(110px, 22vw)); /* Up to lg grid is 3x4 */
     grid-column-gap: 10px;
@@ -18,11 +16,17 @@ body {
 }
 
 @media only screen and (min-width: 768px) {
-    /* For desktop: */
     .grid-container {
-        grid-template-columns: repeat(4, minmax(100px, 13vw)); /* grid is now 4x3 */
+        grid-template-columns: repeat(4, minmax(100px, 13vw)); /* MD and up grid is 4x3 */
+        padding-bottom: 6vh; /* grid given a bit more breathing space */
     }
   }
+
+@media only screen and (min-width: 1200px) {
+    .grid-container {
+        grid-template-columns: repeat(6, minmax(100px, 13vw)); /* XL devices grid is 6x2*/
+    }
+}
 
 .grid-container img {
     height: auto;
