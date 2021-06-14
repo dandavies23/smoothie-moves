@@ -110,7 +110,7 @@ function checkForMatch() {
     document.getElementsByClassName('progress-bar').item(0).setAttribute('aria-valuenow', cardsWon.length); // I've been doing this for ages now but probably best to replace
 
     if (cardsWon.length === fruitVegArray.length/2) {
-        resultDisplay.textContent = 'Congratulations! Smoothie is made!'
+        resultDisplay.textContent = 'Smoothie is made! Press below to drink it up!'
     }
 }
 
