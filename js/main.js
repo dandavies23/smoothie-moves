@@ -10,51 +10,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const fruitVegArray = [{
                 name: 'apple',
-                img: 'images/appletest.png'
+                img: 'images/apple.png'
             },
             {
                 name: 'apple',
-                img: 'images/appletest.png'
+                img: 'images/apple.png'
             },
             {
                 name: 'beetroot',
-                img: 'images/beetroottest.png'
+                img: 'images/beetroot.png'
             },
             {
                 name: 'beetroot',
-                img: 'images/beetroottest.png'
+                img: 'images/beetroot.png'
             },
             {
                 name: 'blueberries',
-                img: 'images/blueberriestest.png'
+                img: 'images/blueberries.png'
             },
             {
                 name: 'blueberries',
-                img: 'images/blueberriestest.png'
+                img: 'images/blueberries.png'
             },
             {
                 name: 'broccoli',
-                img: 'images/broccolitest.png'
+                img: 'images/broccoli.png'
             },
             {
                 name: 'broccoli',
-                img: 'images/broccolitest.png'
+                img: 'images/broccoli.png'
             },
             {
                 name: 'carrot',
-                img: 'images/carrottest.png'
+                img: 'images/carrot.png'
             },
             {
                 name: 'carrot',
-                img: 'images/carrottest.png'
+                img: 'images/carrot.png'
             },
             {
                 name: 'lemon',
-                img: 'images/lemontest.png'
+                img: 'images/lemon.png'
             },
             {
                 name: 'lemon',
-                img: 'images/lemontest.png'
+                img: 'images/lemon.png'
             },
 
         ]
