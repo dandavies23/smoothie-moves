@@ -67,10 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
   // Tumbler lift - if time want to work out lift animation 
       function tumblerLift() {
+        let cardId = this.getAttribute('data-id')
         // patch-2 begin
         if(this.src==fruitVegArray[cardId].img){return null} //image already chosen
         // patch-2 end
-        let cardId = this.getAttribute('data-id')
         this.style.pointerEvents = 'none';
         cardsChosen.push(fruitVegArray[cardId].name)
         cardsChosenId.push(cardId)
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cardsChosen.length === 2) {
             setTimeout(checkForMatch, 500)
             this.style.pointerEvents = 'auto';
-            cards[optionTwoId].style.pointerEvents = 'auto';
+            //cards[optionTwoId].style.pointerEvents = 'auto'; //idk what this is and it just throws an error - Y0urs Truly
             console.log(cardsWon)
         }
     }
