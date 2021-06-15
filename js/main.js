@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // this.style.pointerEvents = 'none';
         cardsChosen.push(fruitVegArray[cardId].name)
         cardsChosenId.push(cardId)
+        if(this.src==fruitVegArray[cardId].img){return null} //image already chosen
         this.style.pointerEvents = 'auto';
         this.setAttribute('src', fruitVegArray[cardId].img)
         console.log(fruitVegArray[cardId])
