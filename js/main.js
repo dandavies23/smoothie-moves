@@ -74,14 +74,27 @@ document.addEventListener('DOMContentLoaded', () => {
         this.style.pointerEvents = 'none';
         cardsChosen.push(fruitVegArray[cardId].name)
         cardsChosenId.push(cardId)
-        this.style.pointerEvents = 'auto';
         this.setAttribute('src', fruitVegArray[cardId].img)
         console.log(fruitVegArray[cardId])
+        // this.style.pointerEvents = 'auto';
         if (cardsChosen.length === 2) {
             setTimeout(checkForMatch, 500)
             this.style.pointerEvents = 'auto';
             //cards[optionTwoId].style.pointerEvents = 'auto'; //idk what this is and it just throws an error - Y0urs Truly
             console.log(cardsWon)
+            // this.style.pointerEvents = 'auto';
+            // cards[optionTwoId].style.pointerEvents = 'auto';
+            console.log(cardsWon)
+
+
+        this.setAttribute('src', fruitVegArray[cardId].img)
+        console.log(fruitVegArray[cardId])
+        if (cardsChosen.length === 2) {
+            setTimeout(checkForMatch, 500)
+            this.style.pointerEvents = 'auto';
+            cards[optionTwoId].style.pointerEvents = 'auto';
+            console.log(cardsWon)
+
         }
     }
 
@@ -89,8 +102,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function checkForMatch() {
         let cards = document.querySelectorAll('img')
         const optionOneId = cardsChosenId[0]
+        // so if cardsChosenId incorporated array position it needs to be rejected - need to apped or add
         const optionTwoId = cardsChosenId[1]
-        if (cardsChosen[0] === cardsChosen[1]) {
+        if (optionOneId == optionTwoId) {
+            cards[optionOneId].setAttribute('src', 'images/tumbler.png')
+            cards[optionTwoId].setAttribute('src', 'images/tumbler.png')
+            alert("Slow down! You've already tapped that!")
+        }
+        
+        else if (cardsChosen[0] === cardsChosen[1]) {
             alert('Match! Added to the smoothie') // definitely need animation here
             cards[optionOneId].setAttribute('src', 'images/blank.png')
             cards[optionTwoId].setAttribute('src', 'images/blank.png')
