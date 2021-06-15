@@ -68,21 +68,29 @@ document.addEventListener('DOMContentLoaded', () => {
   // Tumbler lift - if time want to work out lift animation 
       function tumblerLift() {
         let cardId = this.getAttribute('data-id')
-        this.style.pointerEvents = 'none';
+        // this.style.pointerEvents = 'none';
         cardsChosen.push(fruitVegArray[cardId].name)
         cardsChosenId.push(cardId)
-        // patch-1
-        if(this.src==fruitVegArray[cardId].img){return null} //image already chosen
-        this.style.pointerEvents = 'auto';
+       
+         // patch-1 
+        // if(this.src==fruitVegArray[cardId].img){return null} //image already chosen
+        this.setAttribute('src', fruitVegArray[cardId].img)
+        console.log(fruitVegArray[cardId])
+        // this.style.pointerEvents = 'auto';
+        if (cardsChosen.length === 2) {
+            setTimeout(checkForMatch, 500)
+            // this.style.pointerEvents = 'auto';
+            // cards[optionTwoId].style.pointerEvents = 'auto';
+            console.log(cardsWon)
 
-        master
+        /* master
         this.setAttribute('src', fruitVegArray[cardId].img)
         console.log(fruitVegArray[cardId])
         if (cardsChosen.length === 2) {
             setTimeout(checkForMatch, 500)
             this.style.pointerEvents = 'auto';
             cards[optionTwoId].style.pointerEvents = 'auto';
-            console.log(cardsWon)
+            console.log(cardsWon)*/
         }
     }
 
@@ -90,8 +98,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function checkForMatch() {
         let cards = document.querySelectorAll('img')
         const optionOneId = cardsChosenId[0]
+        // so if cardsChosenId incorporated array position it needs to be rejected - need to apped or add
         const optionTwoId = cardsChosenId[1]
-        if (cardsChosen[0] === cardsChosen[1]) {
+        if (optionOneId == optionTwoId) {
+            cards[optionOneId].setAttribute('src', 'images/tumbler.png')
+            cards[optionTwoId].setAttribute('src', 'images/tumbler.png')
+            alert("Slow down! You've already tapped that!")
+        }
+        
+        else if (cardsChosen[0] === cardsChosen[1]) {
             alert('Match! Added to the smoothie') // definitely need animation here
             cards[optionOneId].setAttribute('src', 'images/blank.png')
             cards[optionTwoId].setAttribute('src', 'images/blank.png')
