@@ -8,17 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // fruit and veg pairs
 
-        const fruitVegArray = [{
+        let fruitVegArray = [{
                 name: 'apple',
                 img: 'images/apple.png'
-            },
-            {
-                name: 'apple',
-                img: 'images/apple.png'
-            },
-            {
-                name: 'beetroot',
-                img: 'images/beetroot.png'
             },
             {
                 name: 'beetroot',
@@ -29,28 +21,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 img: 'images/blueberries.png'
             },
             {
-                name: 'blueberries',
-                img: 'images/blueberries.png'
-            },
-            {
-                name: 'broccoli',
-                img: 'images/broccoli.png'
-            },
-            {
                 name: 'broccoli',
                 img: 'images/broccoli.png'
             },
             {
                 name: 'carrot',
                 img: 'images/carrot.png'
-            },
-            {
-                name: 'carrot',
-                img: 'images/carrot.png'
-            },
-            {
-                name: 'lemon',
-                img: 'images/lemon.png'
             },
             {
                 name: 'lemon',
@@ -58,6 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
             },
 
         ]
+
+        fruitVegArray = [...fruitVegArray, ...fruitVegArray]
         // Randomise array using Math.random
         fruitVegArray.sort(() => 0.5 - Math.random())
 
@@ -90,12 +68,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // Tumbler lift - if time want to work out lift animation 
       function tumblerLift() {
         let cardId = this.getAttribute('data-id')
+        this.style.pointerEvents = 'none';
         cardsChosen.push(fruitVegArray[cardId].name)
         cardsChosenId.push(cardId)
         this.setAttribute('src', fruitVegArray[cardId].img)
         console.log(fruitVegArray[cardId])
         if (cardsChosen.length === 2) {
             setTimeout(checkForMatch, 500)
+            this.style.pointerEvents = 'auto';
         }
     }
 
