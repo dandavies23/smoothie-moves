@@ -70,17 +70,15 @@ document.addEventListener('DOMContentLoaded', () => {
         cardsChosen.push(fruitVegArray[cardId].name)
         cardsChosenId.push(cardId)
         this.setAttribute('src', fruitVegArray[cardId].img)
-        console.log(fruitVegArray[cardId]) // checking additions to Array for scoring this can now be removed 
         if (cardsChosen.length === 2) {
             setTimeout(checkForMatch, 500)
-            console.log(cardsWon) // checking how array injection works for scoring
         }
     }
 
     // check for matches
     function checkForMatch() {
         let cards = document.querySelectorAll('.gridimage') // prevents site logo from becomming a tumbler
-        console.log(cards)
+        console.log(cards) // this is really useful when I don't have to engage brain in testing
         const optionOneId = cardsChosenId[0]
 
         // if cardsChosenId incorporated array position needs to be rejected - preventing double tap
@@ -98,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             cards[optionOneId].setAttribute('src', 'images/tumbler.png')
             cards[optionTwoId].setAttribute('src', 'images/tumbler.png')
-            alertDisplay.textContent = 'Keep looking!' // perhaps a web literal with eyeballs move to bottom of grid
+            alertDisplay.textContent = 'Keep looking! 👀' // perhaps a web literal with eyeballs move to bottom of grid - worked with Emoji!
         }
         cardsChosen = []
         cardsChosenId = []
