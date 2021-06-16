@@ -41,3 +41,7 @@ body {
     height: 30px;
     justify-content: center;
 }
+
+.disable-dbl-tap-zoom {
+    touch-action: manipulation;
+  }

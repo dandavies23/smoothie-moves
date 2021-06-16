@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         else if (cardsChosen[0] === cardsChosen[1]) {
-            alert('Match! Added to the smoothie')
+            alert('Match! Smashed into the smoothie')
             cards[optionOneId].setAttribute('src', 'images/blank.png')
             cards[optionTwoId].setAttribute('src', 'images/blank.png')
             cardsWon.push(cardsChosen)
