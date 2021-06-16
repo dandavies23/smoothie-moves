@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let card = document.createElement('img');
                 card.setAttribute('src', 'images/tumbler.png');
                 card.setAttribute('data-id', i);
+                card.setAttribute('class', 'gridimage')
                 card.addEventListener('click', tumblerLift)
                 grid.appendChild(card);
             }
@@ -77,7 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // check for matches
     function checkForMatch() {
-        let cards = document.querySelectorAll('img')
+        let cards = document.querySelectorAll('.gridimage') // this is picking up navbar image too document.querySelectorAll(".gridimage");
+        console.log(cards)
         const optionOneId = cardsChosenId[0]
 
         // if cardsChosenId incorporated array position needs to be rejected - preventing double tap

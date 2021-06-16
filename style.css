@@ -42,6 +42,7 @@ body {
     justify-content: center;
 }
 
+/* Fix suggested by CI student Tom Nagy with reference to Stack Overflow fix suggested by Ross Allen https://stackoverflow.com/questions/10614481/disable-double-tap-zoom-option-in-browser-on-touch-devices */
 .disable-dbl-tap-zoom {
     touch-action: manipulation;
     -ms-touch-action: manipulation;
