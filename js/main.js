@@ -6,70 +6,74 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // setup game vars and cards
 
-        // fruit and veg pairs
+    // fruit and veg pairs
 
-        let fruitVegArray = [{
-                name: 'apple',
-                img: 'images/apple.png'
-            },
-            {
-                name: 'beetroot',
-                img: 'images/beetroot.png'
-            },
-            {
-                name: 'blueberries',
-                img: 'images/blueberries.png'
-            },
-            {
-                name: 'broccoli',
-                img: 'images/broccoli.png'
-            },
-            {
-                name: 'carrot',
-                img: 'images/carrot.png'
-            },
-            {
-                name: 'lemon',
-                img: 'images/lemon.png'
-            },
+    let fruitVegArray = [{
+            name: 'apple',
+            img: 'images/apple.png'
+        },
+        {
+            name: 'beetroot',
+            img: 'images/beetroot.png'
+        },
+        {
+            name: 'blueberries',
+            img: 'images/blueberries.png'
+        },
+        {
+            name: 'broccoli',
+            img: 'images/broccoli.png'
+        },
+        {
+            name: 'carrot',
+            img: 'images/carrot.png'
+        },
+        {
+            name: 'lemon',
+            img: 'images/lemon.png'
+        },
 
-        ]
+    ]
 
-        // double up the array to generate pairs thanks to CI Mentor Askshat Garg for this one
-        fruitVegArray = [...fruitVegArray, ...fruitVegArray]
-        
-        // Randomise array using Math.random no need for casino-level random algos
-        fruitVegArray.sort(() => 0.5 - Math.random())
+    // double up the array to generate pairs thanks to CI Mentor Askshat Garg for this one
+    fruitVegArray = [...fruitVegArray, ...fruitVegArray]
 
-        // Constants and empty arrays
-        const grid = document.querySelector('.grid-container') // picks up HTML
-        const resultDisplay = document.querySelector('#result')
-        const alertDisplay = document.querySelector('#nudges')
-        let cardsChosen = []
-        let cardsChosenId = []
-        let cardsWon = []
-        var barWidth = 0
+    // Randomise array using Math.random no need for casino-level random algos
+    fruitVegArray.sort(() => 0.5 - Math.random())
 
-        // Create board and 'cards'
-        function createSmoothieGrid() {
-            for (let i = 0; i < fruitVegArray.length; i++) {
-                let card = document.createElement('img');
-                card.setAttribute('src', 'images/tumbler.png');
-                card.setAttribute('data-id', i);
-                card.setAttribute('class', 'gridimage') // defining images in the grid
-                card.addEventListener('click', tumblerLift)
-                grid.appendChild(card);
-            }
+    // Constants and empty arrays
+    const grid = document.querySelector('.grid-container') // picks up HTML
+    const resultDisplay = document.querySelector('#result')
+    const alertDisplay = document.querySelector('#nudges')
+    const smoothieBar = document.getElementsByClassName('progress-bar')
+    let cardsChosen = []
+    let cardsChosenId = []
+    let cardsWon = []
+    var barWidth = 0
+
+    // Create board and 'cards'
+    function createSmoothieGrid() {
+        for (let i = 0; i < fruitVegArray.length; i++) {
+            let card = document.createElement('img');
+            card.setAttribute('src', 'images/tumbler.png');
+            card.setAttribute('data-id', i);
+            card.setAttribute('class', 'gridimage') // defining images in the grid
+            card.addEventListener('click', tumblerLift)
+            grid.appendChild(card);
         }
-    
-  // Tumbler lift - if time want to work out lift animation 
-      function tumblerLift() {
-        if(this.src.includes('images/blank.png')){return null} // prevents fruit from reappearing credit Y0urs Truly from Github for helping fix this bug
+    }
+
+    // Tumbler lift - if time want to work out lift animation 
+    function tumblerLift() {
+        if (this.src.includes('images/blank.png')) {
+            return null
+        } // prevents fruit from reappearing credit Y0urs Truly from Github for helping fix this bug
         let cardId = this.getAttribute('data-id')
 
         cardsChosen.push(fruitVegArray[cardId].name)
         cardsChosenId.push(cardId)
         this.setAttribute('src', fruitVegArray[cardId].img)
+        console.log(fruitVegArray[cardId]) // really useful when don't want to engage brain
         if (cardsChosen.length === 2) {
             setTimeout(checkForMatch, 500)
         }
@@ -78,7 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // check for matches
     function checkForMatch() {
         let cards = document.querySelectorAll('.gridimage') // prevents site logo from becomming a tumbler
-        console.log(cards) // this is really useful when I don't have to engage brain in testing
         const optionOneId = cardsChosenId[0]
 
         // if cardsChosenId incorporated array position needs to be rejected - preventing double tap
@@ -87,8 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cards[optionOneId].setAttribute('src', 'images/tumbler.png')
             cards[optionTwoId].setAttribute('src', 'images/tumbler.png')
             alertDisplay.textContent = 'Cool it down cucumber! You tapped that twice :)'
-        }
-        else if (cardsChosen[0] === cardsChosen[1]) {
+        } else if (cardsChosen[0] === cardsChosen[1]) {
             alertDisplay.textContent = 'Match! Smashed into the smoothie'
             cards[optionOneId].setAttribute('src', 'images/blank.png')
             cards[optionTwoId].setAttribute('src', 'images/blank.png')
@@ -102,14 +104,17 @@ document.addEventListener('DOMContentLoaded', () => {
         cardsChosenId = []
         resultDisplay.textContent = cardsWon.length
         barWidth = Math.round((cardsWon.length / 6) * 100) // converts cardsWon to percentage for progress  bar
-        document.getElementsByClassName('progress-bar').item(0).setAttribute('style', 'width:' + Number(barWidth) + '%'); 
-        document.getElementsByClassName('progress-bar').item(0).setAttribute('aria-valuenow', cardsWon.length); 
+        smoothieBar.item(0).setAttribute('style', 'width:' + Number(barWidth) + '%');
+        smoothieBar.item(0).setAttribute('aria-valuenow', cardsWon.length);
 
         if (cardsWon.length === fruitVegArray.length / 2) {
-            resultDisplay.textContent = 'Smoothie is made!'
+            resultDisplay.textContent = 'all the'
             alertDisplay.textContent = 'Press below to drink it up!'
+            smoothieBar.item(0).addEventListener('click', resetBar)
         }
     }
-
+    function resetBar () {
+        smoothieBar.item(0).setAttribute('style', 'width:' + 0 + '%')
+        smoothieBar.item(0).setAttribute('aria-valuenow', 0)}
     createSmoothieGrid();
 })
