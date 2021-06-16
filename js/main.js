@@ -67,34 +67,31 @@ document.addEventListener('DOMContentLoaded', () => {
     
   // Tumbler lift - if time want to work out lift animation 
       function tumblerLift() {
+        if(this.src.includes('images/blank.png')){return null} //image already solved
         let cardId = this.getAttribute('data-id')
-        // patch-2 begin
-        if(this.src==fruitVegArray[cardId].img){return null} //image already chosen
-        // patch-2 end
-        this.style.pointerEvents = 'none';
+        // this.style.pointerEvents = 'none';
         cardsChosen.push(fruitVegArray[cardId].name)
         cardsChosenId.push(cardId)
+       
+         // patch-1 
+        // if(this.src==fruitVegArray[cardId].img){return null} //image already chosen
         this.setAttribute('src', fruitVegArray[cardId].img)
         console.log(fruitVegArray[cardId])
         // this.style.pointerEvents = 'auto';
         if (cardsChosen.length === 2) {
             setTimeout(checkForMatch, 500)
-            this.style.pointerEvents = 'auto';
-            //cards[optionTwoId].style.pointerEvents = 'auto'; //idk what this is and it just throws an error - Y0urs Truly
-            console.log(cardsWon)
             // this.style.pointerEvents = 'auto';
             // cards[optionTwoId].style.pointerEvents = 'auto';
             console.log(cardsWon)
 
-
+        /* master
         this.setAttribute('src', fruitVegArray[cardId].img)
         console.log(fruitVegArray[cardId])
         if (cardsChosen.length === 2) {
             setTimeout(checkForMatch, 500)
             this.style.pointerEvents = 'auto';
             cards[optionTwoId].style.pointerEvents = 'auto';
-            console.log(cardsWon)
-
+            console.log(cardsWon)*/
         }
     }
 
