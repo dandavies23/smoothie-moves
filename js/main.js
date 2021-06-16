@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* When the page is loaded start game - consider inserting name and using to start game function*/
 
-        // setup game vars and cards
+    // setup game vars and cards
 
         // fruit and veg pairs
 
@@ -44,12 +44,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Constants and empty arrays
         const grid = document.querySelector('.grid-container') // picks up HTML
         const resultDisplay = document.querySelector('#result')
+        const alertDisplay = document.querySelector('#nudges')
         let cardsChosen = []
         let cardsChosenId = []
         let cardsWon = []
         var barWidth = 0
 
-        // Create board
+        // Create board and 'cards'
         function createSmoothieGrid() {
             for (let i = 0; i < fruitVegArray.length; i++) {
                 let card = document.createElement('img');
@@ -87,18 +88,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (optionOneId == optionTwoId) {
             cards[optionOneId].setAttribute('src', 'images/tumbler.png')
             cards[optionTwoId].setAttribute('src', 'images/tumbler.png')
-            alert("Cool it down cucumber! You tapped that twice :)")
+            alertDisplay.textContent = 'Cool it down cucumber! You tapped that twice :)'
         }
-        
         else if (cardsChosen[0] === cardsChosen[1]) {
-            alert('Match! Smashed into the smoothie')
+            alertDisplay.textContent = 'Match! Smashed into the smoothie'
             cards[optionOneId].setAttribute('src', 'images/blank.png')
             cards[optionTwoId].setAttribute('src', 'images/blank.png')
             cardsWon.push(cardsChosen)
         } else {
             cards[optionOneId].setAttribute('src', 'images/tumbler.png')
             cards[optionTwoId].setAttribute('src', 'images/tumbler.png')
-            alert('Keep looking') // perhaps a web literal with eyeballs move to bottom of grid
+            alertDisplay.textContent = 'Keep looking!' // perhaps a web literal with eyeballs move to bottom of grid
         }
         cardsChosen = []
         cardsChosenId = []
@@ -108,7 +108,8 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementsByClassName('progress-bar').item(0).setAttribute('aria-valuenow', cardsWon.length); 
 
         if (cardsWon.length === fruitVegArray.length / 2) {
-            resultDisplay.textContent = 'Smoothie is made! Press below to drink it up!'
+            resultDisplay.textContent = 'Smoothie is made!'
+            alertDisplay.textContent = 'Press below to drink it up!'
         }
     }
 
