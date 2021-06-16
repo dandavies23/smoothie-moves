@@ -35,8 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         ]
 
+        // double up the array to generate pairs thanks to CI Mentor Askshat Garg for this one
         fruitVegArray = [...fruitVegArray, ...fruitVegArray]
-        // Randomise array using Math.random
+        
+        // Randomise array using Math.random no need for casino-level random algos
         fruitVegArray.sort(() => 0.5 - Math.random())
 
         // Constants and empty arrays
@@ -46,13 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let cardsChosenId = []
         let cardsWon = []
         var barWidth = 0
-
-        // Set progress to 0
-        // document.getElementsByClassName('progress-bar').item(0).setAttribute('aria-valuenow', barWidth);
-        // document.getElementsByClassName('progress-bar').item(0).setAttribute('style','width:'+Number(barWidth)+'%');
-
-        //let scorebarelement = document.getElementById('score-bar')
-        //et scorebar.style.width = barWidth + '%'
 
         // Create board
         function createSmoothieGrid() {
@@ -67,31 +62,16 @@ document.addEventListener('DOMContentLoaded', () => {
     
   // Tumbler lift - if time want to work out lift animation 
       function tumblerLift() {
-        if(this.src.includes('images/blank.png')){return null} //image already solved
+        if(this.src.includes('images/blank.png')){return null} // prevents fruit from reappearing credit Y0urs Truly from Github for helping fix this bug
         let cardId = this.getAttribute('data-id')
-        // this.style.pointerEvents = 'none';
+
         cardsChosen.push(fruitVegArray[cardId].name)
         cardsChosenId.push(cardId)
-       
-         // patch-1 
-        // if(this.src==fruitVegArray[cardId].img){return null} //image already chosen
         this.setAttribute('src', fruitVegArray[cardId].img)
-        console.log(fruitVegArray[cardId])
-        // this.style.pointerEvents = 'auto';
+        console.log(fruitVegArray[cardId]) // checking additions to Array for scoring this can now be removed 
         if (cardsChosen.length === 2) {
             setTimeout(checkForMatch, 500)
-            // this.style.pointerEvents = 'auto';
-            // cards[optionTwoId].style.pointerEvents = 'auto';
-            console.log(cardsWon)
-
-        /* master
-        this.setAttribute('src', fruitVegArray[cardId].img)
-        console.log(fruitVegArray[cardId])
-        if (cardsChosen.length === 2) {
-            setTimeout(checkForMatch, 500)
-            this.style.pointerEvents = 'auto';
-            cards[optionTwoId].style.pointerEvents = 'auto';
-            console.log(cardsWon)*/
+            console.log(cardsWon) // checking how array injection works for scoring
         }
     }
 
@@ -99,16 +79,17 @@ document.addEventListener('DOMContentLoaded', () => {
     function checkForMatch() {
         let cards = document.querySelectorAll('img')
         const optionOneId = cardsChosenId[0]
-        // so if cardsChosenId incorporated array position it needs to be rejected - need to apped or add
+
+        // if cardsChosenId incorporated array position needs to be rejected - preventing double tap
         const optionTwoId = cardsChosenId[1]
         if (optionOneId == optionTwoId) {
             cards[optionOneId].setAttribute('src', 'images/tumbler.png')
             cards[optionTwoId].setAttribute('src', 'images/tumbler.png')
-            alert("Slow down! You've already tapped that!")
+            alert("Cool it down cucumber! You tapped that twice :)")
         }
         
         else if (cardsChosen[0] === cardsChosen[1]) {
-            alert('Match! Added to the smoothie') // definitely need animation here
+            alert('Match! Added to the smoothie')
             cards[optionOneId].setAttribute('src', 'images/blank.png')
             cards[optionTwoId].setAttribute('src', 'images/blank.png')
             cardsWon.push(cardsChosen)
@@ -120,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cardsChosen = []
         cardsChosenId = []
         resultDisplay.textContent = cardsWon.length
-        barWidth = Math.round((cardsWon.length / 6) * 100) // converts cardsWon to percentage
+        barWidth = Math.round((cardsWon.length / 6) * 100) // converts cardsWon to percentage for progress  bar
         document.getElementsByClassName('progress-bar').item(0).setAttribute('style', 'width:' + Number(barWidth) + '%'); 
         document.getElementsByClassName('progress-bar').item(0).setAttribute('aria-valuenow', cardsWon.length); 
 
