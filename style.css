@@ -3,6 +3,7 @@ body {
     padding: 0;
     overflow: overflow;
     background-color: #66cc99;
+    font-family: 'Comic Neue', cursive;
 }
 
 .grid-container {  

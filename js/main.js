@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let card = document.createElement('img');
                 card.setAttribute('src', 'images/tumbler.png');
                 card.setAttribute('data-id', i);
-                card.setAttribute('class', 'gridimage')
+                card.setAttribute('class', 'gridimage') // defining images in the grid
                 card.addEventListener('click', tumblerLift)
                 grid.appendChild(card);
             }
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // check for matches
     function checkForMatch() {
-        let cards = document.querySelectorAll('.gridimage') // this is picking up navbar image too document.querySelectorAll(".gridimage");
+        let cards = document.querySelectorAll('.gridimage') // prevents site logo from becomming a tumbler
         console.log(cards)
         const optionOneId = cardsChosenId[0]
 
