@@ -67,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
   // Tumbler lift - if time want to work out lift animation 
       function tumblerLift() {
+        if(this.src.includes('images/blank.png')){return null} //image already solved
         let cardId = this.getAttribute('data-id')
         // this.style.pointerEvents = 'none';
         cardsChosen.push(fruitVegArray[cardId].name)
