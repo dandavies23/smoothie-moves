@@ -45,11 +45,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.grid-container') // picks up HTML
     const resultDisplay = document.querySelector('#result')
     const alertDisplay = document.querySelector('#nudges')
+    const progressDisplay = document.querySelector('#display-progress')
     const smoothieBar = document.getElementsByClassName('progress-bar')
     let cardsChosen = []
     let cardsChosenId = []
     let cardsWon = []
     var barWidth = 0
+    let turns = 0
 
     // Create board and 'cards'
     function createSmoothieGrid() {
@@ -74,6 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
         cardsChosenId.push(cardId)
         this.setAttribute('src', fruitVegArray[cardId].img)
         console.log(fruitVegArray[cardId]) // really useful when don't want to engage brain
+        turns = turns + 1
+        console.log(turns)
         if (cardsChosen.length === 2) {
             setTimeout(checkForMatch, 500)
         }
@@ -89,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (optionOneId == optionTwoId) {
             cards[optionOneId].setAttribute('src', 'images/tumbler.png')
             cards[optionTwoId].setAttribute('src', 'images/tumbler.png')
-            alertDisplay.textContent = 'Cool it down cucumber! You tapped that twice :)'
+            alertDisplay.textContent = 'Cool it down cucumber! You tapped that twice 🙂'
         } else if (cardsChosen[0] === cardsChosen[1]) {
             alertDisplay.textContent = 'Match! Smashed into the smoothie'
             cards[optionOneId].setAttribute('src', 'images/blank.png')
@@ -108,8 +112,8 @@ document.addEventListener('DOMContentLoaded', () => {
         smoothieBar.item(0).setAttribute('aria-valuenow', cardsWon.length);
 
         if (cardsWon.length === fruitVegArray.length / 2) {
-            resultDisplay.textContent = 'all the'
-            alertDisplay.textContent = 'Press below to drink it up!'
+            progressDisplay.textContent = 'You found all of the smoothie ingredients in ' + turns + ' tries!'
+            alertDisplay.textContent = 'Press below to drink it up! 😋'
             smoothieBar.item(0).addEventListener('click', resetBar)
         }
     }
