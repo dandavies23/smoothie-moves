@@ -6,6 +6,10 @@ body {
     font-family: 'Comic Neue', sans-serif;
 }
 
+h1, h2, h3, h4 {
+    text-align: center;
+}
+
 .grid-container {  
     padding-top: 6vh;
     display: grid;

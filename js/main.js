@@ -28,11 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // setup game vars and cards ??? 
      // fruit and veg pairs
     // Constants and empty arrays
-    const grid = document.querySelector('.grid-container') // picks up HTML
-    const resultDisplay = document.querySelector('#result')
-    const alertDisplay = document.querySelector('#nudges')
-    const progressDisplay = document.querySelector('#display-progress')
-    const smoothieProgressBar = document.getElementsByClassName('progress-bar')
+    let grid = document.querySelector('.grid-container') // picks up HTML
+    let progressDisplay = document.querySelector('#display-progress')
+    let resultDisplay = document.querySelector('#result')
+    progressDisplay = `You've added ${resultDisplay} fruit/veg`;
+    let alertDisplay = document.querySelector('#nudges')
+    let smoothieProgressBar = document.getElementsByClassName('progress-bar')
     let cardsChosen = []
     let cardsChosenId = []
     let cardsWon = []
@@ -132,13 +133,18 @@ document.addEventListener('DOMContentLoaded', () => {
     function restart() {
         // store score locally 
         // reset variables score timer here ?
-        let cardsChosen = []
-        let cardsChosenId = []
-        let cardsWon = []
-        var progressBarWidth = 0;
-        let turns = 0;
-        var startTime = 0;
-        var score = 0;
+        cardsChosen = []
+        cardsChosenId = []
+        cardsWon = []
+        progressBarWidth = 0;
+        turns = 0;
+        startTime = 0;
+        score = 0;
+        resultDisplay = 0;
+        grid.innerHTML = "";
+        progressDisplay.innerHTML = "";
+        alertDisplay.innerHTML = "";
+
         // need to get rid of old grid... 
         createSmoothieGrid();
     }
