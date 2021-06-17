@@ -119,6 +119,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     function resetBar () {
         smoothieBar.item(0).setAttribute('style', 'width:' + 0 + '%')
-        smoothieBar.item(0).setAttribute('aria-valuenow', 0)}
+        smoothieBar.item(0).setAttribute('aria-valuenow', 0)
+        setTimeout(restart, 500)
+        }
+    function restart () {
+        location.reload()
+    }
+
     createSmoothieGrid();
 })

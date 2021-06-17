@@ -34,7 +34,7 @@
             <a class="nav-link" href="index.html">New Game<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="set.html">Reset</a>
+            <a class="nav-link" href="">Reset</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="smoothselect.html">Pick your own</a>
@@ -43,6 +43,33 @@
       </div>
     </nav>
   </header>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  How to play
+</button>
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="rulesModalLabel">How to play</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        You want to make a smoothie but those cheeky little fruit and vegetables are hiding underneath the cups. <br/> 
+Match the fruit or veg and send them into the smoothie. <br/> 
+You score points for finding the smoothie ingredients in the fewest moves and quickest time. <br/> 
+You take it in turns and play with your friends.<br/> 
+Just tap players and add your names so we can say when it’s your turn!<br/> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal"> Got it!</button>
+      </div>
+    </div>
+  </div>
+</div>
 
   <!-- Smoothie grid -->
   <div class="grid-container disable-dbl-tap-zoom"></div>
