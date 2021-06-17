@@ -52,6 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let cardsWon = []
     var barWidth = 0
     let turns = 0
+    var startTime
+    var score
 
     // Create board and 'cards'
     function createSmoothieGrid() {
@@ -64,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
             grid.appendChild(card);
         }
     }
+    startTime = new Date().getTime(); // start timer
 
     // Tumbler lift - if time want to work out lift animation 
     function tumblerLift() {
@@ -112,15 +115,19 @@ document.addEventListener('DOMContentLoaded', () => {
         smoothieBar.item(0).setAttribute('aria-valuenow', cardsWon.length);
 
         if (cardsWon.length === fruitVegArray.length / 2) {
-            progressDisplay.textContent = 'You found all of the smoothie ingredients in ' + turns + ' tries!'
-            alertDisplay.textContent = 'Press below to drink it up! 😋'
+            endTime = new Date ().getTime() // end timer
+            time = Math.round((endTime - startTime) / 1000)
+            score = (turns * 10) + time
+            finalScore = 650 - score
+            progressDisplay.textContent = 'You found all of the smoothie ingredients in ' + turns + ' moves and ' + time + ' seconds'
+            alertDisplay.textContent = 'You scored ' + finalScore + '. Press below to drink it up! 😋'
             smoothieBar.item(0).addEventListener('click', resetBar)
         }
     }
     function resetBar () {
         smoothieBar.item(0).setAttribute('style', 'width:' + 0 + '%')
         smoothieBar.item(0).setAttribute('aria-valuenow', 0)
-        setTimeout(restart, 500)
+        setTimeout(restart, 500) // allowing the smoothie to drain
         }
     function restart () {
         location.reload()
