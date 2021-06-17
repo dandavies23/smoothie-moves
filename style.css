@@ -3,7 +3,7 @@ body {
     padding: 0;
     overflow: overflow;
     background-color: #66cc99;
-    font-family: 'Comic Neue', cursive;
+    font-family: 'Comic Neue', sans-serif;
 }
 
 .grid-container {  
@@ -30,13 +30,15 @@ body {
 }
 
 .grid-container img {
-    height: auto;
+    height: auto; 
     width: 100%;
+} 
+
+.grid-container img:active {
+    transform: translate (0px, 20px);
+    transition: transform .2s
 }
 
-.alert {
-    height: 40px;
-}
 
 #container-box {
     height: 30px;

@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var startTime
     var score
 
+
     // Create board and 'cards'
     function createSmoothieGrid() {
         for (let i = 0; i < fruitVegArray.length; i++) {
