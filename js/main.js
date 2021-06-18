@@ -28,12 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // setup game vars and cards ??? 
      // fruit and veg pairs
     // Constants and empty arrays
-    let grid = document.querySelector('.grid-container') // picks up HTML
-    let progressDisplay = document.querySelector('#display-progress')
-    let resultDisplay = document.querySelector('#result')
-    progressDisplay = `You've added ${resultDisplay} fruit/veg`;
-    let alertDisplay = document.querySelector('#nudges')
-    let smoothieProgressBar = document.getElementsByClassName('progress-bar')
+    let grid = document.querySelector('.grid-container') // picks up HTML grid first
     let cardsChosen = []
     let cardsChosenId = []
     let cardsWon = []
@@ -57,6 +52,15 @@ document.addEventListener('DOMContentLoaded', () => {
             grid.appendChild(card);
         }
     }
+
+    let alertDisplay = document.querySelector('#nudges')
+    let resultDisplay = document.querySelector('#result')
+    let progressDisplay = document.querySelector('#display-progress')
+    let smoothieProgressBar = document.getElementsByClassName('progress-bar')
+
+    // opening comments 
+    alertDisplay.textContent = 'Your fruit and veg are hiding under the cups...'
+
     function initialiseTimer () {
         startTime = new Date().getTime(); // start timer
     }
@@ -142,8 +146,8 @@ document.addEventListener('DOMContentLoaded', () => {
         score = 0;
         resultDisplay = 0;
         grid.innerHTML = "";
-        progressDisplay.innerHTML = "";
-        alertDisplay.innerHTML = "";
+        progressDisplay.textContent = "";
+        alertDisplay.textContent = "Oh no those cheeky fruit and veg have hidden again! 😫";
 
         // need to get rid of old grid... 
         createSmoothieGrid();
