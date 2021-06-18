@@ -1,3 +1,5 @@
+// constants in later versions more fruit veg could be added 
+
 let FRUIT_VEG_LIST = [{
     name: 'apple',
     img: 'apple.png'
@@ -23,7 +25,9 @@ let FRUIT_VEG_LIST = [{
     img: 'lemon.png'
 },
 ]
+
 document.addEventListener('DOMContentLoaded', () => {
+    
     /* When the page is loaded start game - consider inserting name and using to start game function*/
     // setup game vars and cards ??? 
      // fruit and veg pairs
@@ -35,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var progressBarWidth = 0;
     let turns = 0;
     var startTime = 0;
+    var timeDiff = 0;
     var score = 0;
      // double up the array to generate pairs thanks to CI Mentor Askshat Garg for this one
     let fruitVegList = [...FRUIT_VEG_LIST, ...FRUIT_VEG_LIST]
@@ -52,17 +57,38 @@ document.addEventListener('DOMContentLoaded', () => {
             grid.appendChild(card);
         }
     }
-
-    let alertDisplay = document.querySelector('#nudges')
+    // define elements on page
+    let alertDisplay = document.querySelector('#nudges') // feeling that this isn't needed
     let resultDisplay = document.querySelector('#result')
+    let movesDisplay = document.querySelector('#moves')
+    let timeDisplay = document.querySelector('#seconds')
     let progressDisplay = document.querySelector('#display-progress')
     let smoothieProgressBar = document.getElementsByClassName('progress-bar')
 
-    // opening comments 
+    // opening comments and screen variables
     alertDisplay.textContent = 'Your fruit and veg are hiding under the cups...'
+    resultDisplay.textContent = '0'
+    movesDisplay.textContent = '0'
+    timeDisplay.textContent = '0'
 
     function initialiseTimer () {
         startTime = new Date().getTime(); // start timer
+    }
+
+    // Every second (investigate dynamic time: https://ralzohairi.medium.com/displaying-dynamic-elapsed-time-in-javascript)
+    //elapsedTimeIntervalRef = setInterval(() => {
+        // Compute the elapsed time & display
+      //  elapsedTimeText.innerText = timeAndDateHandling.getElapsedTime(startTime); //pass the actual record start time
+
+        // Improvement: Can Stop elapsed time and resert when a maximum elapsed time
+        //              has been reached.
+    //}, 1000); 
+
+    function updateTimer () {
+        endTime = new Date().getTime();
+        timeDiff = Math.round((endTime - startTime) / 1000);
+        console.log(timeDiff);
+        timeDisplay.textContent = timeDiff;
     }
     // Tumbler removed on click
     function onTumblerClick() {
@@ -83,9 +109,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     function incrementTurns() {
         turns = turns + 1;
+        movesDisplay.textContent = turns;
     }
     // check for matches
     function checkForMatch() {
+        updateTimer ();
         let cards = document.querySelectorAll('.gridimage') // prevents site logo and other images from becoming involved with the game!
         const optionOneId = cardsChosenId[0]
         // if cardsChosenId incorporated array position needs to be rejected - preventing double tap
@@ -111,7 +139,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cardsWon.length === FRUIT_VEG_LIST.length) {
             onGameOver();
         }
-    }
+}
+
     function onGameOver() {
         endTime = new Date ().getTime() // end timer
         time = Math.round((endTime - startTime) / 1000)
@@ -144,9 +173,11 @@ document.addEventListener('DOMContentLoaded', () => {
         turns = 0;
         startTime = 0;
         score = 0;
-        resultDisplay = 0;
         grid.innerHTML = "";
         progressDisplay.textContent = "";
+        resultDisplay.textContent = "0";
+        movesDisplay = "0";
+        timeDisplay = "0";
         alertDisplay.textContent = "Oh no those cheeky fruit and veg have hidden again! 😫";
 
         // need to get rid of old grid... 

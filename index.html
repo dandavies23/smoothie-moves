@@ -20,7 +20,8 @@
 
 <body>
   <header>
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
+   <!-- Not necessary for v1 maximising screen space especially for mobile
+     <nav class="navbar navbar-expand-md navbar-light bg-light">
       <a class="navbar-brand" href="index.html">
         <img src="images/smoothiemoveslogo.png" width="30" height="30" class="d-inline-block align-top"
           style="margin-right: 5px" alt="Smoothie Moves logo">Smoothie Moves</a>
@@ -41,7 +42,9 @@
           </li>
         </ul>
       </div>
-    </nav>
+    </nav> -->
+    <h2 class="scoring">Moves: <span id="moves"></span> Fruit/veg found: <span id="result"></span> Seconds: <span id="seconds">0</span></h2>
+
   </header>
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -75,8 +78,8 @@ Just tap players and add your names so we can say when it’s your turn!<br/>
   <div class="grid-container disable-dbl-tap-zoom"></div>
 
   <!-- Score for now want to have a smoothie bar // will probably remove this -->
-  <h3 id="display-progress">You've added <span id="result">0</span> fruit/veg</h3>
-  <h4><span id="nudges">Your fruit and veg pairs are hiding under the cups...</span></h4>
+  <h3 id="display-progress"></h3>
+  <h4><span id="nudges"></span></h4>
   <div class="container">
     <div class="progress">
       <div class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0"
