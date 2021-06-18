@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
     timeDisplay.textContent = '0'
     function initialiseTimer () {
         startTime = new Date().getTime(); // start timer
-        setTimeout(updateTimer, 1000);
+        setInterval(updateTimer, 1000);
     }
     // Every second (investigate dynamic time: https://ralzohairi.medium.com/displaying-dynamic-elapsed-time-in-javascript)
     //elapsedTimeIntervalRef = setInterval(() => {
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function resetBar() {
         smoothieProgressBar.item(0).setAttribute('style', 'width: 0%')
         smoothieProgressBar.item(0).setAttribute('aria-valuenow', 0)
-        setInterval(restart, 500) // allowing the smoothie to drain
+        setTimeout(restart, 500) // allowing the smoothie to drain
         }
     function restart() {
         // store score locally 
