@@ -43,6 +43,22 @@ document.addEventListener('DOMContentLoaded', () => {
     var score = 0;
      // double up the array to generate pairs thanks to CI Mentor Askshat Garg for this one
     let fruitVegList = [...FRUIT_VEG_LIST, ...FRUIT_VEG_LIST]
+   
+ /* // Start page 
+    startScreen = document.querySelector('.start-screen')
+    let welcomeTop = document.createElement('img');
+    welcomeTop.setAttribute ('src', 'images/toprowfruittest.png');
+    let smoothWelcome = document.createElement('h1')
+    smoothWelcome.textContent = 'Smoothie Moves'
+    $('.btn-lg').button();
+    btn.setAttribute('id','start-btn');
+    let welcomeBottom = document.createElement('img');
+    welcomeBottom.setAttribute ('src', 'images/bottomrowfruittest.png');
+    document.getElementById('start-btn').addEventListener('click', () => {
+        createSmoothieGrid();} */
+
+
+
     // Create board and 'cards'
     function createSmoothieGrid() {
         // Randomise array using Math.random no need for casino-level random algos
