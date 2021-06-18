@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // Tumbler removed on click
     function onTumblerClick() {
-        const isDisabled = this.getAttribute('data-disabled') === 'true';
+        const isDisabled = (this.getAttribute('data-disabled') === 'true') || cardsChosen.length >= 2; //no more than 2 cards can be opened at a time
         if (isDisabled) {
             return null 
         } 
