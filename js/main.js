@@ -40,20 +40,16 @@ document.addEventListener('DOMContentLoaded', () => {
     var score = 0;
      // double up the array to generate pairs thanks to CI Mentor Askshat Garg for this one
     let fruitVegList = [...FRUIT_VEG_LIST, ...FRUIT_VEG_LIST]
- /* // Start page 
-    startScreen = document.querySelector('.start-screen')
-    let welcomeTop = document.createElement('img');
-    welcomeTop.setAttribute ('src', 'images/toprowfruittest.png');
-    let smoothWelcome = document.createElement('h1')
-    smoothWelcome.textContent = 'Smoothie Moves'
-    $('.btn-lg').button();
-    btn.setAttribute('id','start-btn');
-    let welcomeBottom = document.createElement('img');
-    welcomeBottom.setAttribute ('src', 'images/bottomrowfruittest.png');
-    document.getElementById('start-btn').addEventListener('click', () => {
-        createSmoothieGrid();} */
+    let intervalRef = null;
+      // define elements on page
+    let alertDisplay = document.querySelector('#nudges') // feeling that this isn't needed
+    let resultDisplay = document.querySelector('#result')
+    let movesDisplay = document.querySelector('#moves')
+    let timeDisplay = document.querySelector('#seconds')
+    let progressDisplay = document.querySelector('#display-progress')
+    let smoothieProgressBar = document.getElementsByClassName('progress-bar')
     // Create board and 'cards'
-    function createSmoothieGrid() {
+    function initialiseGame() {
         // Randomise array using Math.random no need for casino-level random algos
         fruitVegList.sort(() => 0.5 - Math.random())
         initialiseTimer ();
@@ -65,34 +61,19 @@ document.addEventListener('DOMContentLoaded', () => {
             card.addEventListener('click', onTumblerClick)
             grid.appendChild(card);
         }
+          // opening comments and screen variables
+        alertDisplay.textContent = 'Your fruit and veg are hiding under the cups...'
+        resultDisplay.textContent = '0'
+        movesDisplay.textContent = '0'
+        timeDisplay.textContent = '0'   
     }
-    // define elements on page
-    let alertDisplay = document.querySelector('#nudges') // feeling that this isn't needed
-    let resultDisplay = document.querySelector('#result')
-    let movesDisplay = document.querySelector('#moves')
-    let timeDisplay = document.querySelector('#seconds')
-    let progressDisplay = document.querySelector('#display-progress')
-    let smoothieProgressBar = document.getElementsByClassName('progress-bar')
-    // opening comments and screen variables
-    alertDisplay.textContent = 'Your fruit and veg are hiding under the cups...'
-    resultDisplay.textContent = '0'
-    movesDisplay.textContent = '0'
-    timeDisplay.textContent = '0'
     function initialiseTimer () {
         startTime = new Date().getTime(); // start timer
-        setInterval(updateTimer, 1000);
+        intervalRef = setInterval(updateTimer, 1000);
     }
-    // Every second (investigate dynamic time: https://ralzohairi.medium.com/displaying-dynamic-elapsed-time-in-javascript)
-    //elapsedTimeIntervalRef = setInterval(() => {
-        // Compute the elapsed time & display
-      //  elapsedTimeText.innerText = timeAndDateHandling.getElapsedTime(startTime); //pass the actual record start time
-        // Improvement: Can Stop elapsed time and resert when a maximum elapsed time
-        //              has been reached.
-    //}, 1000); 
     function updateTimer () {
         endTime = new Date().getTime();
         timeDiff = Math.round((endTime - startTime) / 1000);
-        console.log(timeDiff);
         timeDisplay.textContent = timeDiff;
     }
     // Tumbler removed on click
@@ -109,7 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
         cardsChosenId.push(cardId)
         this.setAttribute('src', `images/${fruitVegList[cardId].img}`)
         this.setAttribute('data-disabled', 'true')
-        console.log(fruitVegList[cardId]) // really useful when don't want to engage brain
         incrementTurns();
         if (cardsChosen.length === 2) {
             setTimeout(checkForMatch, 500)
@@ -126,13 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const optionOneId = cardsChosenId[0]
         // if cardsChosenId incorporated array position needs to be rejected - preventing double tap
         const optionTwoId = cardsChosenId[1]
-        if (optionOneId == optionTwoId) {
-            cards[optionOneId].setAttribute('src', 'images/tumbler.png')
-            cards[optionTwoId].setAttribute('src', 'images/tumbler.png') // worth thinking about here - could just leave the ingredient up and suggest tap another
-             cards[optionOneId].setAttribute('data-disabled', 'false')
-            cards[optionTwoId].setAttribute('data-disabled', 'false')
-            alertDisplay.textContent = 'Cool it down cucumber! You tapped that twice 🙂'
-        } else if (cardsChosen[0] === cardsChosen[1]) {
+        if (cardsChosen[0] === cardsChosen[1]) {
             alertDisplay.textContent = 'Match! You have a full portion' // add a literate here? the name of the fruit or veg?
             cardsWon.push(cardsChosen)
             updateProgressBar();
@@ -149,15 +123,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cardsWon.length === FRUIT_VEG_LIST.length) {
             onGameOver();
         }
-}
+    }
     function onGameOver() {
-        endTime = new Date ().getTime() // end timer
-        time = Math.round((endTime - startTime) / 1000)
-        score = (turns * 10) + time
-        finalScore = 650 - score
+        const finalScore = calculateScore();
         progressDisplay.textContent = 'You found all of the smoothie ingredients in ' + turns + ' moves and ' + time + ' seconds'
         alertDisplay.textContent = 'You scored ' + finalScore + '. Press below to drink it up! 😋'
         smoothieProgressBar.item(0).addEventListener('click', resetBar)
+        clearInterval(intervalRef);
+    }
+    function calculateScore() {
+        endTime = new Date ().getTime() // end timer
+        time = Math.round((endTime - startTime) / 1000)
+        score = (turns * 10) + time
+        return 650 - score;
     }
     function updateProgressBar() {
         progressBarWidth= Math.round((cardsWon.length / FRUIT_VEG_LIST.length) *  100) // converts cardsWon to percentage for progress  bar
@@ -171,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
         smoothieProgressBar.item(0).setAttribute('style', 'width: 0%')
         smoothieProgressBar.item(0).setAttribute('aria-valuenow', 0)
         setTimeout(restart, 500) // allowing the smoothie to drain
-        }
+    }
     function restart() {
         // store score locally 
         // reset variables score timer here ?
@@ -189,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
         timeDisplay = "0";
         alertDisplay.textContent = "Oh no those cheeky fruit and veg have hidden again! 😫";
         // need to get rid of old grid... 
-        createSmoothieGrid();
+        initialiseGame();
     }
-createSmoothieGrid();
+    initialiseGame();
 })
