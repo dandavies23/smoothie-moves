@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function resetBar() {
         smoothieProgressBar.item(0).setAttribute('style', 'width: 0%')
         smoothieProgressBar.item(0).setAttribute('aria-valuenow', 0)
-        setTimeout(restart, 500) // allowing the smoothie to drain
+        setInterval(restart, 500) // allowing the smoothie to drain
         }
     function restart() {
         // store score locally 
