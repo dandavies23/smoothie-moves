@@ -1,5 +1,4 @@
 // constants in later versions more fruit veg could be added 
-
 let FRUIT_VEG_LIST = [{
     name: 'apple',
     img: 'apple.png'
@@ -25,9 +24,7 @@ let FRUIT_VEG_LIST = [{
     img: 'lemon.png'
 },
 ]
-
 document.addEventListener('DOMContentLoaded', () => {
-    
     /* When the page is loaded start game - consider inserting name and using to start game function*/
     // setup game vars and cards ??? 
      // fruit and veg pairs
@@ -43,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
     var score = 0;
      // double up the array to generate pairs thanks to CI Mentor Askshat Garg for this one
     let fruitVegList = [...FRUIT_VEG_LIST, ...FRUIT_VEG_LIST]
-   
  /* // Start page 
     startScreen = document.querySelector('.start-screen')
     let welcomeTop = document.createElement('img');
@@ -56,9 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
     welcomeBottom.setAttribute ('src', 'images/bottomrowfruittest.png');
     document.getElementById('start-btn').addEventListener('click', () => {
         createSmoothieGrid();} */
-
-
-
     // Create board and 'cards'
     function createSmoothieGrid() {
         // Randomise array using Math.random no need for casino-level random algos
@@ -80,26 +73,22 @@ document.addEventListener('DOMContentLoaded', () => {
     let timeDisplay = document.querySelector('#seconds')
     let progressDisplay = document.querySelector('#display-progress')
     let smoothieProgressBar = document.getElementsByClassName('progress-bar')
-
     // opening comments and screen variables
     alertDisplay.textContent = 'Your fruit and veg are hiding under the cups...'
     resultDisplay.textContent = '0'
     movesDisplay.textContent = '0'
     timeDisplay.textContent = '0'
-
     function initialiseTimer () {
         startTime = new Date().getTime(); // start timer
+        setTimeout(updateTimer, 1000);
     }
-
     // Every second (investigate dynamic time: https://ralzohairi.medium.com/displaying-dynamic-elapsed-time-in-javascript)
     //elapsedTimeIntervalRef = setInterval(() => {
         // Compute the elapsed time & display
       //  elapsedTimeText.innerText = timeAndDateHandling.getElapsedTime(startTime); //pass the actual record start time
-
         // Improvement: Can Stop elapsed time and resert when a maximum elapsed time
         //              has been reached.
     //}, 1000); 
-
     function updateTimer () {
         endTime = new Date().getTime();
         timeDiff = Math.round((endTime - startTime) / 1000);
@@ -108,15 +97,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     // Tumbler removed on click
     function onTumblerClick() {
-        if (this.src.includes('images/blank.png')) {
+        const isDisabled = this.getAttribute('data-disabled') === 'true';
+        if (isDisabled) {
             return null 
-        } // prevents fruit from reappearing credit Y0urs Truly from Github for helping fix this bug
+        } 
+        // prevents fruit from reappearing credit Y0urs Truly from Github for helping fix this bug
         // Discussed with Akshat leaving veg in place in place rather than working toward an empty page 
         // Way to do this is to check if disabled attribute is present and then return null if not. https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled
         let cardId = this.getAttribute('data-id')
         cardsChosen.push(fruitVegList[cardId].name)
         cardsChosenId.push(cardId)
         this.setAttribute('src', `images/${fruitVegList[cardId].img}`)
+        this.setAttribute('data-disabled', 'true')
         console.log(fruitVegList[cardId]) // really useful when don't want to engage brain
         incrementTurns();
         if (cardsChosen.length === 2) {
@@ -137,16 +129,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (optionOneId == optionTwoId) {
             cards[optionOneId].setAttribute('src', 'images/tumbler.png')
             cards[optionTwoId].setAttribute('src', 'images/tumbler.png') // worth thinking about here - could just leave the ingredient up and suggest tap another
+             cards[optionOneId].setAttribute('data-disabled', 'false')
+            cards[optionTwoId].setAttribute('data-disabled', 'false')
             alertDisplay.textContent = 'Cool it down cucumber! You tapped that twice 🙂'
         } else if (cardsChosen[0] === cardsChosen[1]) {
             alertDisplay.textContent = 'Match! You have a full portion' // add a literate here? the name of the fruit or veg?
-            cards[optionOneId].setAttribute('src', 'images/blank.png') // instead of this add disabled attribute to cards
-            cards[optionTwoId].setAttribute('src', 'images/blank.png') // instead of this add disabled attribute to cards
             cardsWon.push(cardsChosen)
             updateProgressBar();
         } else {
             cards[optionOneId].setAttribute('src', 'images/tumbler.png')
             cards[optionTwoId].setAttribute('src', 'images/tumbler.png')
+            cards[optionOneId].setAttribute('data-disabled', 'false')
+            cards[optionTwoId].setAttribute('data-disabled', 'false')
             alertDisplay.textContent = 'Keep looking! 👀' // perhaps a web literal with eyeballs move to bottom of grid - worked with Emoji!
         }
         cardsChosen = []
@@ -156,7 +150,6 @@ document.addEventListener('DOMContentLoaded', () => {
             onGameOver();
         }
 }
-
     function onGameOver() {
         endTime = new Date ().getTime() // end timer
         time = Math.round((endTime - startTime) / 1000)
@@ -195,7 +188,6 @@ document.addEventListener('DOMContentLoaded', () => {
         movesDisplay = "0";
         timeDisplay = "0";
         alertDisplay.textContent = "Oh no those cheeky fruit and veg have hidden again! 😫";
-
         // need to get rid of old grid... 
         createSmoothieGrid();
     }
