@@ -20,66 +20,12 @@
 
 <body>
   <header>
-   <!-- Not necessary for v1 maximising screen space especially for mobile
-     <nav class="navbar navbar-expand-md navbar-light bg-light">
-      <a class="navbar-brand" href="index.html">
-        <img src="images/smoothiemoveslogo.png" width="30" height="30" class="d-inline-block align-top"
-          style="margin-right: 5px" alt="Smoothie Moves logo">Smoothie Moves</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.html">New Game<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">Reset</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="smoothselect.html">Pick your own</a>
-          </li>
-        </ul>
-      </div>
-    </nav> -->
+  <!-- Scoring display -->
     <h2 class="scoring">Moves: <span id="moves"></span> Fruit/veg found: <span id="result"></span> Seconds: <span id="seconds">0</span></h2>
-
   </header>
-<!-- Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  How to play
-</button>
-   Modal
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="rulesModalLabel">How to play</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        You want to make a smoothie but those cheeky little fruit and vegetables are hiding underneath the cups. <br/> 
-Match the fruit or veg and send them into the smoothie. <br/> 
-You score points for finding the smoothie ingredients in the fewest moves and quickest time. <br/> 
-You take it in turns and play with your friends.<br/> 
-Just tap players and add your names so we can say when it’s your turn!<br/> 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal"> Got it!</button>
-      </div>
-    </div>
-  </div>
-</div>
- -->
-  <!-- Start screen graphics and text -->
-  <div class="container start-screen disable-dbl-tap-zoom"></div>
   <!-- Smoothie grid -->
-  <div class="grid-container disable-dbl-tap-zoom"></div>
-
-  <!-- Score for now want to have a smoothie bar // will probably remove this -->
+    <div class="grid-container disable-dbl-tap-zoom"></div>
+  <!-- Progress reports and nudges -->
   <h3 id="display-progress"></h3>
   <h4><span id="nudges"></span></h4>
   <div class="container">
@@ -88,11 +34,8 @@ Just tap players and add your names so we can say when it’s your turn!<br/>
         aria-valuemax="100"></div>
     </div>
   </div>
-
-  <!-- Footer -->
-  <footer class="container-fluid">
-
-  </footer>
+  <!-- Footer decide whether to keep this or not? -->
+  <footer class="container-fluid"></footer>
 
   <!-- Bootstrap JS-->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -104,9 +47,7 @@ Just tap players and add your names so we can say when it’s your turn!<br/>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
   </script>
-
   <script src="assets/main.js"></script>
-
 </body>
 
 </html>

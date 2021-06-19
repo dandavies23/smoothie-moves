@@ -1,3 +1,4 @@
+/* universal text */ 
 body {
     margin: 0;
     padding: 0;
@@ -9,6 +10,27 @@ body {
 h1, h2, h3, h4 {
     text-align: center;
 }
+
+/* Start screen layout */
+
+#game-title {
+padding-top: 3vw;
+}
+
+.home-btn-container {
+    margin: auto;
+    width: fit-content;
+    padding: 5vw 0;
+
+}
+
+.home-image {
+    height: auto;
+    width: 100%;
+}
+
+
+/* game elements */ 
 
 .grid-container {  
     padding-top: 6vh;

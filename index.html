@@ -19,40 +19,57 @@
 </head>
 
 <body>
-  <header>
-<!-- This is the start page just need simple HTML to properly start game -->
+  
+ <div class="container">
+  <div class="row">
+    <div class="col align-self-start">
+      <img class="home-image" src="assets/images/apple.png"> 
+    </div>
+    <div class="col align-self-center">
+      <img class="home-image" src="assets/images/beetroot.png">
+    </div>
+    <div class="col align-self-end">
+      <img class="home-image" src="assets/images/blueberries.png">
+    </div>
+    <div class="col align-self-start">
+      <img class="home-image" src="assets/images/broccoli.png">
+    </div>
+  </div>
+</div>
+<div class="container" id="game-title">
+<h1>Smoothie Moves</h1> 
+<h2>A fruity-fun memory game for children over 4</h2> 
+</div>
 
-   <!-- Not necessary for v1 maximising screen space especially for mobile
-     <nav class="navbar navbar-expand-md navbar-light bg-light">
-      <a class="navbar-brand" href="index.html">
-        <img src="images/smoothiemoveslogo.png" width="30" height="30" class="d-inline-block align-top"
-          style="margin-right: 5px" alt="Smoothie Moves logo">Smoothie Moves</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" href="index.html">New Game<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">Reset</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="smoothselect.html">Pick your own</a>
-          </li>
-        </ul>
+
+    <div class="home-btn-container"> 
+     <!-- Game set-up buttons -->
+      <a class="btn btn-success btn-lg" href="game.html" role="button">Start</a>
+    <!-- Button to trigger rules modal -->
+      <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#exampleModal">How to play</button>
+    </div>
+    
+    <div class="container">
+      <div class="row">
+        <div class="col align-self-end">
+          <img class="home-image"src="assets/images/broccoli.png">
+        </div>
+        <div class="col align-self-start">
+          <img class="home-image" src="assets/images/carrot.png"> 
+        </div>
+        <div class="col align-self-center">
+          <img class="home-image" src="assets/images/lemon.png">
+        </div>
+        <div class="col align-self-start">
+          <img class="home-image" src="assets/images/apple.png">
+        </div>
       </div>
-    </nav> -->
-    <h2 class="scoring">Moves: <span id="moves"></span> Fruit/veg found: <span id="result"></span> Seconds: <span id="seconds">0</span></h2>
+    </div>
 
-  </header>
-<!-- Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  How to play
-</button>
-   Modal
+
+
+
+  <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -61,7 +78,9 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
+      
       </div>
+      
       <div class="modal-body">
         You want to make a smoothie but those cheeky little fruit and vegetables are hiding underneath the cups. <br/> 
 Match the fruit or veg and send them into the smoothie. <br/> 
@@ -75,21 +94,6 @@ Just tap players and add your names so we can say when it’s your turn!<br/>
     </div>
   </div>
 </div>
- -->
-  <!-- Start screen graphics and text -->
-  <div class="container start-screen disable-dbl-tap-zoom"></div>
-  <!-- Smoothie grid -->
-  <div class="grid-container disable-dbl-tap-zoom"></div>
-
-  <!-- Score for now want to have a smoothie bar // will probably remove this -->
-  <h3 id="display-progress"></h3>
-  <h4><span id="nudges"></span></h4>
-  <div class="container">
-    <div class="progress">
-      <div class="progress-bar bg-success" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0"
-        aria-valuemax="100"></div>
-    </div>
-  </div>
 
   <!-- Footer -->
   <footer class="container-fluid">
@@ -107,7 +111,7 @@ Just tap players and add your names so we can say when it’s your turn!<br/>
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
   </script>
 
-  <script src="assets/main.js"></script>
+ <!-- <script src="assets/main.js"></script> -->
 
 </body>
 
