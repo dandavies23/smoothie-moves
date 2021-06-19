@@ -49,7 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let timeDisplay = document.querySelector('#seconds')
     let resetButton = document.querySelector('#reset')
     let smoothieProgressBar = document.getElementsByClassName('progress-bar')
-    
+    /*resetButton.addEventListener('click', resetBar); */
+
     // Create board and 'cards'
     function initialiseGame() {
         // Randomise array using Math.random no need for casino-level random algos
@@ -80,8 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
         timeDiff = Math.round((endTime - startTime) / 1000);
         timeDisplay.textContent = timeDiff;
     }
-    /* function onRestartButtonpress () {
-        restartButton.addEventListener('click', resetBar)} */
+
+    /* restartButton.addEventListener('click', resetBar)} */
 
     // Tumbler removed on click
     function onTumblerClick() {
@@ -126,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         cardsChosen = []
         cardsChosenId = []
-        updateResults (); // need to create
+        updateResults ();
         if (cardsWon.length === FRUIT_VEG_LIST.length) {
             onGameOver();
         }
@@ -135,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function onGameOver() {
         const finalScore = calculateScore();
         alertDisplay.textContent = 'Score: ' + finalScore
+        /* resetButton.addEventListener('click', resetBar); */
         smoothieProgressBar.item(0).addEventListener('click', resetBar)
         clearInterval(intervalRef);
     }
@@ -143,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
         endTime = new Date ().getTime() // end timer
         time = Math.round((endTime - startTime) / 1000)
         score = (turns * 10) + time
-        return 650 - score;
+        return 600 - score;
     }
 
     function updateProgressBar() {
