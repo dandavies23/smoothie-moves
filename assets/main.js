@@ -47,7 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let resultDisplay = document.querySelector('#result')
     let movesDisplay = document.querySelector('#moves')
     let timeDisplay = document.querySelector('#seconds')
-    let progressDisplay = document.querySelector('#display-progress')
     let smoothieProgressBar = document.getElementsByClassName('progress-bar')
     
     // Create board and 'cards'
@@ -129,8 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function onGameOver() {
         const finalScore = calculateScore();
-        progressDisplay.textContent = 'You found all of the smoothie ingredients in ' + turns + ' moves and ' + time + ' seconds'
-        alertDisplay.textContent = 'You scored ' + finalScore + '. Press below to drink it up! 😋'
+        alertDisplay.textContent = 'Score: ' + finalScore
         smoothieProgressBar.item(0).addEventListener('click', resetBar)
         clearInterval(intervalRef);
     }
@@ -171,7 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
         moves = 0;
 
         grid.innerHTML = ""; // clears out old grid HTML
-        progressDisplay.textContent = "";
         resultDisplay.textContent = "0";
         movesDisplay.textContent = "0";
         timeDisplay.textContent = "0";
