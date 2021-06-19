@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let resultDisplay = document.querySelector('#result')
     let movesDisplay = document.querySelector('#moves')
     let timeDisplay = document.querySelector('#seconds')
+    let resetButton = document.querySelector('#reset')
     let smoothieProgressBar = document.getElementsByClassName('progress-bar')
     
     // Create board and 'cards'
@@ -63,29 +64,32 @@ document.addEventListener('DOMContentLoaded', () => {
             grid.appendChild(card);
         }
         // opening comments and screen variables
-        alertDisplay.textContent = 'Your fruit and veg are hiding under the cups...'
+        alertDisplay.textContent = 'Find your fruit and veg pairs...'
         resultDisplay.textContent = '0'
         movesDisplay.textContent = '0'
         timeDisplay.textContent = '0'   
     }
+
     function initialiseTimer () {
         startTime = new Date().getTime(); // start timer
         intervalRef = setInterval(updateTimer, 1000);
     }
+
     function updateTimer () {
         endTime = new Date().getTime();
         timeDiff = Math.round((endTime - startTime) / 1000);
         timeDisplay.textContent = timeDiff;
     }
+    /* function onRestartButtonpress () {
+        restartButton.addEventListener('click', resetBar)} */
+
     // Tumbler removed on click
     function onTumblerClick() {
-        const isDisabled = (this.getAttribute('data-disabled') === 'true') || cardsChosen.length >= 2; //no more than 2 cards can be opened at a time
+        const isDisabled = (this.getAttribute('data-disabled') === 'true') || cardsChosen.length >= 2; //no more than 2 cards can be opened at a time credit Y0urs Truly
         if (isDisabled) {
             return null 
         } 
-        // prevents fruit from reappearing credit Y0urs Truly from Github for helping fix this bug
-        // Discussed with Akshat leaving veg in place in place rather than working toward an empty page 
-        // Way to do this is to check if disabled attribute is present and then return null if not. https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/disabled
+        // prevents fruit from reappearing credit Y0urs Truly from Github for helping fix this bug and Akshat Garg for data-disabled guidance
         let cardId = this.getAttribute('data-id')
         cardsChosen.push(fruitVegList[cardId].name)
         cardsChosenId.push(cardId)
@@ -96,10 +100,12 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(checkForMatch, 500)
         }
     }
+
     function incrementTurns() {
         turns = turns + 1;
         movesDisplay.textContent = turns;
     }
+
     // check for matches
     function checkForMatch() {
         updateTimer ();
@@ -172,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resultDisplay.textContent = "0";
         movesDisplay.textContent = "0";
         timeDisplay.textContent = "0";
-        alertDisplay.textContent = "Oh no those cheeky fruit and veg have hidden again! 😫";
+        alertDisplay.textContent = "Those cheeky fruit and veg have hidden again! 😫";
         initialiseGame();
     }
     initialiseGame();

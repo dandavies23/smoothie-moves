@@ -75,3 +75,15 @@ padding-top: 3vw;
     touch-action: manipulation;
     -ms-touch-action: manipulation;
   }
+
+  /* #reset-icons {
+    text-align: center;
+    font-size: xx-large;
+  } */ 
+
+  .reset-btn-container {
+    margin: auto;
+    width: fit-content;
+    padding: 5vw 0;
+
+}
