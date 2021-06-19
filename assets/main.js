@@ -128,6 +128,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function onGameOver() {
         const finalScore = calculateScore();
+        localStorage[finalScore]=new Date().getTime().toString() //each key is a score and value is a time
+        let scores=Object.keys(localStorage).sort((a,b)=>parseInt(a)-parseInt(b)).map(key=>`Score: ${key}\nDate Achieved: ${localStorage[key]}`) //example sort of scores
+        console.log("Scores below\n"+) //example show of scores
         alertDisplay.textContent = 'Score: ' + finalScore
         smoothieProgressBar.item(0).addEventListener('click', resetBar)
         clearInterval(intervalRef);
