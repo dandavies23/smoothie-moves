@@ -26,8 +26,7 @@ let FRUIT_VEG_LIST = [{
 ]
 document.addEventListener('DOMContentLoaded', () => {
     /* When the page is loaded start game - consider inserting name and using to start game function*/
-    // setup game vars and cards ??? 
-     // fruit and veg pairs
+
     // Constants and empty arrays
     let grid = document.querySelector('.grid-container') // picks up HTML grid first
     let cardsChosen = []
@@ -38,16 +37,19 @@ document.addEventListener('DOMContentLoaded', () => {
     var startTime = 0;
     var timeDiff = 0;
     var score = 0;
+
      // double up the array to generate pairs thanks to CI Mentor Askshat Garg for this one
     let fruitVegList = [...FRUIT_VEG_LIST, ...FRUIT_VEG_LIST]
     let intervalRef = null;
-      // define elements on page
+
+    // define elements on page
     let alertDisplay = document.querySelector('#nudges') // feeling that this isn't needed
     let resultDisplay = document.querySelector('#result')
     let movesDisplay = document.querySelector('#moves')
     let timeDisplay = document.querySelector('#seconds')
     let progressDisplay = document.querySelector('#display-progress')
     let smoothieProgressBar = document.getElementsByClassName('progress-bar')
+    
     // Create board and 'cards'
     function initialiseGame() {
         // Randomise array using Math.random no need for casino-level random algos
@@ -61,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
             card.addEventListener('click', onTumblerClick)
             grid.appendChild(card);
         }
-          // opening comments and screen variables
+        // opening comments and screen variables
         alertDisplay.textContent = 'Your fruit and veg are hiding under the cups...'
         resultDisplay.textContent = '0'
         movesDisplay.textContent = '0'
@@ -124,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
             onGameOver();
         }
     }
+
     function onGameOver() {
         const finalScore = calculateScore();
         progressDisplay.textContent = 'You found all of the smoothie ingredients in ' + turns + ' moves and ' + time + ' seconds'
@@ -131,25 +134,30 @@ document.addEventListener('DOMContentLoaded', () => {
         smoothieProgressBar.item(0).addEventListener('click', resetBar)
         clearInterval(intervalRef);
     }
+
     function calculateScore() {
         endTime = new Date ().getTime() // end timer
         time = Math.round((endTime - startTime) / 1000)
         score = (turns * 10) + time
         return 650 - score;
     }
+
     function updateProgressBar() {
         progressBarWidth= Math.round((cardsWon.length / FRUIT_VEG_LIST.length) *  100) // converts cardsWon to percentage for progress  bar
         smoothieProgressBar.item(0).setAttribute('style', `width: ${Number(progressBarWidth)}%`);
         smoothieProgressBar.item(0).setAttribute('aria-valuenow', cardsWon.length);
     }
+
     function updateResults() {
         resultDisplay.textContent = cardsWon.length
     }
+
     function resetBar() {
         smoothieProgressBar.item(0).setAttribute('style', 'width: 0%')
         smoothieProgressBar.item(0).setAttribute('aria-valuenow', 0)
         setTimeout(restart, 500) // allowing the smoothie to drain
     }
+
     function restart() {
         // store score locally 
         // reset variables score timer here ?
@@ -160,13 +168,14 @@ document.addEventListener('DOMContentLoaded', () => {
         turns = 0;
         startTime = 0;
         score = 0;
-        grid.innerHTML = "";
+        moves = 0;
+
+        grid.innerHTML = ""; // clears out old grid HTML
         progressDisplay.textContent = "";
         resultDisplay.textContent = "0";
-        movesDisplay = "0";
-        timeDisplay = "0";
+        movesDisplay.textContent = "0";
+        timeDisplay.textContent = "0";
         alertDisplay.textContent = "Oh no those cheeky fruit and veg have hidden again! 😫";
-        // need to get rid of old grid... 
         initialiseGame();
     }
     initialiseGame();

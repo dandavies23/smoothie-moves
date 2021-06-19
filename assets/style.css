@@ -33,9 +33,8 @@ padding-top: 3vw;
 /* game elements */ 
 
 .grid-container {  
-    padding-top: 6vh;
     display: grid;
-    grid-template-columns: repeat(3, minmax(110px, 22vw)); /* Up to lg grid is 3x4 */
+    grid-template-columns: repeat(3, minmax(110px, 22vw)); /* Up to md grid is 3x4 */
     grid-column-gap: 10px;
     grid-row-gap: 10px;
     justify-content: center;
