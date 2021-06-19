@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initialiseTimer ();
         for (let i = 0; i < fruitVegList.length; i++) {
             let card = document.createElement('img');
-            card.setAttribute('src', 'images/tumbler.png');
+            card.setAttribute('src', 'assets/images/tumbler.png'); 
             card.setAttribute('data-id', i);
             card.setAttribute('class', 'gridimage') // defining images in the grid
             card.addEventListener('click', onTumblerClick)
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let cardId = this.getAttribute('data-id')
         cardsChosen.push(fruitVegList[cardId].name)
         cardsChosenId.push(cardId)
-        this.setAttribute('src', `images/${fruitVegList[cardId].img}`)
+        this.setAttribute('src', `assets/images/${fruitVegList[cardId].img}`)
         this.setAttribute('data-disabled', 'true')
         incrementTurns();
         if (cardsChosen.length === 2) {
@@ -111,8 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
             cardsWon.push(cardsChosen)
             updateProgressBar();
         } else {
-            cards[optionOneId].setAttribute('src', 'images/tumbler.png')
-            cards[optionTwoId].setAttribute('src', 'images/tumbler.png')
+            cards[optionOneId].setAttribute('src', 'assets/images/tumbler.png')
+            cards[optionTwoId].setAttribute('src', 'assets/images/tumbler.png')
             cards[optionOneId].setAttribute('data-disabled', 'false')
             cards[optionTwoId].setAttribute('data-disabled', 'false')
             alertDisplay.textContent = 'Keep looking! 👀' // perhaps a web literal with eyeballs move to bottom of grid - worked with Emoji!
