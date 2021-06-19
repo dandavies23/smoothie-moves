@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
         endTime = new Date ().getTime() // end timer
         time = Math.round((endTime - startTime) / 1000)
         score = (turns * 10) + time
-        return 600 - score;
+        return 700 - score;
     }
 
     function updateProgressBar() {
