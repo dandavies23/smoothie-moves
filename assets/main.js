@@ -1,5 +1,5 @@
-// constants in later versions more fruit veg could be added xxx
-let FRUIT_VEG_LIST = [{
+// constants in later versions more fruit veg could be added 
+const FRUIT_VEG_LIST = [{
     name: 'apple',
     img: 'apple.png'
 },
@@ -49,10 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let timeDisplay = document.querySelector('#seconds')
     let resetButton = document.querySelector('#reset')
     let smoothieProgressBar = document.getElementsByClassName('progress-bar')
-    
-    resetButton.addEventListener('click', resetBar);
-
-    
+    /*resetButton.addEventListener('click', resetBar); */
 
     // Create board and 'cards'
     function initialiseGame() {
@@ -72,12 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resultDisplay.textContent = '0'
         movesDisplay.textContent = '0'
         timeDisplay.textContent = '0'   
-
-       
-       
     }
-
- 
 
     function initialiseTimer () {
         startTime = new Date().getTime(); // start timer
@@ -89,8 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
         timeDiff = Math.round((endTime - startTime) / 1000);
         timeDisplay.textContent = timeDiff;
     }
-    /* function onRestartButtonpress () {
-        restartButton.addEventListener('click', resetBar)} */
+
+    /* restartButton.addEventListener('click', resetBar)} */
 
     // Tumbler removed on click
     function onTumblerClick() {
@@ -131,11 +123,11 @@ document.addEventListener('DOMContentLoaded', () => {
             cards[optionTwoId].setAttribute('src', 'assets/images/tumbler.png')
             cards[optionOneId].setAttribute('data-disabled', 'false')
             cards[optionTwoId].setAttribute('data-disabled', 'false')
-            alertDisplay.textContent = 'Keep looking! 👀' // perhaps a web literal with eyeballs move to bottom of grid - worked with Emoji!
+            alertDisplay.textContent = 'Keep looking! ðŸ‘€' // perhaps a web literal with eyeballs move to bottom of grid - worked with Emoji!
         }
         cardsChosen = []
         cardsChosenId = []
-        updateResults (); // need to create
+        updateResults ();
         if (cardsWon.length === FRUIT_VEG_LIST.length) {
             onGameOver();
         }
@@ -144,6 +136,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function onGameOver() {
         const finalScore = calculateScore();
         alertDisplay.textContent = 'Score: ' + finalScore
+        /* resetButton.addEventListener('click', resetBar); */
         smoothieProgressBar.item(0).addEventListener('click', resetBar)
         clearInterval(intervalRef);
     }
@@ -152,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
         endTime = new Date ().getTime() // end timer
         time = Math.round((endTime - startTime) / 1000)
         score = (turns * 10) + time
-        return 650 - score;
+        return 600 - score;
     }
 
     function updateProgressBar() {
@@ -187,9 +180,8 @@ document.addEventListener('DOMContentLoaded', () => {
         resultDisplay.textContent = "0";
         movesDisplay.textContent = "0";
         timeDisplay.textContent = "0";
-        alertDisplay.textContent = "Those cheeky fruit and veg have hidden again! 😫";
+        alertDisplay.textContent = "Those cheeky fruit and veg have hidden again! ðŸ˜«";
         initialiseGame();
     }
     initialiseGame();
 })
-// JavaScript Document
