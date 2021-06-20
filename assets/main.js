@@ -26,7 +26,7 @@ const FRUIT_VEG_LIST = [{
 ]
 
 document.addEventListener('DOMContentLoaded', () => {
-    /* When the page is loaded start game - consider inserting name and using to start game function*/
+    //When the page is loaded start game
 
     // Constants and empty arrays
     let grid = document.querySelector('.grid-container') // picks up HTML grid first
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     var timeDiff = 0;
     var score = 0;
 
-     // double up the array to generate pairs thanks to CI Mentor Askshat Garg for this one
+     // double up the array to generate pairs  -thanks to CI Mentor Askshat Garg for this one
     let fruitVegList = [...FRUIT_VEG_LIST, ...FRUIT_VEG_LIST]
     let intervalRef = null;
 
@@ -52,8 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let timeDisplay = document.querySelector('#seconds')
     let resetButton = document.querySelector('#reset')
     let smoothieProgressBar = document.getElementsByClassName('progress-bar')
-   
-    resetButton.addEventListener('click', resetBar); // reset button working here. Thanks to Tim Stacy for seeing through my code blindness - and also id naming error between HTML and JS
+    resetButton.addEventListener('click', resetBar); // reset button working here - thanks to Tim Stacy for advice on positioning-
 
     // Create board and 'cards'
     function initialiseGame() {
@@ -86,15 +85,13 @@ document.addEventListener('DOMContentLoaded', () => {
         timeDisplay.textContent = timeDiff;
     }
 
-    /* restartButton.addEventListener('click', resetBar)} */
-
     // Tumbler removed on click
     function onTumblerClick() {
         const isDisabled = (this.getAttribute('data-disabled') === 'true') || cardsChosen.length >= 2; //no more than 2 cards can be opened at a time credit Y0urs Truly
         if (isDisabled) {
             return null 
         } 
-        // prevents fruit from reappearing credit Y0urs Truly from Github for helping fix this bug and Akshat Garg for data-disabled guidance
+        // prevents fruit from reappearing - credit Y0urs Truly from Github for helping fix this bug and Akshat Garg for data-disabled guidance
         let cardId = this.getAttribute('data-id')
         cardsChosen.push(fruitVegList[cardId].name)
         cardsChosenId.push(cardId)
@@ -119,7 +116,9 @@ document.addEventListener('DOMContentLoaded', () => {
         // if cardsChosenId incorporated array position needs to be rejected - preventing double tap
         const optionTwoId = cardsChosenId[1]
         if (cardsChosen[0] === cardsChosen[1]) {
-            alertDisplay.textContent = 'Match! You have a full portion' // add a literate here? the name of the fruit or veg?
+            let cardsName = cardsChosen[1]
+            alertDisplay.textContent = `Match! You have a full portion {$cardsChosen}`
+            console.log(cardsChosen[1])
             cardsWon.push(cardsChosen)
             updateProgressBar();
         } else {
@@ -201,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
         score = 0;
         finalScore = 0;
         moves = 0;
-        grid.innerHTML = ""; // clears out old grid HTML
+        grid.innerHTML = "";
         resultDisplay.textContent = "0";
         movesDisplay.textContent = "0";
         timeDisplay.textContent = "0";
