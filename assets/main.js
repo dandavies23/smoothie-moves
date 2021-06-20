@@ -25,6 +25,7 @@ const FRUIT_VEG_LIST = [{
 },
 ]
 document.addEventListener('DOMContentLoaded', () => {
+    if(!location.pathname.includes('game.html')){return null} //if not the game page, don't run the game
     /* When the page is loaded start game - consider inserting name and using to start game function*/
 
     // Constants and empty arrays
@@ -135,6 +136,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function onGameOver() {
         const finalScore = calculateScore();
+        let myScore={date:new Date().getTime(), seconds:timeDisplay.innerText, turns:movesDisplay.innerText, score:finalScore}
+        localStorage[finalScore]=JSON.stringify(myScore)
+        //each key is a score and value is stringified score object
+        let scores=Object.keys(localStorage).sort((a,b)=>parseInt(b)-parseInt(a))
+        .map((key,index)=>{
+            let score=JSON.parse(localStorage[key])
+            return `(${index+1})\nScore: ${key}\nDate Achieved: ${score.date}\nSeconds taken: ${score.seconds}\nTurns taken: ${score.turns}`
+        }).join('\n\n')
+        //the variable 'scores' is an example sort and map of score results
+        console.log("Scores below\n"+scores) //example show of scores
+        //remember that progressDisplay is null? here below the error gets thrown
         alertDisplay.textContent = 'Score: ' + finalScore
         /* resetButton.addEventListener('click', resetBar); */
         smoothieProgressBar.item(0).addEventListener('click', resetBar)
