@@ -15,85 +15,83 @@
   <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="/assets/style.css">
-
 </head>
 
 <body>
-  
- <div class="container">
-  <div class="row">
-    <div class="col align-self-start">
-      <img class="home-image" src="assets/images/apple.png"> 
-    </div>
-    <div class="col align-self-center">
-      <img class="home-image" src="assets/images/beetroot.png">
-    </div>
-    <div class="col align-self-end">
-      <img class="home-image" src="assets/images/blueberries.png">
-    </div>
-    <div class="col align-self-start">
-      <img class="home-image" src="assets/images/broccoli.png">
-    </div>
-  </div>
-</div>
-<div class="container" id="game-title">
-<h1>Smoothie Moves</h1> 
-<h2>A fruity-fun memory game for children over 4</h2> 
-</div>
-
-
-    <div class="home-btn-container"> 
-     <!-- Game set-up buttons -->
-      <a class="btn btn-success btn-lg" href="game.html" role="button"><i class="fas fa-play"></i> Start</a>
-    <!-- Button to trigger rules modal -->
-      <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#rules"><i class="fas fa-book-open"></i> How to play</button>
-    </div>
-    
-    <div class="container">
-      <div class="row">
-        <div class="col align-self-end">
-          <img class="home-image"src="assets/images/broccoli.png">
-        </div>
-        <div class="col align-self-start">
-          <img class="home-image" src="assets/images/carrot.png"> 
-        </div>
-        <div class="col align-self-center">
-          <img class="home-image" src="assets/images/lemon.png">
-        </div>
-        <div class="col align-self-start">
-          <img class="home-image" src="assets/images/apple.png">
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col align-self-start">
+        <img class="home-image" src="assets/images/apple.png">
+      </div>
+      <div class="col align-self-center">
+        <img class="home-image" src="assets/images/beetroot.png">
+      </div>
+      <div class="col align-self-end">
+        <img class="home-image" src="assets/images/blueberries.png">
+      </div>
+      <div class="col align-self-start">
+        <img class="home-image" src="assets/images/broccoli.png">
       </div>
     </div>
+  </div>
+  <div class="container" id="game-title">
+    <h1>Smoothie Moves</h1>
+    <h2>A fruity-fun memory game for children over 4</h2>
+  </div>
 
+  <div class="home-btn-container">
+    <!-- Game set-up buttons -->
+    <a class="btn btn-success btn-lg" href="game.html" role="button"><i class="fas fa-play"></i> Start</a>
+    <!-- Button to trigger rules modal -->
+    <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#rules"><i
+        class="fas fa-book-open"></i> How to play</button>
+  </div>
 
-
+  <div class="container">
+    <div class="row">
+      <div class="col align-self-end">
+        <img class="home-image" src="assets/images/broccoli.png">
+      </div>
+      <div class="col align-self-start">
+        <img class="home-image" src="assets/images/carrot.png">
+      </div>
+      <div class="col align-self-center">
+        <img class="home-image" src="assets/images/lemon.png">
+      </div>
+      <div class="col align-self-start">
+        <img class="home-image" src="assets/images/apple.png">
+      </div>
+    </div>
+  </div>
 
   <!-- Modal -->
-<div class="modal fade" id="rules" tabindex="-1" role="dialog" aria-labelledby="rules" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="rulesModalLabel">How to play</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      
-      </div>
-      
-      <div class="modal-body">
-    <ul><li>You want to make a smoothie but those cheeky little fruit and vegetables are hiding underneath the tumblers.</li>
-        <li>Pair up the fruit or veg and you can make them into a smoothie. </li>
-        <li>Score points for finding the smoothie ingredients in the fewest moves and quickest time. </li></ul>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal" aria-label="Close"> Got it!</button>
+  <div class="modal fade" id="rules" tabindex="-1" role="dialog" aria-labelledby="rules" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="rulesModalLabel">How to play</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+
+        </div>
+
+        <div class="modal-body">
+          <ul>
+            <li>You want to make a smoothie but those cheeky little fruit and vegetables are hiding underneath the
+              tumblers.</li>
+            <li>Pair up the fruit or veg and you can make them into a smoothie. </li>
+            <li>Score points for finding the smoothie ingredients in the fewest moves and quickest time. </li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal" aria-label="Close"> Got it!</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-  <!-- Footer -->
+  <!-- Footer not sure this is definitely not for mobile -->
   <footer class="container-fluid">
 
   </footer>
@@ -109,10 +107,10 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
   </script>
 
-<!-- Font Awesome-->
-<script src="https://kit.fontawesome.com/e8a22323b6.js" crossorigin="anonymous"></script>
+  <!-- Font Awesome-->
+  <script src="https://kit.fontawesome.com/e8a22323b6.js" crossorigin="anonymous"></script>
 
-<!-- <script src="assets/main.js"></script> don't think it's necessary to call this JS don't want to load the game by mistake --> 
+  <!-- <script src="assets/main.js"></script> don't think it's necessary to call this JS don't want to load the game by mistake -->
 
 </body>
 

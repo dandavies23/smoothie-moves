@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cards[optionTwoId].setAttribute('src', 'assets/images/tumbler.png')
             cards[optionOneId].setAttribute('data-disabled', 'false')
             cards[optionTwoId].setAttribute('data-disabled', 'false')
-            alertDisplay.textContent = 'Keep looking! ðŸ‘€' // perhaps a web literal with eyeballs move to bottom of grid - worked with Emoji!
+            alertDisplay.textContent = 'Keep looking! 👀' // perhaps a web literal with eyeballs move to bottom of grid - worked with Emoji!
         }
         cardsChosen = []
         cardsChosenId = []
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resultDisplay.textContent = "0";
         movesDisplay.textContent = "0";
         timeDisplay.textContent = "0";
-        alertDisplay.textContent = "Those cheeky fruit and veg have hidden again! ðŸ˜«";
+        alertDisplay.textContent = "Those cheeky fruit and veg have hidden again! 🙄";
         initialiseGame();
     }
     initialiseGame();

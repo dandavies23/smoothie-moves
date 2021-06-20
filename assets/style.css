@@ -64,7 +64,6 @@ padding-top: 3vw;
     transition: transform .2s
 }
 
-
 #container-box {
     height: 30px;
     justify-content: center;
@@ -75,11 +74,6 @@ padding-top: 3vw;
     touch-action: manipulation;
     -ms-touch-action: manipulation;
   }
-
-  /* #reset-icons {
-    text-align: center;
-    font-size: xx-large;
-  } */ 
 
   .reset-btn-container {
     margin: auto;
