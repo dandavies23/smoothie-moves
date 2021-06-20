@@ -163,6 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
         smoothieProgressBar.item(0).setAttribute('style', 'width: 0%')
         smoothieProgressBar.item(0).setAttribute('aria-valuenow', 0)
         setTimeout(restart, 500) // allowing the smoothie to drain
+        timeDisplay.textContent = "0";
     }
 
     function restart() {
