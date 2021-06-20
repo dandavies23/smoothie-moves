@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let resetButton = document.querySelector('#reset')
     let smoothieProgressBar = document.getElementsByClassName('progress-bar')
    
-    resetButton.addEventListener('click', resetBar);
+    resetButton.addEventListener('click', resetBar); // reset button working here. Thanks to Tim Stacy for seeing through my code blindness - and also id naming error between HTML and JS
 
     // Create board and 'cards'
     function initialiseGame() {
