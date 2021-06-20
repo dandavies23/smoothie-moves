@@ -137,16 +137,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function onGameOver() {
         const finalScore = calculateScore();
         alertDisplay.textContent = 'Score: ' + finalScore
-        /* resetButton.addEventListener('click', resetBar); */
         smoothieProgressBar.item(0).addEventListener('click', resetBar)
         clearInterval(intervalRef);
     }
 
     function calculateScore() {
         endTime = new Date ().getTime() // end timer
+        timeDisplay = endTime
         time = Math.round((endTime - startTime) / 1000)
         score = (turns * 10) + time
-        return 600 - score;
+        return 700 - score;
     }
 
     function updateProgressBar() {
@@ -176,7 +176,6 @@ document.addEventListener('DOMContentLoaded', () => {
         startTime = 0;
         score = 0;
         moves = 0;
-
         grid.innerHTML = ""; // clears out old grid HTML
         resultDisplay.textContent = "0";
         movesDisplay.textContent = "0";
