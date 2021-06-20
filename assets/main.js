@@ -24,6 +24,7 @@ const FRUIT_VEG_LIST = [{
     img: 'lemon.png'
 },
 ]
+
 document.addEventListener('DOMContentLoaded', () => {
     /* When the page is loaded start game - consider inserting name and using to start game function*/
 
@@ -32,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let cardsChosen = []
     let cardsChosenId = []
     let cardsWon = []
+    let rankMessage = "";
     let finalScore = 0;
     var progressBarWidth = 0;
     let turns = 0;
@@ -137,7 +139,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function onGameOver() {
         const finalScore = calculateScore();
-        const rankMessage = setRank ();
+        setRank ();
+        console.log(rankMessage);
         alertDisplay.textContent = `You scored ${finalScore} ${rankMessage}`
         smoothieProgressBar.item(0).addEventListener('click', resetBar)
         clearInterval(intervalRef);
@@ -152,21 +155,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // assign smooth-move rank //
-    function setRank() {
-        if (finalScore >= 550) {
-            rankMessage = "you can't beat a beetroot!"};
-        if (finalScore >= 500) {
-            rankMessage = "you're one cool carrot!"
-        };
-        if (finalScore >= 450) {
-            rankMessage = "you're getting broccoli better!"
-        };
-        if (finalScore <= 400) {
-            rankMessage = "you're a beginner blueberry!"
-        };
-        console.log (rankMessage);
-    }
-
+    function setRank () {  
+         if (finalScore > 550) {
+            rankMessage = "you can't beat a beetroot!";
+         }
+         else if (finalScore > 500) {
+            rankMessage = "you're one cool carrot!";
+         }
+         else if (finalScore > 450) {
+            rankMessage = "you're getting broccoli better!";
+         }
+         else if (finalScore > 400) {
+             rankMessage = "you've only just begun blueberry!";
+         }
+         else (finalScore < 399); {
+            rankMessage = "another go apple?";
+         }
+        }
 
     function updateProgressBar() {
         progressBarWidth= Math.round((cardsWon.length / FRUIT_VEG_LIST.length) *  100) // converts cardsWon to percentage for progress  bar
