@@ -25,8 +25,10 @@ let FRUIT_VEG_LIST = [{
 },
 ]
 document.addEventListener('DOMContentLoaded', () => {
+    if(!location.pathname.includes('game.html')){return null} //when on the main page, don't initialise game
     /* When the page is loaded start game - consider inserting name and using to start game function*/
-
+    // setup game vars and cards ??? 
+     // fruit and veg pairs
     // Constants and empty arrays
     let grid = document.querySelector('.grid-container') // picks up HTML grid first
     let cardsChosen = []
@@ -37,18 +39,16 @@ document.addEventListener('DOMContentLoaded', () => {
     var startTime = 0;
     var timeDiff = 0;
     var score = 0;
-
      // double up the array to generate pairs thanks to CI Mentor Askshat Garg for this one
     let fruitVegList = [...FRUIT_VEG_LIST, ...FRUIT_VEG_LIST]
     let intervalRef = null;
-
-    // define elements on page
+      // define elements on page
     let alertDisplay = document.querySelector('#nudges') // feeling that this isn't needed
     let resultDisplay = document.querySelector('#result')
     let movesDisplay = document.querySelector('#moves')
     let timeDisplay = document.querySelector('#seconds')
+    let progressDisplay = document.querySelector('#display-progress') //for now it's still null which throws an error when I finish a game ;-;
     let smoothieProgressBar = document.getElementsByClassName('progress-bar')
-    
     // Create board and 'cards'
     function initialiseGame() {
         // Randomise array using Math.random no need for casino-level random algos
@@ -56,13 +56,13 @@ document.addEventListener('DOMContentLoaded', () => {
         initialiseTimer ();
         for (let i = 0; i < fruitVegList.length; i++) {
             let card = document.createElement('img');
-            card.setAttribute('src', 'assets/images/tumbler.png'); 
+            card.setAttribute('src', 'images/tumbler.png');
             card.setAttribute('data-id', i);
             card.setAttribute('class', 'gridimage') // defining images in the grid
             card.addEventListener('click', onTumblerClick)
             grid.appendChild(card);
         }
-        // opening comments and screen variables
+          // opening comments and screen variables
         alertDisplay.textContent = 'Your fruit and veg are hiding under the cups...'
         resultDisplay.textContent = '0'
         movesDisplay.textContent = '0'
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let cardId = this.getAttribute('data-id')
         cardsChosen.push(fruitVegList[cardId].name)
         cardsChosenId.push(cardId)
-        this.setAttribute('src', `assets/images/${fruitVegList[cardId].img}`)
+        this.setAttribute('src', `images/${fruitVegList[cardId].img}`)
         this.setAttribute('data-disabled', 'true')
         incrementTurns();
         if (cardsChosen.length === 2) {
@@ -112,8 +112,8 @@ document.addEventListener('DOMContentLoaded', () => {
             cardsWon.push(cardsChosen)
             updateProgressBar();
         } else {
-            cards[optionOneId].setAttribute('src', 'assets/images/tumbler.png')
-            cards[optionTwoId].setAttribute('src', 'assets/images/tumbler.png')
+            cards[optionOneId].setAttribute('src', 'images/tumbler.png')
+            cards[optionTwoId].setAttribute('src', 'images/tumbler.png')
             cards[optionOneId].setAttribute('data-disabled', 'false')
             cards[optionTwoId].setAttribute('data-disabled', 'false')
             alertDisplay.textContent = 'Keep looking! 👀' // perhaps a web literal with eyeballs move to bottom of grid - worked with Emoji!
@@ -125,40 +125,43 @@ document.addEventListener('DOMContentLoaded', () => {
             onGameOver();
         }
     }
-
     function onGameOver() {
         const finalScore = calculateScore();
-        localStorage[finalScore]=new Date().getTime().toString() //each key is a score and value is a time
-        let scores=Object.keys(localStorage).sort((a,b)=>parseInt(a)-parseInt(b)).map(key=>`Score: ${key}\nDate Achieved: ${localStorage[key]}`) //example sort of scores
-        console.log("Scores below\n"+) //example show of scores
-        alertDisplay.textContent = 'Score: ' + finalScore
+        let myScore={date:new Date().getTime(), seconds:timeDisplay.innerText, turns:movesDisplay.innerText, score:finalScore}
+        localStorage[finalScore]=JSON.stringify(myScore)
+        //each key is a score and value is stringified score object
+        let scores=Object.keys(localStorage).sort((a,b)=>parseInt(b)-parseInt(a))
+        .map((key,index)=>{
+            let score=JSON.parse(localStorage[key])
+            return `(${index+1})\nScore: ${key}\nDate Achieved: ${score.date}\nSeconds taken: ${score.seconds}\nTurns taken: ${score.turns}`
+        }).join('\n\n')
+        //the variable 'scores' is an example sort and map of score results
+        console.log("Scores below\n"+scores) //example show of scores
+        //remember that progressDisplay is null? here below the error gets thrown
+        progressDisplay.textContent = 'You found all of the smoothie ingredients in ' + turns + ' moves and ' + time + ' seconds'
+        alertDisplay.textContent = 'You scored ' + finalScore + '. Press below to drink it up! 😋'
         smoothieProgressBar.item(0).addEventListener('click', resetBar)
         clearInterval(intervalRef);
     }
-
     function calculateScore() {
         endTime = new Date ().getTime() // end timer
         time = Math.round((endTime - startTime) / 1000)
         score = (turns * 10) + time
         return 650 - score;
     }
-
     function updateProgressBar() {
         progressBarWidth= Math.round((cardsWon.length / FRUIT_VEG_LIST.length) *  100) // converts cardsWon to percentage for progress  bar
         smoothieProgressBar.item(0).setAttribute('style', `width: ${Number(progressBarWidth)}%`);
         smoothieProgressBar.item(0).setAttribute('aria-valuenow', cardsWon.length);
     }
-
     function updateResults() {
         resultDisplay.textContent = cardsWon.length
     }
-
     function resetBar() {
         smoothieProgressBar.item(0).setAttribute('style', 'width: 0%')
         smoothieProgressBar.item(0).setAttribute('aria-valuenow', 0)
         setTimeout(restart, 500) // allowing the smoothie to drain
     }
-
     function restart() {
         // store score locally 
         // reset variables score timer here ?
@@ -169,13 +172,13 @@ document.addEventListener('DOMContentLoaded', () => {
         turns = 0;
         startTime = 0;
         score = 0;
-        moves = 0;
-
-        grid.innerHTML = ""; // clears out old grid HTML
+        grid.innerHTML = "";
+        progressDisplay.textContent = "";
         resultDisplay.textContent = "0";
-        movesDisplay.textContent = "0";
-        timeDisplay.textContent = "0";
+        movesDisplay = "0";
+        timeDisplay = "0";
         alertDisplay.textContent = "Oh no those cheeky fruit and veg have hidden again! 😫";
+        // need to get rid of old grid... 
         initialiseGame();
     }
     initialiseGame();
