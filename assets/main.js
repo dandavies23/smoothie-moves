@@ -170,7 +170,6 @@ document.addEventListener('DOMContentLoaded', () => {
          else {
             rankMessage = "another go apple?";
          }
-         console.log(rankMessage);
         }
 
     function updateProgressBar() {
