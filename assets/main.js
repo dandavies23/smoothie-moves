@@ -138,9 +138,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function onGameOver() {
-        const finalScore = calculateScore();
+        finalScore = calculateScore();
         setRank ();
-        console.log(rankMessage);
         alertDisplay.textContent = `You scored ${finalScore} ${rankMessage}`
         smoothieProgressBar.item(0).addEventListener('click', resetBar)
         clearInterval(intervalRef);
@@ -168,9 +167,10 @@ document.addEventListener('DOMContentLoaded', () => {
          else if (finalScore > 400) {
              rankMessage = "you've only just begun blueberry!";
          }
-         else (finalScore < 399); {
+         else {
             rankMessage = "another go apple?";
          }
+         console.log(rankMessage);
         }
 
     function updateProgressBar() {
