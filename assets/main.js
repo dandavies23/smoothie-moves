@@ -49,7 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let timeDisplay = document.querySelector('#seconds')
     let resetButton = document.querySelector('#reset')
     let smoothieProgressBar = document.getElementsByClassName('progress-bar')
-    /*resetButton.addEventListener('click', resetBar); */
+   
+    resetButton.addEventListener('click', resetBar);
 
     // Create board and 'cards'
     function initialiseGame() {
