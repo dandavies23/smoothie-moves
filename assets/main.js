@@ -24,6 +24,7 @@ const FRUIT_VEG_LIST = [{
     img: 'lemon.png'
 },
 ]
+
 document.addEventListener('DOMContentLoaded', () => {
     /* When the page is loaded start game - consider inserting name and using to start game function*/
 
@@ -32,6 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let cardsChosen = []
     let cardsChosenId = []
     let cardsWon = []
+    let rankMessage = "";
+    let finalScore = 0;
     var progressBarWidth = 0;
     let turns = 0;
     var startTime = 0;
@@ -136,7 +139,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function onGameOver() {
         const finalScore = calculateScore();
-        alertDisplay.textContent = 'Score: ' + finalScore
+        setRank ();
+        console.log(rankMessage);
+        alertDisplay.textContent = `You scored ${finalScore} ${rankMessage}`
         smoothieProgressBar.item(0).addEventListener('click', resetBar)
         clearInterval(intervalRef);
     }
@@ -148,6 +153,25 @@ document.addEventListener('DOMContentLoaded', () => {
         score = (turns * 10) + time
         return 700 - score;
     }
+
+    // assign smooth-move rank //
+    function setRank () {  
+         if (finalScore > 550) {
+            rankMessage = "you can't beat a beetroot!";
+         }
+         else if (finalScore > 500) {
+            rankMessage = "you're one cool carrot!";
+         }
+         else if (finalScore > 450) {
+            rankMessage = "you're getting broccoli better!";
+         }
+         else if (finalScore > 400) {
+             rankMessage = "you've only just begun blueberry!";
+         }
+         else (finalScore < 399); {
+            rankMessage = "another go apple?";
+         }
+        }
 
     function updateProgressBar() {
         progressBarWidth= Math.round((cardsWon.length / FRUIT_VEG_LIST.length) *  100) // converts cardsWon to percentage for progress  bar
@@ -163,6 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         smoothieProgressBar.item(0).setAttribute('style', 'width: 0%')
         smoothieProgressBar.item(0).setAttribute('aria-valuenow', 0)
         setTimeout(restart, 500) // allowing the smoothie to drain
+        timeDisplay.textContent = "0";
     }
 
     function restart() {
@@ -175,6 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
         turns = 0;
         startTime = 0;
         score = 0;
+        finalScore = 0;
         moves = 0;
         grid.innerHTML = ""; // clears out old grid HTML
         resultDisplay.textContent = "0";
