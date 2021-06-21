@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function onGameOver() {
         finalScore = calculateScore();
         setRank ();
-        // rankBadge ();
+        rankBadge ();
         alertDisplay.textContent = `You scored ${finalScore} - ${rankMessage} `
         smoothieProgressBar.item(0).addEventListener('click', resetBar)
         clearInterval(intervalRef);
@@ -178,9 +178,15 @@ document.addEventListener('DOMContentLoaded', () => {
          }
         }
         
-    /*function rankBadge () {
-        document.getElementsByClassName("gridimage").setAttribute("src", `assets/images/{$rankImage}`);
-             }*/
+    function rankBadge () {
+
+        var gridImages = document.getElementsByClassName("gridimage");
+        for(var i = 0; i< gridImages.length;i++){
+
+            gridImages[i].setAttribute("src", 'assets/images/'+rankImage);
+        }
+    }
+
     
         
         /*function rankBadge () {
