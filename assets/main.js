@@ -138,9 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function onGameOver() {
         finalScore = calculateScore();
         setRank ();
-        rankBadge ();
-        console.log(rankImage)
-        alertDisplay.textContent = `You scored ${finalScore} ${rankMessage}`
+        alertDisplay.textContent = `You scored ${finalScore} ${rankMessage} `
         smoothieProgressBar.item(0).addEventListener('click', resetBar)
         clearInterval(intervalRef);
     }
@@ -177,16 +175,6 @@ document.addEventListener('DOMContentLoaded', () => {
             rankMessage = "another go apple?";
             rankImage = "blueberries.png";
          }
-        }
-    
-    // all grid images to rank badge
-    function rankBadge () 
-        for (let i = 0; i < fruitVegList.length; i++) {
-            console.log(rankImage)
-            card.setAttribute('src', 'assets/images/{$rankImage}'); 
-            card.setAttribute('data-id', i);
-            card.setAttribute('class', 'gridimage') // defining images in the grid
-            card.addEventListener('click', resetBar)
         }
 
     function updateProgressBar() {
