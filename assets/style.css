@@ -2,7 +2,6 @@
 body {
     margin: 0;
     padding: 0;
-    overflow: overflow;
     background-color: #66cc99;
     font-family: 'Comic Neue', sans-serif;
 }
@@ -58,11 +57,6 @@ padding-top: 3vw;
     height: auto; 
     width: 100%;
     cursor: pointer;
-} 
-
-.grid-container img:active {
-    transform: translate (0px, 20px);
-    transition: transform .2s
 }
 
 #container-box {
