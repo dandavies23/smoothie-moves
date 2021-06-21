@@ -26,9 +26,9 @@ const FRUIT_VEG_LIST = [{
 ]
 
 document.addEventListener('DOMContentLoaded', () => {
-    //When the page is loaded start game
+    // when the page is loaded start game
 
-    // Constants and empty arrays
+    // variables and empty arrays
     let grid = document.querySelector('.grid-container') // picks up HTML grid first
     let cardsChosen = []
     let cardsChosenId = []
@@ -41,22 +41,22 @@ document.addEventListener('DOMContentLoaded', () => {
     var timeDiff = 0;
     var score = 0;
 
-     // double up the array to generate pairs  -thanks to CI Mentor Askshat Garg for this one
+     // doubles up array to generate pairs - thanks to CI Mentor Askshat Garg for suggesting
     let fruitVegList = [...FRUIT_VEG_LIST, ...FRUIT_VEG_LIST]
     let intervalRef = null;
 
-    // define elements on page
-    let alertDisplay = document.querySelector('#nudges') // feeling that this isn't needed
+    // defines elements on page
+    let alertDisplay = document.querySelector('#nudges')
     let resultDisplay = document.querySelector('#result')
     let movesDisplay = document.querySelector('#moves')
     let timeDisplay = document.querySelector('#seconds')
     let resetButton = document.querySelector('#reset')
     let smoothieProgressBar = document.getElementsByClassName('progress-bar')
-    resetButton.addEventListener('click', resetBar); // reset button working here - thanks to Tim Stacy for advice on positioning-
+    resetButton.addEventListener('click', resetBar); // reset button listener working here - thanks to Tim Stacy positiong advice
 
-    // Create board and 'cards'
+    // dreates board and 'cards'
     function initialiseGame() {
-        // Randomise array using Math.random no need for casino-level random algos
+        // randomises array using Math.random no need for casino-level random algos
         fruitVegList.sort(() => 0.5 - Math.random())
         initialiseTimer ();
         for (let i = 0; i < fruitVegList.length; i++) {
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         timeDisplay.textContent = timeDiff;
     }
 
-    // Tumbler removed on click
+    // tumbler removed on click
     function onTumblerClick() {
         const isDisabled = (this.getAttribute('data-disabled') === 'true') || cardsChosen.length >= 2; //no more than 2 cards can be opened at a time credit Y0urs Truly
         if (isDisabled) {
@@ -108,16 +108,16 @@ document.addEventListener('DOMContentLoaded', () => {
         movesDisplay.textContent = turns;
     }
 
-    // check for matches
+    // checks for matches
     function checkForMatch() {
         updateTimer ();
         let cards = document.querySelectorAll('.gridimage') // prevents site logo and other images from becoming involved with the game!
         const optionOneId = cardsChosenId[0]
-        // if cardsChosenId incorporated array position needs to be rejected - preventing double tap
+        // if cardsChosenId array position is rejected - preventing double tap
         const optionTwoId = cardsChosenId[1]
         if (cardsChosen[0] === cardsChosen[1]) {
             let cardsName = cardsChosen[1]
-            alertDisplay.textContent = `Match! You have a full portion {$cardsChosen}`
+            alertDisplay.textContent = "Match! You have a full portion"
             console.log(cardsChosen[1])
             cardsWon.push(cardsChosen)
             updateProgressBar();
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cards[optionTwoId].setAttribute('src', 'assets/images/tumbler.png')
             cards[optionOneId].setAttribute('data-disabled', 'false')
             cards[optionTwoId].setAttribute('data-disabled', 'false')
-            alertDisplay.textContent = 'Keep looking! 👀' // perhaps a web literal with eyeballs move to bottom of grid - worked with Emoji!
+            alertDisplay.textContent = 'Keep looking! 👀'
         }
         cardsChosen = []
         cardsChosenId = []
@@ -144,6 +144,8 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(intervalRef);
     }
 
+    // more notes on score in README - calibrated to over 500 with logical system and no mistakes
+    // for higher you need a bit of luck!
     function calculateScore() {
         endTime = new Date ().getTime() // end timer
         timeDisplay = endTime
@@ -152,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return 700 - score;
     }
 
-    // assign smooth-move rank //
+    // assigns smooth-move rank
     function setRank () {  
          if (finalScore > 550) {
             rankMessage = "you can't beat a beetroot!";
@@ -189,8 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function restart() {
-        // store score locally 
-        // reset variables score timer here ?
+        // resets all game variables here
         cardsChosen = []
         cardsChosenId = []
         cardsWon = []
