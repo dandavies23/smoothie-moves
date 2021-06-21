@@ -57,6 +57,7 @@ padding-top: 3vw;
 .grid-container img {
     height: auto; 
     width: 100%;
+    cursor: pointer;
 } 
 
 .grid-container img:active {
