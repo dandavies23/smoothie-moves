@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function onGameOver() {
         finalScore = calculateScore();
         setRank ();
-        // rankBadge ();
+        rankBadge ();
         alertDisplay.textContent = `You scored ${finalScore} - ${rankMessage} `
         smoothieProgressBar.item(0).addEventListener('click', resetBar)
         clearInterval(intervalRef);
@@ -174,32 +174,24 @@ document.addEventListener('DOMContentLoaded', () => {
          }
          else {
             rankMessage = "another go apple?";
-            rankImage = "blueberries.png";
+            rankImage = "apple.png";
          }
         }
         
-    /*function rankBadge () {
-        document.getElementsByClassName("gridimage").setAttribute("src", `assets/images/{$rankImage}`);
-             }*/
-    
-        
-        /*function rankBadge () {
-            for (let i = 0; i < fruitVegList.length; i++) {
-            card.setAttribute('src', `assets/images/{$rankImage}`)
-            card.setAttribute('data-id', i)
-            card.setAttribute('class', 'gridimage') // defining images in the grid
-            card.addEventListener('click', reset)
-            grid.appendChild(card);
-            } 
-        } */
+    function rankBadge () {
+        var gridImages = document.getElementsByClassName("gridimage");
+        for(var i = 0; i< gridImages.length;i++){
+            gridImages[i].setAttribute("src", 'assets/images/'+rankImage);
+        }
+    }
 
-    function updateProgressBar() {
+    function updateProgressBar () {
         progressBarWidth= Math.round((cardsWon.length / FRUIT_VEG_LIST.length) *  100) // converts cardsWon to percentage for progress  bar
         smoothieProgressBar.item(0).setAttribute('style', `width: ${Number(progressBarWidth)}%`);
         smoothieProgressBar.item(0).setAttribute('aria-valuenow', cardsWon.length);
     }
 
-    function updateResults() {
+    function updateResults () {
         resultDisplay.textContent = cardsWon.length
     }
 
