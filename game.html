@@ -41,8 +41,27 @@
     <a class="btn btn-success" href="index.html" role="button"><i class="fas fa-times"></i> Quit</a>
   </div>
 
-  <!-- Footer decide whether to keep this or not? -->
-  <footer class="container-fluid"></footer>
+  <!-- End of game modal -->
+  <div class="modal fade" id="gameEndModal" tabindex="-1" role="dialog" aria-labelledby="Game Over" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="gameOverHeader">Well done!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+
+        </div>
+        <div id="gameOverBadge"></div>
+        <div class="modal-body" id="gameOverMessage"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" id="reset"><i class="fas fa-redo"></i> Restart</button> 
+          <a class="btn btn-success" href="index.html" role="button"><i class="fas fa-times"></i> Quit</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <!-- Bootstrap JS-->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

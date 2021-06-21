@@ -116,7 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // if cardsChosenId array position is rejected - preventing double tap
         const optionTwoId = cardsChosenId[1]
         if (cardsChosen[0] === cardsChosen[1]) {
-            let cardsName = cardsChosen[1]
             alertDisplay.textContent = "Match! You have a full portion"
             console.log(cardsChosen[1])
             cardsWon.push(cardsChosen)
@@ -139,6 +138,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function onGameOver() {
         finalScore = calculateScore();
         setRank ();
+        rankBadge ();
+        console.log(rankImage)
         alertDisplay.textContent = `You scored ${finalScore} ${rankMessage}`
         smoothieProgressBar.item(0).addEventListener('click', resetBar)
         clearInterval(intervalRef);
@@ -158,19 +159,34 @@ document.addEventListener('DOMContentLoaded', () => {
     function setRank () {  
          if (finalScore > 550) {
             rankMessage = "you can't beat a beetroot!";
+            rankImage = "beetroot.png";
          }
          else if (finalScore > 500) {
             rankMessage = "you're one cool carrot!";
+            rankImage = "carrot.png";
          }
          else if (finalScore > 450) {
             rankMessage = "you're getting broccoli better!";
+            rankImage = "broccoli.png";
          }
          else if (finalScore > 400) {
              rankMessage = "you've only just begun blueberry!";
+             rankImage = "blueberries.png";
          }
          else {
             rankMessage = "another go apple?";
+            rankImage = "blueberries.png";
          }
+        }
+    
+    // all grid images to rank badge
+    function rankBadge () 
+        for (let i = 0; i < fruitVegList.length; i++) {
+            console.log(rankImage)
+            card.setAttribute('src', 'assets/images/{$rankImage}'); 
+            card.setAttribute('data-id', i);
+            card.setAttribute('class', 'gridimage') // defining images in the grid
+            card.addEventListener('click', resetBar)
         }
 
     function updateProgressBar() {
