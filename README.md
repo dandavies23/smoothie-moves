@@ -17,6 +17,12 @@ Its initial target user was my daughter. I noticed when playing a physical memor
 
 As the game was developed it became clear that more children would enjoy this and more focus was given to score board and gaming capabilities. 
 
+
+# UX and UI
+
+* ## Game Research
+
+The main inspiration for this game is a physical card game that I play with my daughter. As I began my research it ocurred to me that there's quite 
  
 
 Features
