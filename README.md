@@ -19,11 +19,73 @@ As the game was developed it became clear that more children would enjoy this an
 
 
 # UX and UI
+-----------
 
 * ## Game Research
 
-The main inspiration for this game is a physical card game that I play with my daughter. As I began my research it ocurred to me that there's quite 
+The main inspiration for this game is a physical card game that I play with my daughter. As I began my research it ocurred to me that there's quite a lot of online 'memory card’ games. Many of them which use the [CSS Flip Card](https://www.w3schools.com/howto/howto_css_flip_card.asp) effect, often used with Bootstrap. In August 2021 I also took part in a [Code Institute retro-gaming hackathon](https://hackathon.codeinstitute.net/teams/76/) and at the kick-off conference the organisers specifically requested “[no flip-card games!](https://youtu.be/MUHgm0B2h-s?t=1188)“
+
  
+
+## Research Analysis
+
+From a UX perspective my daughter had no interest in a skeoumorph representation of a flipping card. I wanted something more relevant to its intended audience. An early idea of creating a magicians hat with a hover wand was abandoned due size inconsistency. Then whilst thinking of a name and accidentally writing ‘pears’ instead of matching ‘pairs’ put the idea of fruit in my mind.
+
+![pairs-pairs top right](assets/images/readmeimages/MemoryCardPairsPearsSketchresize.jpg)
+
+ 
+
+(Speed??)
+
+ 
+
+Design
+------
+
+Although there has always been a slight question mark over how healthy smoothies are it occurred to me that the design could it perhaps with an educational lean. The idea emerged to create a game which gave equal balance to fruit and veg. One Sunday morning a selection of fruit and veg were audience suggested, sketched and tested with my daughter.
+
+ 
+![early fruit and veg sketches](assets/images/readmeimages/FocusGroupFruitandVeg-resize.jpg)
+
+ 
+
+### Fruit and veg
+
+The design considerations for the fruit and veg to bold solid shapes and for them to have a sunny outlook. This wass the reason why ginger and apricot were rejected. Solid primary colours added a bold contrast.
+
+## Colour References
+
+| Colour             | Hex                                                                |
+| ----------------- | ------------------------------------------------------------------ |
+| Lemon | ![#f3e600](https://via.placeholder.com/10/f3e600?text=+) #f3e600 |
+| Apple | ![#3baa35](https://via.placeholder.com/10/3baa35?text=+) #3baa35 |
+| Carrot | ![#f39200](https://via.placeholder.com/10/f39200?text=+) #f39200 |
+| Beetroot | ![#a2195b](https://via.placeholder.com/10/a2195b?text=+) #00d1a0 |
+| Broccoli | ![#006533](https://via.placeholder.com/10/006533?text=+) #006533 |
+| Blueberries | ![#662483](https://via.placeholder.com/10/662483?text=+) #662483 |
+| Cup| ![#999999](https://via.placeholder.com/10/999999?text=+) #999999 |
+
+
+A variety of colour (“drinking a rainbow”) was important to the game design. But for web acessibility reasons a [variety of shape](https://webaim.org/articles/visual/colorblind) was also important. The images were designed in Adobe Illustrator with the tumbler trapezoid as a separate layer so that the scale of the fruit could be authentic. At this point banana was rejected. 
+
+ ![fruit and veg Illustrator layout](assets/images/readmeimages/F+TMaster.png)
+
+The original ‘gameboard’ was brown to resemble a chopping board but my mentor Askshat Garg suggested this actually darkened the game. So a the game’s main colour a light fresh green chimed with the health theme. Checking this background on [Coolor](https://coolors.co/contrast-checker/000000-66cc99) determined that the strongest font colour would be black. 
+
+![Coolors contrast test green black](assets/images/readmeimages/coolorsbackgroundgreen.png)
+ 
+Coolors' contrast checker also helped make a decision on changing the standard Bootstrap Success colour to a darker hue to support a white font. 
+
+![Coolors Bootstrap btn-success green black](assets/images/readmeimages/coolorsbtnsuccessgreen.png)
+
+![Coolors Bootstrap btn-success green black](assets/images/readmeimages/coolorsbtngreen.png)
+
+### Font
+
+Careful consideration was given to the font. For children just learning to read and write I felt it was important to show letters that can be copied. Serif font was too formal whereas most fonts with a Helvetica route have difficult “a” characters. I wanted to originally to use ‘Schulbuch' but as the name indicates it's a bit "school booky". Instead went for 'Comic Neue’ a classier but still informal version of of 'Comic Sans'.
+
+
+
 
 Features
 --------
