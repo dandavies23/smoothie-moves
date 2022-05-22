@@ -10,12 +10,68 @@ Smoothie Moves is a fruit and veg themed memory game for children. Its main aim 
 
  
 
-Target audience
----------------
+## Target audience
 
 Its initial target user was my daughter. I noticed when playing a physical memory card game that she was considerably better and quicker than me. She is at a stage in her learning development where her short term memory is excellent. Memory games help develop this.
 
-As the game was developed it became clear that more children would enjoy this and more focus was given to score board and gaming capabilities. 
+As the game was developed and tested with family and friends’ children, it became clear that more children would enjoy this and more focus was given to score board and gaming capabilities. Based on this research and testing the user base could be 4-11 years old. A broader breakdown of these persona are follows.
+
+### User Goals
+
+1.  The ideal player is between 4-11 years old.
+
+2.  They want a game which is colourful and stimulating.
+
+3.  The want to play a fast and fun game which has a physical social element.
+
+4.  They want to understand quickly how to play - even if they can’t read.
+
+5.  They want to do better or beat their friends even if they can’t do maths.
+
+ 
+
+### Parent or Guardian considerations
+
+1.  The game should be universal with no sense of threat or violence.
+
+2.  The game should carry a good wholesome message.
+
+3.  The game should have a perceived educational or cognitive benefit. 
+
+4.  For it to be sociable game rather than insular and self contained.
+
+5.  Game reminds them of computer / arcade games they played when young.
+
+ 
+
+### Owner goals
+
+1.  Get pleasure from seeing children playing the game.
+
+2.  Increase traffic to the web app.
+
+ 
+
+### User Stories
+
+*As a user*
+
+1.  Firstly, I want to understand what Smoothie Moves is.
+
+2.  I want to easily orientate myself and get into the gameplay quickly.
+
+3.  I want to get more information about the game but also feel I don’t have to read them to be able to play.
+
+4.  I want the game to be bug free, fast and exciting.
+
+5.  I want a read out of my progress whilst I’m playing.
+
+6.  I want encouragement that I’m doing well.
+
+7.  I want the ability to stop and start again if I’m losing.
+
+8.  I want a final score and a visual indication of level of achievement. 
+
 
 
 ## UX and UI
@@ -49,7 +105,7 @@ Although there has always been a slight question mark over how healthy smoothies
 
 ### Fruit and veg
 
-The design considerations for the fruit and veg to bold solid shapes and for them to have a sunny outlook. This wass the reason why ginger and apricot were rejected. Solid primary colours added a bold contrast.
+The design considerations for the fruit and veg to bold solid shapes and for them to have a sunny outlook. This was the reason why ginger and apricot were rejected. Solid primary colours added a bold contrast.
 
 ### Colour References
 
@@ -99,37 +155,50 @@ A full set of Wireframes are available to [view](https://www.dropbox.com/sh/obqg
 
 ## Features
 
+
 The main focus of this app is the game it being easy to view and play on any size mobile device. In addition to the game there is:
-
-**Start**
-
--   Title of game and site. 
-
--   Button navigation to game with icon
-
--   Button modal with rules on page
-
-**Rules modal**
-
--   No need to navigate away from main play loop
-
--   Written in an easy to understand rules presented in a clear friendly tone
-
-**Game**
-
--   Score bar to keep track of progress
-
--   Optimised game grid for all devices
-
--   Nudge encouragement
-
--   Simple reset or return to start buttons
-
--   Results layout with featured and message which encourages play at any level
 
  
 
-**Scoring**
+### Start screen
+
+![desktop start-screen wireframe](assets/images/readmeimages/start-screen.png)
+
+-   Title of game with a strap-line explanation. ![Title and strap](assets/images/readmeimages/Feature-title-strap.png)
+
+-   Clear centre-screen button navigation to game for arcade feel, with icons for visual support. !['arcade buttons'](assets/images/readmeimages/arcade-buttons.png)
+
+-   Button to modal for on page rules.
+
+ 
+
+### Rules modal
+
+!['arcade buttons'](assets/images/readmeimages/rules-modal.png)
+
+-   No need to navigate away from main play loop.
+
+-   Written in an easy to understand rules presented in a clear friendly tone.
+
+ 
+
+### Game
+!['arcade buttons'](assets/images/readmeimages/game-grid.png)
+
+-   Optimised game grid for all devices !['mobile view'](assets/images/readmeimages/mobile-view.png)
+
+-   Progress read out with timer !['progress tally'](assets/images/readmeimages/progress-tally.png)
+
+-   'Smoothie bar' to give visual indication of progress !['progress tally'](assets/images/readmeimages/progress-bar-and-comment.png)
+
+-   Nudge encouragement !['nudge encouragement'](assets/images/readmeimages/nudge-encouragement.png)
+
+-   Simple quit or play again buttons !['nudge encouragement'](assets/images/readmeimages/quit-play-again.png) 
+
+-   Results layout with featured and message which encourages play at any level !['restart quit](assets/images/readmeimages/quit-play-again.png) 
+
+!['restart quit](assets/images/readmeimages/results-page.png)
+ ### Scoring
 
 -   Decided a good confidence boost is an acheivable score of 500
 
