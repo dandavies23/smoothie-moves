@@ -18,16 +18,15 @@ Its initial target user was my daughter. I noticed when playing a physical memor
 As the game was developed it became clear that more children would enjoy this and more focus was given to score board and gaming capabilities. 
 
 
-# UX and UI
------------
+## UX and UI
 
-* ## Game Research
+### Game Research
 
 The main inspiration for this game is a physical card game that I play with my daughter. As I began my research it ocurred to me that there's quite a lot of online 'memory card’ games. Many of them which use the [CSS Flip Card](https://www.w3schools.com/howto/howto_css_flip_card.asp) effect, often used with Bootstrap. In August 2021 I also took part in a [Code Institute retro-gaming hackathon](https://hackathon.codeinstitute.net/teams/76/) and at the kick-off conference the organisers specifically requested “[no flip-card games!](https://youtu.be/MUHgm0B2h-s?t=1188)“
 
  
 
-## Research Analysis
+### Research Analysis
 
 From a UX perspective my daughter had no interest in a skeoumorph representation of a flipping card. I wanted something more relevant to its intended audience. An early idea of creating a magicians hat with a hover wand was abandoned due size inconsistency. Then whilst thinking of a name and accidentally writing ‘pears’ instead of matching ‘pairs’ put the idea of fruit in my mind.
 
@@ -39,8 +38,7 @@ From a UX perspective my daughter had no interest in a skeoumorph representation
 
  
 
-Design
-------
+## Design
 
 Although there has always been a slight question mark over how healthy smoothies are it occurred to me that the design could it perhaps with an educational lean. The idea emerged to create a game which gave equal balance to fruit and veg. One Sunday morning a selection of fruit and veg were audience suggested, sketched and tested with my daughter.
 
@@ -53,7 +51,7 @@ Although there has always been a slight question mark over how healthy smoothies
 
 The design considerations for the fruit and veg to bold solid shapes and for them to have a sunny outlook. This wass the reason why ginger and apricot were rejected. Solid primary colours added a bold contrast.
 
-## Colour References
+### Colour References
 
 | Colour             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
@@ -80,15 +78,26 @@ Coolors' contrast checker also helped make a decision on changing the standard B
 
 ![Coolors Bootstrap btn-success green black](assets/images/readmeimages/coolorsbtngreen.png)
 
-### Font
+### Typography and tone
 
 Careful consideration was given to the font. For children just learning to read and write I felt it was important to show letters that can be copied. Serif font was too formal whereas most fonts with a Helvetica route have difficult “a” characters. I wanted to originally to use ‘Schulbuch' but as the name indicates it's a bit "school booky". Instead went for 'Comic Neue’ a classier but still informal version of of 'Comic Sans'.
 
+### Game architecture
+
+I wanted the game to feel like a game - rather than a website with a game embedded. In the early wireframe game play focus was on having the gameboard as prominent as possible. I also assumed that the game would largely played on mobile or ipad so optimised the space for this. 
+
+![iPad wireframe](assets/images/readmeimages/ipad-landscape.png)
+
+Note here in the early design there's a 2-player option. I like the retro game idea of the game being socialble so that the iPad or phone would be passed between players rather being absorbed entirely in the game.
+
+A wireframe for desktop was also designed which has a header and footer. But the mobile version really cut down on the screen real estate. This became even more apparent when working on the start-screen where I made the decision to bring the title and start buttons centre screen to increase engagement and as a headnod to retro games. 
+
+![desktop start-screen wireframe](assets/images/readmeimages/Desktop-large-startscreen.png)
+
+A full set of Wireframes are available to [view](https://www.dropbox.com/sh/obqgg6aahaonp0a/AADW6nz7zxHI8RmebMSOYO42a?dl=0) or [download](https://www.dropbox.com/sh/obqgg6aahaonp0a/AADW6nz7zxHI8RmebMSOYO42a?dl=1). 
 
 
-
-Features
---------
+## Features
 
 The main focus of this app is the game it being easy to view and play on any size mobile device. In addition to the game there is:
 
@@ -120,7 +129,7 @@ The main focus of this app is the game it being easy to view and play on any siz
 
  
 
-**Scoring **
+**Scoring**
 
 -   Decided a good confidence boost is an acheivable score of 500
 
@@ -132,7 +141,7 @@ The main focus of this app is the game it being easy to view and play on any siz
 
 ### Features to implement
 
-**2-player mode **
+**2-player mode**
 
 -   device to have a ‘vs’ mode whoever finds the most veg first wins
 
