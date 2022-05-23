@@ -164,9 +164,11 @@ The main focus of this app is the game it being easy to view and play on any siz
 
 ![desktop start-screen wireframe](assets/images/readmeimages/start-screen.png)
 
--   Title of game with a strap-line explanation. ![Title and strap](assets/images/readmeimages/Feature-title-strap.png)
+-   Title of game with a strap-line explanation. 
+![Title and strap](assets/images/readmeimages/Feature-title-strap.png)
 
--   Clear centre-screen button navigation to game for arcade feel, with icons for visual support. !['arcade buttons'](assets/images/readmeimages/arcade-buttons.png)
+-   Clear centre-screen button navigation to game for arcade feel, with icons for visual support. 
+!['arcade buttons'](assets/images/readmeimages/arcade-buttons.png)
 
 -   Button to modal for on page rules.
 
@@ -185,17 +187,23 @@ The main focus of this app is the game it being easy to view and play on any siz
 ### Game
 !['arcade buttons'](assets/images/readmeimages/game-grid.png)
 
--   Optimised game grid for all devices !['mobile view'](assets/images/readmeimages/mobile-view.png)
+-   Optimised game grid for all devices 
+!['mobile view'](assets/images/readmeimages/mobile-view.png)
 
--   Progress read out with timer !['progress tally'](assets/images/readmeimages/progress-tally.png)
+-   Progress read out with timer 
+!['progress tally'](assets/images/readmeimages/progress-tally.png)
 
--   'Smoothie bar' to give visual indication of progress !['progress tally'](assets/images/readmeimages/progress-bar-and-comment.png)
+-   'Smoothie bar' to give visual indication of progress 
+!['progress tally'](assets/images/readmeimages/progress-bar-and-comment.png)
 
--   Nudge encouragement !['nudge encouragement'](assets/images/readmeimages/nudge-encouragement.png)
+-   Nudge encouragement !
+['nudge encouragement'](assets/images/readmeimages/nudge-encouragement.png)
 
--   Simple quit or play again buttons !['nudge encouragement'](assets/images/readmeimages/quit-play-again.png) 
+-   Simple quit or play again buttons 
+!['quit or play again'](assets/images/readmeimages/quit-play-again.png) 
 
--   Results layout with featured and message which encourages play at any level !['restart quit](assets/images/readmeimages/quit-play-again.png) 
+-   Results layout with featured and message which encourages play at any level 
+!['result message](assets/images/readmeimages/results-message.png) 
 
 !['restart quit](assets/images/readmeimages/results-page.png)
  ### Scoring
