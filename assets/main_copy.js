@@ -23,59 +23,55 @@ const FRUIT_VEG_LIST = [{
     name: 'lemon',
     img: 'lemon.png'
 },
-];
+]
 
 document.addEventListener('DOMContentLoaded', () => {
     // when the page is loaded start game
 
     // variables and empty arrays
-    let grid = document.querySelector('.grid-container'); // picks up HTML grid first
-    let cardsChosen = [];
-    let cardsChosenId = [];
-    let cardsWon = [];
+    let grid = document.querySelector('.grid-container') // picks up HTML grid first
+    let cardsChosen = []
+    let cardsChosenId = []
+    let cardsWon = []
     let rankMessage = "";
     let finalScore = 0;
     var progressBarWidth = 0;
     let turns = 0;
     var startTime = 0;
-		var endTime = 0;
     var timeDiff = 0;
     var score = 0;
-		var time = 0;
-		let rankImage = 0;
-		let moves = 0;
 
      // doubles up array to generate pairs - thanks to CI Mentor Askshat Garg for suggesting
-    let fruitVegList = [...FRUIT_VEG_LIST, ...FRUIT_VEG_LIST];
+    let fruitVegList = [...FRUIT_VEG_LIST, ...FRUIT_VEG_LIST]
     let intervalRef = null;
 
     // defines elements on page
-    let alertDisplay = document.querySelector('#nudges');
-    let resultDisplay = document.querySelector('#result');
-    let movesDisplay = document.querySelector('#moves');
-    let timeDisplay = document.querySelector('#seconds');
-    let resetButton = document.querySelector('#reset');
-    let smoothieProgressBar = document.getElementsByClassName('progress-bar');
+    let alertDisplay = document.querySelector('#nudges')
+    let resultDisplay = document.querySelector('#result')
+    let movesDisplay = document.querySelector('#moves')
+    let timeDisplay = document.querySelector('#seconds')
+    let resetButton = document.querySelector('#reset')
+    let smoothieProgressBar = document.getElementsByClassName('progress-bar')
     resetButton.addEventListener('click', resetBar); // reset button listener working here - thanks to Tim Stacy positiong advice
 
     // dreates board and 'cards'
     function initialiseGame() {
         // randomises array using Math.random no need for casino-level random algos
-        fruitVegList.sort(() => 0.5 - Math.random());
+        fruitVegList.sort(() => 0.5 - Math.random())
         initialiseTimer ();
         for (let i = 0; i < fruitVegList.length; i++) {
             let card = document.createElement('img');
             card.setAttribute('src', 'assets/images/tumbler.png'); 
             card.setAttribute('data-id', i);
-            card.setAttribute('class', 'gridimage'); // defining images in the grid
-            card.addEventListener('click', onTumblerClick);
+            card.setAttribute('class', 'gridimage') // defining images in the grid
+            card.addEventListener('click', onTumblerClick)
             grid.appendChild(card);
         }
         // opening comments and screen variables
-        alertDisplay.textContent = 'Find your fruit and veg pairs...';
-        resultDisplay.textContent = '0';
-        movesDisplay.textContent = '0';
-        timeDisplay.textContent = '0';   
+        alertDisplay.textContent = 'Find your fruit and veg pairs...'
+        resultDisplay.textContent = '0'
+        movesDisplay.textContent = '0'
+        timeDisplay.textContent = '0'   
     }
 
     function initialiseTimer () {
@@ -93,17 +89,17 @@ document.addEventListener('DOMContentLoaded', () => {
     function onTumblerClick() {
         const isDisabled = (this.getAttribute('data-disabled') === 'true') || cardsChosen.length >= 2; //no more than 2 cards can be opened at a time credit Y0urs Truly
         if (isDisabled) {
-            return null; 
+            return null 
         } 
         // prevents fruit from reappearing - credit Y0urs Truly from Github for helping fix this bug and Akshat Garg for data-disabled guidance
-        let cardId = this.getAttribute('data-id');
-        cardsChosen.push(fruitVegList[cardId].name);
-        cardsChosenId.push(cardId);
-        this.setAttribute('src', `assets/images/${fruitVegList[cardId].img}`);
-        this.setAttribute('data-disabled', 'true');
+        let cardId = this.getAttribute('data-id')
+        cardsChosen.push(fruitVegList[cardId].name)
+        cardsChosenId.push(cardId)
+        this.setAttribute('src', `assets/images/${fruitVegList[cardId].img}`)
+        this.setAttribute('data-disabled', 'true')
         incrementTurns();
         if (cardsChosen.length === 2) {
-            setTimeout(checkForMatch, 500);
+            setTimeout(checkForMatch, 500)
         }
     }
 
@@ -115,24 +111,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // checks for matches
     function checkForMatch() {
         updateTimer ();
-        let cards = document.querySelectorAll('.gridimage'); // prevents site logo and other images from becoming involved with the game!
-        const optionOneId = cardsChosenId[0];
+        let cards = document.querySelectorAll('.gridimage') // prevents site logo and other images from becoming involved with the game!
+        const optionOneId = cardsChosenId[0]
         // if cardsChosenId array position is rejected - preventing double tap
-        const optionTwoId = cardsChosenId[1];
+        const optionTwoId = cardsChosenId[1]
         if (cardsChosen[0] === cardsChosen[1]) {
-            alertDisplay.textContent = "Match! You have a full portion";
-            console.log(cardsChosen[1]);
-            cardsWon.push(cardsChosen);
+            alertDisplay.textContent = "Match! You have a full portion"
+            console.log(cardsChosen[1])
+            cardsWon.push(cardsChosen)
             updateProgressBar();
         } else {
-            cards[optionOneId].setAttribute('src', 'assets/images/tumbler.png');
-            cards[optionTwoId].setAttribute('src', 'assets/images/tumbler.png');
-            cards[optionOneId].setAttribute('data-disabled', 'false');
-            cards[optionTwoId].setAttribute('data-disabled', 'false');
-            alertDisplay.textContent = 'Keep looking! 👀';
+            cards[optionOneId].setAttribute('src', 'assets/images/tumbler.png')
+            cards[optionTwoId].setAttribute('src', 'assets/images/tumbler.png')
+            cards[optionOneId].setAttribute('data-disabled', 'false')
+            cards[optionTwoId].setAttribute('data-disabled', 'false')
+            alertDisplay.textContent = 'Keep looking! 👀'
         }
-        cardsChosen = [];
-        cardsChosenId = [];
+        cardsChosen = []
+        cardsChosenId = []
         updateResults ();
         if (cardsWon.length === FRUIT_VEG_LIST.length) {
             onGameOver();
@@ -143,18 +139,18 @@ document.addEventListener('DOMContentLoaded', () => {
         finalScore = calculateScore();
         setRank ();
         rankBadge ();
-        alertDisplay.textContent = `You scored ${finalScore} - ${rankMessage} `;
-        smoothieProgressBar.item(0).addEventListener('click', resetBar);
+        alertDisplay.textContent = `You scored ${finalScore} - ${rankMessage} `
+        smoothieProgressBar.item(0).addEventListener('click', resetBar)
         clearInterval(intervalRef);
     }
 
     // more notes on score in README - calibrated to over 500 with logical system and no mistakes
     // for higher you need a bit of luck!
     function calculateScore() {
-        endTime = new Date ().getTime(); // end timer
-        timeDisplay = endTime;
-        time = Math.round((endTime - startTime) / 1000);
-        score = (turns * 10) + time;
+        endTime = new Date ().getTime() // end timer
+        timeDisplay = endTime
+        time = Math.round((endTime - startTime) / 1000)
+        score = (turns * 10) + time
         return 700 - score;
     }
 
@@ -190,27 +186,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateProgressBar () {
-        progressBarWidth= Math.round((cardsWon.length / FRUIT_VEG_LIST.length) *  100); // converts cardsWon to percentage for progress  bar
+        progressBarWidth= Math.round((cardsWon.length / FRUIT_VEG_LIST.length) *  100) // converts cardsWon to percentage for progress  bar
         smoothieProgressBar.item(0).setAttribute('style', `width: ${Number(progressBarWidth)}%`);
         smoothieProgressBar.item(0).setAttribute('aria-valuenow', cardsWon.length);
     }
 
     function updateResults () {
-        resultDisplay.textContent = cardsWon.length;
+        resultDisplay.textContent = cardsWon.length
     }
 
     function resetBar() {
-        smoothieProgressBar.item(0).setAttribute('style', 'width: 0%');
-        smoothieProgressBar.item(0).setAttribute('aria-valuenow', 0);
-        setTimeout(restart, 500); // allowing the smoothie to drain
+        smoothieProgressBar.item(0).setAttribute('style', 'width: 0%')
+        smoothieProgressBar.item(0).setAttribute('aria-valuenow', 0)
+        setTimeout(restart, 500) // allowing the smoothie to drain
         timeDisplay.textContent = "0";
     }
 
     function restart() {
         // resets all game variables here
-        cardsChosen = [];
-        cardsChosenId = [];
-        cardsWon = [];
+        cardsChosen = []
+        cardsChosenId = []
+        cardsWon = []
         progressBarWidth = 0;
         turns = 0;
         startTime = 0;
@@ -225,4 +221,4 @@ document.addEventListener('DOMContentLoaded', () => {
         initialiseGame();
     }
     initialiseGame();
-});
+})
