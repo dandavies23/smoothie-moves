@@ -2,7 +2,7 @@
 Smoothie Moves
 ==============
 
-Smoothie Moves is a fruit and veg themed memory game for children. Its main aim is to encourage children to play a colourful, friendly and fun game on a device (most specifically a tablet) or computer. Its secondary aims are to carry positive messages about gameplay and fruit and vegetables!
+Smoothie Moves is a fruit and veg themed memory browser game for children. Its main aim is to encourage children to play a colourful, friendly and fun game on a device (most specifically a tablet) or computer. Its secondary aims are to carry positive messages about gameplay and fruit and vegetables!
 
  
 
@@ -54,15 +54,15 @@ As the game was developed and tested with family and friends’ children, it bec
 
 ### User Stories
 
-*As a user*
+*As a game player*
 
-1.  Firstly, I want to understand what Smoothie Moves is.
+1.  I want to understand what Smoothie Moves is.
 
 2.  I want to easily orientate myself and get into the gameplay quickly.
 
 3.  I want to get more information about the game but also feel I don’t have to read them to be able to play.
 
-4.  I want the game to be bug free, fast and exciting.
+4.  I want the game to be fast and compelling.
 
 5.  I want a read out of my progress whilst I’m playing.
 
@@ -103,9 +103,9 @@ Although there has always been a slight question mark over how healthy smoothies
 
  
 
-### Fruit and veg
+### Graphics (Fruit and veg)
 
-The design considerations for the fruit and veg to bold solid shapes and for them to have a sunny outlook. This was the reason why ginger and apricot were rejected. Solid primary colours added a bold contrast.
+The design considerations for the fruit and veg to bold solid shapes and for them to have a sunny outlook. This was the reason why ginger and apricot were rejected. Solid primary colours added a bold contrast. The favicon was resized in Adobe Photoshop [with guidance](https://webflow.com/blog/favicon-guide) to resize 32x32 to keep the apple sharp.
 
 ### Colour References
 
@@ -136,11 +136,11 @@ Coolors' contrast checker also helped make a decision on changing the standard B
 
 ### Typography and tone
 
-Careful consideration was given to the font. For children just learning to read and write I felt it was important to show letters that can be copied. Serif font was too formal whereas most fonts with a Helvetica route have difficult “a” characters. I wanted to originally to use ‘Schulbuch' but as the name indicates it's a bit "school booky". Instead went for 'Comic Neue’ a classier but still informal version of of 'Comic Sans'.
+Careful consideration was given to the font. For children just learning to read and write I felt it was important to show letters that can be copied. Serif font was too formal whereas most fonts with a Helvetica root have difficult “a” characters. I wanted to originally to use ‘Schulbuch' but as the name indicates it's a bit "school booky". Instead, I went for 'Comic Neue’ a classier but still informal version of of 'Comic Sans'.
 
 ### Game architecture
 
-I wanted the game to feel like a game - rather than a website with a game embedded. In the early wireframe game play focus was on having the gameboard as prominent as possible. I also assumed that the game would largely played on mobile or ipad so optimised the space for this. 
+I wanted the [browser game](https://en.wikipedia.org/wiki/Browser_game) to feel like an arcade game - rather than a website with a game embedded. In the early wireframe game play focus was on having the gameboard as prominent as possible. I also assumed that the game would largely played on mobile or ipad so optimised the space for this. 
 
 ![iPad wireframe](assets/images/readmeimages/ipad-landscape.png)
 
@@ -196,8 +196,8 @@ The main focus of this app is the game it being easy to view and play on any siz
 -   'Smoothie bar' to give visual indication of progress 
 !['progress tally'](assets/images/readmeimages/progress-bar-and-comment.png)
 
--   Nudge encouragement !
-['nudge encouragement'](assets/images/readmeimages/nudge-encouragement.png)
+-   Nudge encouragement 
+!['nudge encouragement'](assets/images/readmeimages/nudge-encouragement.png)
 
 -   Simple quit or play again buttons 
 !['quit or play again'](assets/images/readmeimages/quit-play-again.png) 
@@ -206,14 +206,12 @@ The main focus of this app is the game it being easy to view and play on any siz
 !['result message](assets/images/readmeimages/results-message.png) 
 
 !['restart quit](assets/images/readmeimages/results-page.png)
- ### Scoring
 
--   Decided a good confidence boost is an acheivable score of 500
 
--   User will score 500 if they have a system (18 moves) in around 20 seconds
+### Scoring and other game dynamics
+To appeal to a broader age range I felt it was important to bring in a a scorebooard and rank. I identified 500 (Cool Carrot) as a good attainable target for a child with a well developed short term memory, visual attention and good organisation and prioritisation skills. A user will score 500 if they have a logical system (18 moves) completed in around 20 seconds.
 
--   If you are ‘lucky’ you will find a pair randomly which means that you can score over 550 - this luck element is a typical game play strategy, a system gets you so far but luck gets you even further!
-
+If you are ‘lucky’ you will stumble across a pair randomly which means that you can score over 550 (Brilliant Beetroot), This lucky stroke is a typical game play strategy, a system gets you so far but luck gets you even further. It means the user returns until they strike it lucky!
  
 
 ### Features to implement
@@ -236,29 +234,209 @@ The main focus of this app is the game it being easy to view and play on any siz
 
 -   Ability to enter name at High Score and display in traditional leaderboard. 
 
+Technologies used
+-----------------
+
+### Languages 
+
+[HTML5](https://www.techradar.com/uk/news/internet/web/html5-what-is-it-1047393)
+
+[CSS](https://www.w3.org/TR/CSS/#css)
+
+[JavaScript](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript)
+
  
 
-Development and Testing
------------------------
+### Frameworks, tools and software
 
--   A [Github project](https://github.com/dandavies23/smoothie-moves/projects/1) using a Kanban Board was created to organise development, track bugs and suggest enhancements. 
+[Bootstrap4](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
 
--   Progress was detailed in commit messages with frequent pushes to Github. 
+[Google Fonts](https://fonts.google.com/specimen/Comic+Neue?query=Comic+Neue)
+
+[Font Awesome](https://fontawesome.com/)
+
+[Coolors](https://coolors.co/)
+
+[Balsamiq](https://balsamiq.com/)
+
+[Github](https://github.com/)
+
+[Gitpod](https://gitpod.io/)
+
+[Am I Responsive?](https://ui.dev/amiresponsive)
+
+[Adobe Illustrator and Photoshop](https://www.adobe.com/uk/creativecloud.html)
+
+ 
+
+Testing
+-------
+
+### Process
+
+-   Throughout the development of this game Google Chrome’s Developer tools were used to check screen sizes and ratios including the smallest Moto to ensure single screen playability.  
+
+-   Progress was detailed in commit messages with frequent pushes to Github.
+
+-   A [Github project](https://github.com/dandavies23/smoothie-moves/projects/1) using a Kanban Board was created to organise development, track bugs and suggest enhancements.
 
 -   Project was deployed early so colleagues, peers and user-testers could give feedback
 
+-   A new and old full size iPads were used as well as a variety of iPhones: 6, X, 13
+
 -   My daughter proved to be an excellent user-tester managing to break the first full prototype in about 30 second and therefore raise three bugs!
 
--   Game was tested on all devices and optimised for tablet as this is what children most use. 
+-   Game was tested on all devices and optimised for tablet as this is what children most use.
+
+### User Stories Testing 
+
+As a player
+
+1.  I want to understand what Smoothie Moves is.
+
+    -   On the homepage / start screen the name, strapline explain the point of the game quickly
+
+    -   Rules add further clarification if needed.
+
+2.  I want to easily orientate myself and get into the gameplay quickly.
+
+    -   User journey is only two levels deep: start screen / game / result
+
+    -   Central play button is prominent and not hidden in any navigation convention
+
+3.  I want to get more information about the game but also feel I don’t have to read them to be able to play.
+
+    -   Play button is in primary (centre-left) position
+
+4.  I want the game to be fast and compelling.
+
+    -   Game is built in vanilla Javascript to make the game quick and nimble and with no JS library dependencies.
+
+    -   The game's speed and time gives a sense of excitement and endorphin rush.  
+
+    -   User has result screen option to continue play again rather than return to start screen: game / result loop
+
+5.  I to understand my progress whilst I’m playing.
+
+    -   Score offers statistical feedback 
+
+    -   Progress bar is a visual equivalent
+
+6.  I want encouragement that I’m doing well.
+
+    -   Nudge message celebrates a match and encourages gamer to keep looking
+
+7.  I want the ability to stop and start again if things aren’t going well
+
+    -   Player can start the game at any point if it feels futile.
+
+8.  I want a final score and a visual indication of level of achievement.
+
+    -   Result screen has the calculated score and a character to indicate level of success.
 
 Validation
 ----------
 
 -   App passed with [W3 Validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fdandavies23.github.io%2Fsmoothie-moves%2F)
+!['Validator result](assets/images/readmeimages/W3Results.png)
 
--   App passed with [CSS Validator ](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fdandavies23.github.io%2Fsmoothie-moves%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+
+-   App passed with [CSS Validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fdandavies23.github.io%2Fsmoothie-moves%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
+!['CSS validator results'](assets/images/readmeimages/CSSResults.png)
+
+-   Javascript errors were discovered using [JSHint](https://jshint.com/) 
+
+Bugs and Fixes
+--------------
+
+All significant bugs were flagged within the [Github project](https://github.com/dandavies23/smoothie-moves/issues?q=is%3Aissue+label%3Abug+is%3Aclosed). For speed these were often written in note form so a selection are written up in more detail here:
 
  
+
+### Double click / tap results in ‘sticky' fruit selection
+
+**Issue number:** 
+[10](https://github.com/dandavies23/smoothie-moves/issues/10)
+
+**Platform / OS:** 
+Macbook Air and Pro Chrome, iPad 3rd gen, iPad 7th gen, PC
+
+**Reproduce:** 
+Play game at speed, tapping on more cups as quick as possible. JS gets confused and leaves unmatched pairs on screen. 
+
+**Priority/Severity:** P1 - game is un-winnable. 
+
+**Tried:**
+
+-   Disabling area after tap, blank space (an image to preserve spacing) can still be tapped on. 
+
+-   Made sure objects weren’t same. Previously blank spaces are named the same
+
+`if (optionOneId == optionTwoId) {
+
+            cards[optionOneId].setAttribute('src', 'images/tumbler.png')
+
+            cards[optionTwoId].setAttribute('src', 'images/tumbler.png')
+
+            alert("Slow down! You've already tapped that!")`
+
+-   "if I click into an empty space the lemon is back"
+
+![image](https://user-images.githubusercontent.com/566086/122138321-67d15b80-ce3e-11eb-988f-bdd1d1857c5a.png)
+
+"if I then select another fruit or veg it replaces the found lemon with a cup…"
+
+![image](https://user-images.githubusercontent.com/566086/122138321-67d15b80-ce3e-11eb-988f-bdd1d1857c5a.png)
+
+**Solution:** Raised on Stackoverflow and followed up by “Y0ursTruly” on GitHub who suggested assigning “null” value. Also in conversation with mentor Akshat Garg to setAttribute to "data-disabled". 
+
+**Status:** Fixed. Merged. [Later decided](https://github.com/dandavies23/smoothie-moves/issues/18) with mentor, that a better UX is to leave the fruit in situ.
+
+ 
+
+### Time still running after game completion
+
+**Issue number:**[ 45](https://github.com/dandavies23/smoothie-moves/issues/45)
+
+**Platform:** All platforms
+
+**Reproduce:** Finish game and watch time
+
+**Priority/Severity:** P2 - no effective resolution to game
+
+**Solution:** There was no proper end screen and calculation of score. Issue now resolved as EndTime is used to calculate and are variables are properly fixed.
+
+ 
+
+### Mouse pointer doesn’t turn into finger
+
+**Issue number:** [49](https://github.com/dandavies23/smoothie-moves/issues/49)
+
+**Platform:** Desktop
+
+**Reproduce:** Play game on desktop no visual indication of what you can click.
+
+**Priority/Severity:** P3 - only affects desktop and game targeted to work best on mobile
+
+**Solution:** Simple fix in CSS `.pointer { cursor: pointer; }`
+
+ 
+
+### Emoji in nudge messages readable across all platforms
+
+**Issue number:** [46](https://github.com/dandavies23/smoothie-moves/issues/46)
+
+**Platform:** All platforms
+
+**Reproduce:** Need to check that all platforms display emoji.
+
+**Priority/Severity:** P3 - if character doesn’t display it probably will just appear as block.
+
+**Solution:** Requires further testing but emoji seems to be pretty universal on [Am I Responsive?](https://ui.dev/amiresponsive?url=https://dandavies23.github.io/smoothie-moves/)
+
+ 
+
+
 
 Deployment 
 -----------
@@ -321,6 +499,6 @@ I’m also grateful to Tim Stacy, a friend who gave invaluable advice in the lat
 
 W3Schools for further tutorials on JS and JQ, Code Institute’s Slack channel and other CI people who have additionally helped me including Sean Young…. student Tom Nagy who passed on a iPad none interference tip and my mentor Akshat Garg.
 
-This was created for Code Institute MS 2 Interactive development course. 
+_This browser game was created for Code Institute MS2 Interactive development course._ 
 
  
