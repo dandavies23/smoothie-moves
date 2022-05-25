@@ -145,6 +145,19 @@ document.addEventListener('DOMContentLoaded', () => {
         finalScore = calculateScore();
         setRank ();
         rankBadge ();
+
+        // localStorage for highest scores
+        let myScore={date:new Date().getTime(), seconds:time, turns:movesDisplay.innerText, rank:rankStatus, score:finalScore}
+        localStorage[finalScore]=JSON.stringify(myScore)
+        //each key is a score and value is stringified score object
+        let scores=Object.keys(localStorage).sort((a,b)=>parseInt(b)-parseInt(a))
+        .map((key,index)=>{
+            let score=JSON.parse(localStorage[key])
+            return `(${index+1})\nScore: ${key}\nDate Achieved: ${score.date}\nSeconds taken: ${score.seconds}\nRank: ${score.rank}\nMoves made: ${score.turns}`
+        }).join('\n\n')
+        //the variable 'scores' is an example sort and map of score results
+        console.log("Top scores\n"+scores) //example show of scores
+       
         alertDisplay.textContent = `You scored ${finalScore} - ${rankMessage} `;
         smoothieProgressBar.item(0).addEventListener('click', resetBar);
         clearInterval(intervalRef);
@@ -163,22 +176,27 @@ document.addEventListener('DOMContentLoaded', () => {
     // assigns smooth-move rank
     function setRank () {  
          if (finalScore > 550) {
+            rankStatus = "Brilliant Beetroot";
             rankMessage = "you can't beat a beetroot!";
             rankImage = "beetroot.png";
          }
          else if (finalScore > 500) {
+            rankStatus = "Cool Carrot";
             rankMessage = "you're one cool carrot!";
             rankImage = "carrot.png";
          }
          else if (finalScore > 450) {
+            rankStatus = "Better Broccoli";
             rankMessage = "you're getting broccoli better!";
             rankImage = "broccoli.png";
          }
          else if (finalScore > 400) {
-             rankMessage = "you've only just begun blueberry!";
-             rankImage = "blueberries.png";
+            rankStatus = "Beginner Blueberry";
+            rankMessage = "you've only just begun blueberry!";
+            rankImage = "blueberries.png";
          }
          else {
+            rankStatus = "Aspiring Apple";
             rankMessage = "another go apple?";
             rankImage = "apple.png";
          }
