@@ -88,12 +88,6 @@ From a UX perspective my daughter had no interest in a skeoumorph representation
 
 ![pairs-pairs top right](assets/images/readmeimages/MemoryCardPairsPearsSketchresize.jpg)
 
- 
-
-(Speed??)
-
- 
-
 ## Design
 
 Although there has always been a slight question mark over how healthy smoothies are it occurred to me that the design could it perhaps with an educational lean. The idea emerged to create a game which gave equal balance to fruit and veg. One Sunday morning a selection of fruit and veg were audience suggested, sketched and tested with my daughter.
@@ -350,8 +344,6 @@ Bugs and Fixes
 --------------
 
 All significant bugs were flagged within the [Github project](https://github.com/dandavies23/smoothie-moves/issues?q=is%3Aissue+label%3Abug+is%3Aclosed). For speed these were often written in note form so a selection are written up in more detail here:
-
- 
 
 ### Double click / tap results in ‘sticky' fruit selection
 

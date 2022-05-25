@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */ 
+
 // constants in later versions more fruit veg could be added 
 const FRUIT_VEG_LIST = [{
     name: 'apple',
@@ -38,12 +40,12 @@ document.addEventListener('DOMContentLoaded', () => {
     var progressBarWidth = 0;
     let turns = 0;
     var startTime = 0;
-		var endTime = 0;
+	var endTime = 0;
     var timeDiff = 0;
     var score = 0;
-		var time = 0;
-		let rankImage = 0;
-		let moves = 0;
+	var time = 0;
+	let rankImage = 0;
+	var moves = 0;
 
      // doubles up array to generate pairs - thanks to CI Mentor Askshat Garg for suggesting
     let fruitVegList = [...FRUIT_VEG_LIST, ...FRUIT_VEG_LIST];
@@ -203,7 +205,6 @@ document.addEventListener('DOMContentLoaded', () => {
         smoothieProgressBar.item(0).setAttribute('style', 'width: 0%');
         smoothieProgressBar.item(0).setAttribute('aria-valuenow', 0);
         setTimeout(restart, 500); // allowing the smoothie to drain
-        timeDisplay.textContent = "0";
     }
 
     function restart() {
