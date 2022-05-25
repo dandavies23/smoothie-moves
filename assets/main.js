@@ -58,13 +58,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let timeDisplay = document.querySelector('#seconds');
     let resetButton = document.querySelector('#reset');
     let smoothieProgressBar = document.getElementsByClassName('progress-bar');
-    resetButton.addEventListener('click', resetBar); // reset button listener working here - thanks to Tim Stacy positiong advice
+    resetButton.addEventListener('click', resetBar); // reset button listener working here - thanks to Tim Stacy positioning advice
 
-    // dreates board and 'cards'
+    // creates board and 'cards'
     function initialiseGame() {
         // randomises array using Math.random no need for casino-level random algos
         fruitVegList.sort(() => 0.5 - Math.random());
         initialiseTimer ();
+        console.log(startTime);
         for (let i = 0; i < fruitVegList.length; i++) {
             let card = document.createElement('img');
             card.setAttribute('src', 'assets/images/tumbler.png'); 
@@ -233,7 +234,10 @@ document.addEventListener('DOMContentLoaded', () => {
         progressBarWidth = 0;
         turns = 0;
         startTime = 0;
+        time = 0;
         score = 0;
+        endTime = 0;
+        timeDiff = 0;
         finalScore = 0;
         moves = 0;
         grid.innerHTML = "";
