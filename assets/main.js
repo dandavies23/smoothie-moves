@@ -57,8 +57,34 @@ document.addEventListener('DOMContentLoaded', () => {
     let movesDisplay = document.querySelector('#moves');
     let timeDisplay = document.querySelector('#seconds');
     let resetButton = document.querySelector('#reset');
+    const sendScoreButton = document.querySelector('#send_email');
     let smoothieProgressBar = document.getElementsByClassName('progress-bar');
     resetButton.addEventListener('click', resetBar); // reset button listener working here - thanks to Tim Stacy positioning advice
+    sendScoreButton.addEventListener('click', sendScoreByEmail);
+
+    function sendScoreByEmail(event){
+        event.preventDefault();
+        const userEmail = document.getElementById('userEmail').value;
+        if (userEmail.length ==0){
+            alert('Please enter your email');
+        }
+        else{
+            console.log('Send email to ' + userEmail);
+            var templateParams = {
+                userEmail: userEmail,
+                userScore: finalScore,
+              };
+            emailjs.send('service_h08zqvs', 'template_t7t4ue1', templateParams)
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+            }, function(error) {
+                console.log('FAILED...', error);
+            });
+        }
+        
+        
+    }
+
 
     // creates board and 'cards'
     function initialiseGame() {
