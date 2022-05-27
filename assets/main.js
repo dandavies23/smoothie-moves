@@ -27,6 +27,8 @@ const FRUIT_VEG_LIST = [{
 },
 ];
 
+
+
 document.addEventListener('DOMContentLoaded', () => {
     // when the page is loaded start game
 
@@ -223,8 +225,8 @@ document.addEventListener('DOMContentLoaded', () => {
             rankImage = "begin-blueberry.png";
          }
          else {
-            rankStatus = "Aspiring Apple";
-            rankMessage = "another go apple?";
+            rankStatus = "Good Apple";
+            rankMessage = "another go good apple?";
             rankImage = "good-apple.png";
          }
         }
