@@ -205,27 +205,27 @@ document.addEventListener('DOMContentLoaded', () => {
          if (finalScore > 550) {
             rankStatus = "Brilliant Beetroot";
             rankMessage = "you can't beat a beetroot!";
-            rankImage = "beetroot.png";
+            rankImage = "best-beetroot.png";
          }
          else if (finalScore > 500) {
             rankStatus = "Cool Carrot";
             rankMessage = "you're one cool carrot!";
-            rankImage = "carrot.png";
+            rankImage = "cool-carrot.png";
          }
          else if (finalScore > 450) {
             rankStatus = "Better Broccoli";
             rankMessage = "you're getting broccoli better!";
-            rankImage = "broccoli.png";
+            rankImage = "better-broccoli.png";
          }
          else if (finalScore > 400) {
             rankStatus = "Beginner Blueberry";
             rankMessage = "you've only just begun blueberry!";
-            rankImage = "blueberries.png";
+            rankImage = "begin-blueberry.png";
          }
          else {
             rankStatus = "Aspiring Apple";
             rankMessage = "another go apple?";
-            rankImage = "apple.png";
+            rankImage = "good-apple.png";
          }
         }
         
