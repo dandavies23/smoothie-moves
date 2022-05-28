@@ -29,6 +29,7 @@ const FRUIT_VEG_LIST = [{
 
 // const HIGH_SCORE = 'highScore';
 
+let highscore = 0;
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -61,7 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let movesDisplay = document.querySelector('#moves');
     let timeDisplay = document.querySelector('#seconds');
     let resetButton = document.querySelector('#reset');
-    let scoresDisplay = document.querySelector('#scores');
+    let scoresDisplay = document.querySelector('#scores'); // REMOVE
+    let highScoreDisplay = document.querySelector('#highscore');
     const sendScoreButton = document.querySelector('#send_email');
     let smoothieProgressBar = document.getElementsByClassName('progress-bar');
     resetButton.addEventListener('click', resetBar); // reset button listener working here - thanks to Tim Stacy positioning advice
@@ -177,21 +179,26 @@ document.addEventListener('DOMContentLoaded', () => {
         setRank ();
         rankBadge ();
 
+
         // localStorage for highest scores until you quit - add clear function
-        let myScore={date:new Date().getTime(), seconds:time, turns:movesDisplay.innerText, rank:rankStatus, score:finalScore}
-        localStorage[finalScore]=JSON.stringify(myScore)
-        //each key is a score and value is stringified score object
+        let lastScore ={ date:new Date().getTime(), seconds:time, turns:movesDisplay.innerText, rank:rankStatus, score:finalScore };
+        
+        // Convert to JSON string each key is a score and value is stringified score object
+        localStorage[finalScore]=JSON.stringify(lastScore)
+        
+        //'scores' sorted by key and map of score results
         let scores=Object.keys(localStorage).sort((a,b)=>parseInt(b)-parseInt(a))
         .map((key,index)=>{
             let score=JSON.parse(localStorage[key])
+            if (key > highscore) {
+                highscore = key
+            }
             return `(${index+1})\nScore: ${key}\nDate Achieved: ${score.date}\nSeconds taken: ${score.seconds}\nRank: ${score.rank}\nMoves made: ${score.turns}`
         }).join('\n\n')
-        //the variable 'scores' is an example sort and map of score results
         console.log("Top scores\n"+scores) //example show of scores
-        console.log(scores.score);
-
-        scoresDisplay.textContent = scores;
-       
+        console.log(highscore) // 
+        // REMOVE scoresDisplay.textContent = scores;
+        highScoreDisplay.textContent = highscore;
         alertDisplay.textContent = `You scored ${finalScore} - ${rankMessage} `;
         smoothieProgressBar.item(0).addEventListener('click', resetBar);
         clearInterval(intervalRef);
@@ -204,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
         timeDisplay = endTime;
         time = Math.round((endTime - startTime) / 1000);
         score = (turns * 10) + time;
-        return 700 - score;
+        return 750 - score;
     }
 
     // assigns smooth-move rank
@@ -212,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
          if (finalScore > 550) {
             rankStatus = "Brilliant Beetroot";
             rankMessage = "you can't beat a beetroot!";
-            rankImage = "best-beetroot.png";
+            rankImage = "best-betroot.png";
          }
          else if (finalScore > 500) {
             rankStatus = "Cool Carrot";
