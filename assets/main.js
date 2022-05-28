@@ -74,6 +74,11 @@ document.addEventListener('DOMContentLoaded', () => {
             var templateParams = {
                 userEmail: userEmail,
                 userScore: finalScore,
+                userStatus: rankStatus,
+                rankMessage: rankMessage,
+                userImage: rankImage,
+                highscore: highscore,
+                userIncentive: rankIncentive,
               };
             emailjs.send('service_h08zqvs', 'template_t7t4ue1', templateParams)
             .then(function(response) {
@@ -152,7 +157,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const optionTwoId = cardsChosenId[1];
         if (cardsChosen[0] === cardsChosen[1]) {
             alertDisplay.textContent = "Match! You have a full portion";
-            console.log(cardsChosen[1]);
             cardsWon.push(cardsChosen);
             updateProgressBar();
         } else {
@@ -176,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
         rankBadge ();
 
 
-        // localStorage for game data
+        // localStorage for game data - sketched out by Y0ursTruly adapted for highscore retrieval with Dan Ger (CI)
         let lastScore ={ date:new Date().getTime(), seconds:timeOver, turns:movesDisplay.innerText, rank:rankStatus, score:finalScore };
         
         // Convert to JSON string each key is a score and value is stringified score object
@@ -192,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return `(${index+1})\nScore: ${key}\nDate Achieved: ${score.date}\nSeconds taken: ${score.seconds}\nRank: ${score.rank}\nMoves made: ${score.turns}`
         }).join('\n\n')
         console.log("Top scores\n"+scores) //example show of scores
-        console.log(highscore) // 
+        console.log(highscore) // REMOVE
         // REMOVE scoresDisplay.textContent = scores;
         highScoreDisplay.textContent = highscore;
         alertDisplay.textContent = `You scored ${finalScore} - ${rankMessage} `;
@@ -214,26 +218,31 @@ document.addEventListener('DOMContentLoaded', () => {
          if (finalScore > 550) {
             rankStatus = "Brilliant Beetroot";
             rankMessage = "you can't beat a beetroot!";
+            rankIncentive = "You can't get beyond a beetroot but perhaps you've got the highest ever score?"
             rankImage = "best-beetroot.png";
          }
          else if (finalScore > 500) {
             rankStatus = "Cool Carrot";
             rankMessage = "you're one cool carrot!";
+            rankIncentive = "You're so close to being a brilliant beetroot you can almost (literally) taste it!"
             rankImage = "cool-carrot.png";
          }
          else if (finalScore > 450) {
             rankStatus = "Better Broccoli";
             rankMessage = "you're getting broccoli better!";
+            rankIncentive = "A cool carrot is around the corner!";
             rankImage = "better-broccoli.png";
          }
          else if (finalScore > 400) {
             rankStatus = "Beginner Blueberry";
             rankMessage = "you've only just begun blueberry!";
+            rankIncentive = "Can you become a better broccoli?";
             rankImage = "begin-blueberry.png";
          }
          else {
             rankStatus = "Good Apple";
             rankMessage = "another go good apple?";
+            rankIncentive = "Good apple! Is a blueberry beginner possible?"
             rankImage = "good-apple.png";
          }
         }
@@ -271,7 +280,6 @@ document.addEventListener('DOMContentLoaded', () => {
         turns = 0;
         score = 0;
         finalScore = 0;
-        console.log(timeDiff)
         moves = 0;
         grid.innerHTML = '';
         resultDisplay.textContent = '0';
