@@ -27,6 +27,8 @@ const FRUIT_VEG_LIST = [{
 },
 ];
 
+// const HIGH_SCORE = 'highScore';
+
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -59,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let movesDisplay = document.querySelector('#moves');
     let timeDisplay = document.querySelector('#seconds');
     let resetButton = document.querySelector('#reset');
+    let scoresDisplay = document.querySelector('#scores');
     const sendScoreButton = document.querySelector('#send_email');
     let smoothieProgressBar = document.getElementsByClassName('progress-bar');
     resetButton.addEventListener('click', resetBar); // reset button listener working here - thanks to Tim Stacy positioning advice
@@ -93,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // randomises array using Math.random no need for casino-level random algos
         fruitVegList.sort(() => 0.5 - Math.random());
         initialiseTimer ();
-        console.log(startTime);
         for (let i = 0; i < fruitVegList.length; i++) {
             let card = document.createElement('img');
             card.setAttribute('src', 'assets/images/tumbler.png'); 
@@ -175,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setRank ();
         rankBadge ();
 
-        // localStorage for highest scores
+        // localStorage for highest scores until you quit - add clear function
         let myScore={date:new Date().getTime(), seconds:time, turns:movesDisplay.innerText, rank:rankStatus, score:finalScore}
         localStorage[finalScore]=JSON.stringify(myScore)
         //each key is a score and value is stringified score object
@@ -186,6 +188,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }).join('\n\n')
         //the variable 'scores' is an example sort and map of score results
         console.log("Top scores\n"+scores) //example show of scores
+        console.log(scores.score);
+
+        scoresDisplay.textContent = scores;
        
         alertDisplay.textContent = `You scored ${finalScore} - ${rankMessage} `;
         smoothieProgressBar.item(0).addEventListener('click', resetBar);
@@ -230,7 +235,8 @@ document.addEventListener('DOMContentLoaded', () => {
             rankImage = "good-apple.png";
          }
         }
-        
+    
+    
     function rankBadge () {
         var gridImages = document.getElementsByClassName("gridimage");
         for(var i = 0; i< gridImages.length;i++){
@@ -268,12 +274,13 @@ document.addEventListener('DOMContentLoaded', () => {
         timeDiff = 0;
         finalScore = 0;
         moves = 0;
-        grid.innerHTML = "";
-        resultDisplay.textContent = "0";
-        movesDisplay.textContent = "0";
-        timeDisplay.textContent = "0";
-        alertDisplay.textContent = "Those cheeky fruit and veg have hidden again! 🙄";
+        grid.innerHTML = '';
+        resultDisplay.textContent = '0';
+        movesDisplay.textContent = '0';
+        timeDisplay.textContent = '0';
+        alertDisplay.textContent = 'Those cheeky fruit and veg have hidden again! 🙄';
         initialiseGame();
     }
+    
     initialiseGame();
 });
