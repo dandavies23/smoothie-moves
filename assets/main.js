@@ -44,11 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let finalScore = 0;
     var progressBarWidth = 0;
     let turns = 0;
-    var startTime = 0;
-	var endTime = 0;
-    var timeDiff = 0;
+    // var startTime = 0;
+	// var endTime = 0;
+    // var timeDiff = 0;
     var score = 0;
-	var time = 0;
+	// var time = 0;
 	let rankImage = 0;
 	var moves = 0;
 
@@ -62,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
     let movesDisplay = document.querySelector('#moves');
     let timeDisplay = document.querySelector('#seconds');
     let resetButton = document.querySelector('#reset');
-    let scoresDisplay = document.querySelector('#scores'); // REMOVE
     let highScoreDisplay = document.querySelector('#highscore');
     const sendScoreButton = document.querySelector('#send_email');
     let smoothieProgressBar = document.getElementsByClassName('progress-bar');
@@ -110,13 +109,27 @@ document.addEventListener('DOMContentLoaded', () => {
         alertDisplay.textContent = 'Find your fruit and veg pairs...';
         resultDisplay.textContent = '0';
         movesDisplay.textContent = '0';
-        timeDisplay.textContent = '0';   
+        // timeDisplay.textContent = '0';   
     }
-
     function initialiseTimer () {
+      
+        delete timeDiff;
+
         startTime = new Date().getTime(); // start timer
         intervalRef = setInterval(updateTimer, 1000);
     }
+    /* function initialiseTimer () {
+        if (typeof startTime !== 'undefined') {
+               delete startTime;
+         }        
+         startTime = new Date().getTime(); // start timer
+         intervalRef = setInterval(updateTimer, 1000);
+    } */
+    /*function initialiseTimer () {
+        startTime = new Date().getTime(); // start timer
+        intervalRef = setInterval(updateTimer, 1000);
+        console.log(timeDiff);
+    } */
 
     function updateTimer () {
         endTime = new Date().getTime();
@@ -180,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
         rankBadge ();
 
 
-        // localStorage for highest scores until you quit - add clear function
+        // localStorage for game data
         let lastScore ={ date:new Date().getTime(), seconds:time, turns:movesDisplay.innerText, rank:rankStatus, score:finalScore };
         
         // Convert to JSON string each key is a score and value is stringified score object
@@ -219,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
          if (finalScore > 550) {
             rankStatus = "Brilliant Beetroot";
             rankMessage = "you can't beat a beetroot!";
-            rankImage = "best-betroot.png";
+            rankImage = "best-beetroot.png";
          }
          else if (finalScore > 500) {
             rankStatus = "Cool Carrot";
@@ -274,17 +287,19 @@ document.addEventListener('DOMContentLoaded', () => {
         cardsWon = [];
         progressBarWidth = 0;
         turns = 0;
-        startTime = 0;
-        time = 0;
+        // startTime = 0;
+        // time = 0;
         score = 0;
-        endTime = 0;
-        timeDiff = 0;
+        // endTime = 0;
+        //timeDisplay = 0;
+        // timeDiff = 0;
         finalScore = 0;
+        console.log(timeDiff)
         moves = 0;
         grid.innerHTML = '';
         resultDisplay.textContent = '0';
         movesDisplay.textContent = '0';
-        timeDisplay.textContent = '0';
+        // timeDisplay.textContent = '0';
         alertDisplay.textContent = 'Those cheeky fruit and veg have hidden again! 🙄';
         initialiseGame();
     }
