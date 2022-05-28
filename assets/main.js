@@ -44,13 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let finalScore = 0;
     var progressBarWidth = 0;
     let turns = 0;
-    // var startTime = 0;
-	// var endTime = 0;
-    // var timeDiff = 0;
     var score = 0;
-	// var time = 0;
 	let rankImage = 0;
-	var moves = 0;
 
      // doubles up array to generate pairs - thanks to CI Mentor Askshat Garg for suggesting
     let fruitVegList = [...FRUIT_VEG_LIST, ...FRUIT_VEG_LIST];
@@ -109,8 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
         alertDisplay.textContent = 'Find your fruit and veg pairs...';
         resultDisplay.textContent = '0';
         movesDisplay.textContent = '0';
-        // timeDisplay.textContent = '0';   
     }
+
     function initialiseTimer () {
       
         delete timeDiff;
@@ -118,18 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
         startTime = new Date().getTime(); // start timer
         intervalRef = setInterval(updateTimer, 1000);
     }
-    /* function initialiseTimer () {
-        if (typeof startTime !== 'undefined') {
-               delete startTime;
-         }        
-         startTime = new Date().getTime(); // start timer
-         intervalRef = setInterval(updateTimer, 1000);
-    } */
-    /*function initialiseTimer () {
-        startTime = new Date().getTime(); // start timer
-        intervalRef = setInterval(updateTimer, 1000);
-        console.log(timeDiff);
-    } */
 
     function updateTimer () {
         endTime = new Date().getTime();
@@ -220,16 +203,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // more notes on score in README - calibrated to over 500 with logical system and no mistakes
     // for higher you need a bit of luck!
     function calculateScore() {
-        /* endTime = new Date ().getTime(); // end timer
-        timeDisplay = endTime;
-        time = Math.round((endTime - startTime) / 1000);
-
-        endTime = new Date().getTime();
-        timeDiff = Math.round((endTime - startTime) / 1000);
-        timeDisplay.textContent = timeDiff; */
         timeOver = timeDiff;
         timeDisplay.textContent = timeOver;
-        score = (turns * 10) + timeDiff;
+        score = (turns * 10) + timeOver;
         return 750 - score;
     }
 
@@ -293,19 +269,13 @@ document.addEventListener('DOMContentLoaded', () => {
         cardsWon = [];
         progressBarWidth = 0;
         turns = 0;
-        // startTime = 0;
-        // time = 0;
         score = 0;
-        // endTime = 0;
-        //timeDisplay = 0;
-        // timeDiff = 0;
         finalScore = 0;
         console.log(timeDiff)
         moves = 0;
         grid.innerHTML = '';
         resultDisplay.textContent = '0';
         movesDisplay.textContent = '0';
-        // timeDisplay.textContent = '0';
         alertDisplay.textContent = 'Those cheeky fruit and veg have hidden again! 🙄';
         initialiseGame();
     }

@@ -426,6 +426,24 @@ Play game at speed, tapping on more cups as quick as possible. JS gets confused 
 
 **Solution:** Requires further testing but emoji seems to be pretty universal on [Am I Responsive?](https://ui.dev/amiresponsive?url=https://dandavies23.github.io/smoothie-moves/)
 
+### Timer is not resetting on game restart
+**Platform:** All platforms
+
+**Reproduce:** Complete game restart and it doesn't fix.
+
+**Priority/Severity:** P2 - game can be reset with browser or by quitting and starting again.
+
+**Steps to resolve** 
+1. Tried injecting "0" into HTML
+2. Reset variables
+3. Removed variable resets
+4. Rewrote initialise timer function - deleted variable at run - suggestion by Pete Doyle
+5. Removed all end of game resets
+6. Looked at calculate game function
+7. Identified 'time' variable which sounds like it might be universal
+8. Removed variable and stuck to timeDiff
+9. Timer kept going so fixed timeDiff = timeDiff
+10. Created timeOver variable and added to game data map
  
 
 
