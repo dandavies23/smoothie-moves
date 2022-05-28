@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         // localStorage for game data
-        let lastScore ={ date:new Date().getTime(), seconds:time, turns:movesDisplay.innerText, rank:rankStatus, score:finalScore };
+        let lastScore ={ date:new Date().getTime(), seconds:timeOver, turns:movesDisplay.innerText, rank:rankStatus, score:finalScore };
         
         // Convert to JSON string each key is a score and value is stringified score object
         localStorage[finalScore]=JSON.stringify(lastScore)
@@ -220,10 +220,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // more notes on score in README - calibrated to over 500 with logical system and no mistakes
     // for higher you need a bit of luck!
     function calculateScore() {
-        endTime = new Date ().getTime(); // end timer
+        /* endTime = new Date ().getTime(); // end timer
         timeDisplay = endTime;
         time = Math.round((endTime - startTime) / 1000);
-        score = (turns * 10) + time;
+
+        endTime = new Date().getTime();
+        timeDiff = Math.round((endTime - startTime) / 1000);
+        timeDisplay.textContent = timeDiff; */
+        timeOver = timeDiff;
+        timeDisplay.textContent = timeOver;
+        score = (turns * 10) + timeDiff;
         return 750 - score;
     }
 
