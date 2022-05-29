@@ -79,6 +79,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 userImage: rankImage,
                 highscore: highscore,
                 userIncentive: rankIncentive,
+                userTurns: turns,
+                userTime: timeOver,
               };
             emailjs.send('service_h08zqvs', 'template_t7t4ue1', templateParams)
             .then(function(response) {
@@ -196,8 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return `(${index+1})\nScore: ${key}\nDate Achieved: ${score.date}\nSeconds taken: ${score.seconds}\nRank: ${score.rank}\nMoves made: ${score.turns}`
         }).join('\n\n')
         console.log("Top scores\n"+scores) //example show of scores
-        console.log(highscore) // REMOVE
-        // REMOVE scoresDisplay.textContent = scores;
+        console.log(highscore) // REMOVE testing highscore variable 
         highScoreDisplay.textContent = highscore;
         alertDisplay.textContent = `You scored ${finalScore} - ${rankMessage} `;
         smoothieProgressBar.item(0).addEventListener('click', resetBar);
@@ -218,19 +219,19 @@ document.addEventListener('DOMContentLoaded', () => {
          if (finalScore > 550) {
             rankStatus = "Brilliant Beetroot";
             rankMessage = "you can't beat a beetroot!";
-            rankIncentive = "You can't get beyond a beetroot but perhaps you've got the highest ever score?"
+            rankIncentive = "You can't get beyond a beetroot but perhaps you can get a higher score? Hint - if you'd have completed this one second faster you'd have an extra point!"
             rankImage = "best-beetroot.png";
          }
          else if (finalScore > 500) {
             rankStatus = "Cool Carrot";
             rankMessage = "you're one cool carrot!";
-            rankIncentive = "You're so close to being a brilliant beetroot you can almost (literally) taste it!"
+            rankIncentive = "You're so close to being a brilliant beetroot you can almost (literally) taste it! Hint - you're doing fewer moves but to be the best you've got to be faster!"
             rankImage = "cool-carrot.png";
          }
          else if (finalScore > 450) {
             rankStatus = "Better Broccoli";
             rankMessage = "you're getting broccoli better!";
-            rankIncentive = "A cool carrot is around the corner!";
+            rankIncentive = "A cool carrot is around the corner! Hint - fewer moves mean more points";
             rankImage = "better-broccoli.png";
          }
          else if (finalScore > 400) {
@@ -242,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
          else {
             rankStatus = "Good Apple";
             rankMessage = "another go good apple?";
-            rankIncentive = "Good apple! Is a blueberry beginner possible?"
+            rankIncentive = "Good work apple! Is a blueberry beginner possible?";
             rankImage = "good-apple.png";
          }
         }
