@@ -27,8 +27,6 @@ const FRUIT_VEG_LIST = [{
 },
 ];
 
-// const HIGH_SCORE = 'highScore';
-
 let highScore = 0;
 
 
@@ -116,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
         displayHighscore();
     }
 
-
+    // Display Highscore from localStorage added by Tim Stacy
     function displayHighscore(){
         highScoreDisplay.textContent = getHighScore();
     }
