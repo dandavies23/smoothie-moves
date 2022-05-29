@@ -27,6 +27,11 @@ const FRUIT_VEG_LIST = [{
 },
 ];
 
+// const HIGH_SCORE = 'highScore';
+
+let highscore = 0;
+
+
 document.addEventListener('DOMContentLoaded', () => {
     // when the page is loaded start game
 
@@ -39,13 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let finalScore = 0;
     var progressBarWidth = 0;
     let turns = 0;
-    var startTime = 0;
-	var endTime = 0;
-    var timeDiff = 0;
     var score = 0;
-	var time = 0;
 	let rankImage = 0;
-	var moves = 0;
 
      // doubles up array to generate pairs - thanks to CI Mentor Askshat Garg for suggesting
     let fruitVegList = [...FRUIT_VEG_LIST, ...FRUIT_VEG_LIST];
@@ -57,15 +57,48 @@ document.addEventListener('DOMContentLoaded', () => {
     let movesDisplay = document.querySelector('#moves');
     let timeDisplay = document.querySelector('#seconds');
     let resetButton = document.querySelector('#reset');
+    let highScoreDisplay = document.querySelector('#highscore');
+    const sendScoreButton = document.querySelector('#send_email');
     let smoothieProgressBar = document.getElementsByClassName('progress-bar');
     resetButton.addEventListener('click', resetBar); // reset button listener working here - thanks to Tim Stacy positioning advice
+    sendScoreButton.addEventListener('click', sendScoreByEmail);
+
+    function sendScoreByEmail(event){
+        event.preventDefault();
+        const userEmail = document.getElementById('userEmail').value;
+        if (userEmail.length ==0){
+            alert('Please enter your email');
+        }
+        else{
+            console.log('Send email to ' + userEmail);
+            var templateParams = {
+                userEmail: userEmail,
+                userScore: finalScore,
+                userStatus: rankStatus,
+                rankMessage: rankMessage,
+                userImage: rankImage,
+                highscore: highscore,
+                userIncentive: rankIncentive,
+                userTurns: turns,
+                userTime: timeOver,
+              };
+            emailjs.send('service_h08zqvs', 'template_t7t4ue1', templateParams)
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+            }, function(error) {
+                console.log('FAILED...', error);
+            });
+        }
+        
+        
+    }
+
 
     // creates board and 'cards'
     function initialiseGame() {
         // randomises array using Math.random no need for casino-level random algos
         fruitVegList.sort(() => 0.5 - Math.random());
         initialiseTimer ();
-        console.log(startTime);
         for (let i = 0; i < fruitVegList.length; i++) {
             let card = document.createElement('img');
             card.setAttribute('src', 'assets/images/tumbler.png'); 
@@ -78,10 +111,12 @@ document.addEventListener('DOMContentLoaded', () => {
         alertDisplay.textContent = 'Find your fruit and veg pairs...';
         resultDisplay.textContent = '0';
         movesDisplay.textContent = '0';
-        timeDisplay.textContent = '0';   
     }
 
     function initialiseTimer () {
+      
+        delete timeDiff;
+
         startTime = new Date().getTime(); // start timer
         intervalRef = setInterval(updateTimer, 1000);
     }
@@ -124,7 +159,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const optionTwoId = cardsChosenId[1];
         if (cardsChosen[0] === cardsChosen[1]) {
             alertDisplay.textContent = "Match! You have a full portion";
-            console.log(cardsChosen[1]);
             cardsWon.push(cardsChosen);
             updateProgressBar();
         } else {
@@ -147,18 +181,25 @@ document.addEventListener('DOMContentLoaded', () => {
         setRank ();
         rankBadge ();
 
-        // localStorage for highest scores
-        let myScore={date:new Date().getTime(), seconds:time, turns:movesDisplay.innerText, rank:rankStatus, score:finalScore}
-        localStorage[finalScore]=JSON.stringify(myScore)
-        //each key is a score and value is stringified score object
+
+        // localStorage for game data - sketched out by Y0ursTruly adapted for highscore retrieval with Dan Ger (CI)
+        let lastScore ={ date:new Date().getTime(), seconds:timeOver, turns:movesDisplay.innerText, rank:rankStatus, score:finalScore };
+        
+        // Convert to JSON string each key is a score and value is stringified score object
+        localStorage[finalScore]=JSON.stringify(lastScore)
+        
+        //'scores' sorted by key and map of score results
         let scores=Object.keys(localStorage).sort((a,b)=>parseInt(b)-parseInt(a))
         .map((key,index)=>{
             let score=JSON.parse(localStorage[key])
+            if (key > highscore) {
+                highscore = key
+            }
             return `(${index+1})\nScore: ${key}\nDate Achieved: ${score.date}\nSeconds taken: ${score.seconds}\nRank: ${score.rank}\nMoves made: ${score.turns}`
         }).join('\n\n')
-        //the variable 'scores' is an example sort and map of score results
         console.log("Top scores\n"+scores) //example show of scores
-       
+        console.log(highscore) // REMOVE testing highscore variable 
+        highScoreDisplay.textContent = highscore;
         alertDisplay.textContent = `You scored ${finalScore} - ${rankMessage} `;
         smoothieProgressBar.item(0).addEventListener('click', resetBar);
         clearInterval(intervalRef);
@@ -167,11 +208,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // more notes on score in README - calibrated to over 500 with logical system and no mistakes
     // for higher you need a bit of luck!
     function calculateScore() {
-        endTime = new Date ().getTime(); // end timer
-        timeDisplay = endTime;
-        time = Math.round((endTime - startTime) / 1000);
-        score = (turns * 10) + time;
-        return 700 - score;
+        timeOver = timeDiff;
+        timeDisplay.textContent = timeOver;
+        score = (turns * 10) + timeOver;
+        return 750 - score;
     }
 
     // assigns smooth-move rank
@@ -179,30 +219,36 @@ document.addEventListener('DOMContentLoaded', () => {
          if (finalScore > 550) {
             rankStatus = "Brilliant Beetroot";
             rankMessage = "you can't beat a beetroot!";
-            rankImage = "beetroot.png";
+            rankIncentive = "You can't get beyond a beetroot but perhaps you can get a higher score? Hint - if you'd have completed this one second faster you'd have an extra point!"
+            rankImage = "best-beetroot.png";
          }
          else if (finalScore > 500) {
             rankStatus = "Cool Carrot";
             rankMessage = "you're one cool carrot!";
-            rankImage = "carrot.png";
+            rankIncentive = "You're so close to being a brilliant beetroot you can almost (literally) taste it! Hint - you're doing fewer moves but to be the best you've got to be faster!"
+            rankImage = "cool-carrot.png";
          }
          else if (finalScore > 450) {
             rankStatus = "Better Broccoli";
             rankMessage = "you're getting broccoli better!";
-            rankImage = "broccoli.png";
+            rankIncentive = "A cool carrot is around the corner! Hint - fewer moves mean more points";
+            rankImage = "better-broccoli.png";
          }
          else if (finalScore > 400) {
             rankStatus = "Beginner Blueberry";
             rankMessage = "you've only just begun blueberry!";
-            rankImage = "blueberries.png";
+            rankIncentive = "Can you become a better broccoli?";
+            rankImage = "begin-blueberry.png";
          }
          else {
-            rankStatus = "Aspiring Apple";
-            rankMessage = "another go apple?";
-            rankImage = "apple.png";
+            rankStatus = "Good Apple";
+            rankMessage = "another go good apple?";
+            rankIncentive = "Good work apple! Is a blueberry beginner possible?";
+            rankImage = "good-apple.png";
          }
         }
-        
+    
+    
     function rankBadge () {
         var gridImages = document.getElementsByClassName("gridimage");
         for(var i = 0; i< gridImages.length;i++){
@@ -233,19 +279,15 @@ document.addEventListener('DOMContentLoaded', () => {
         cardsWon = [];
         progressBarWidth = 0;
         turns = 0;
-        startTime = 0;
-        time = 0;
         score = 0;
-        endTime = 0;
-        timeDiff = 0;
         finalScore = 0;
         moves = 0;
-        grid.innerHTML = "";
-        resultDisplay.textContent = "0";
-        movesDisplay.textContent = "0";
-        timeDisplay.textContent = "0";
-        alertDisplay.textContent = "Those cheeky fruit and veg have hidden again! 🙄";
+        grid.innerHTML = '';
+        resultDisplay.textContent = '0';
+        movesDisplay.textContent = '0';
+        alertDisplay.textContent = 'Those cheeky fruit and veg have hidden again! 🙄';
         initialiseGame();
     }
+    
     initialiseGame();
 });

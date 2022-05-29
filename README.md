@@ -12,7 +12,7 @@ Smoothie Moves is a fruit and veg themed memory browser game for children. Its m
 
 ## Target audience
 
-Its initial target user was my daughter. I noticed when playing a physical memory card game that she was considerably better and quicker than me. She is at a stage in her learning development where her short term memory is excellent. Memory games help develop this.
+The game's initial target user was my daughter. I noticed when playing a physical memory card game that she was considerably better and quicker than me. She is at a stage in her learning development where her short term memory is excellent. Memory games help develop this.
 
 As the game was developed and tested with family and friends’ children, it became clear that more children would enjoy this and more focus was given to score board and gaming capabilities. Based on this research and testing the user base could be 4-11 years old. A broader breakdown of these persona are follows.
 
@@ -38,17 +38,19 @@ As the game was developed and tested with family and friends’ children, it bec
 
 3.  The game should have a perceived educational or cognitive benefit. 
 
-4.  For it to be sociable game rather than insular and self contained.
+4.  The game should be sociable rather than over absorbing or insular.
 
-5.  Game reminds them of computer / arcade games they played when young.
+5.  The game reminds them of computer / arcade games they played when young.
 
  
 
 ### Owner goals
 
-1.  Get pleasure from seeing children playing the game.
+1. Get pleasure from seeing children and adults playing the game.
 
-2.  Increase traffic to the web app.
+2. Increase traffic to the web app and spread to friends.
+
+3. Proritise organised considered though over speed. 
 
  
 
@@ -60,7 +62,7 @@ As the game was developed and tested with family and friends’ children, it bec
 
 2.  I want to easily orientate myself and get into the gameplay quickly.
 
-3.  I want to get more information about the game but also feel I don’t have to read them to be able to play.
+3.  I want to get more information about the game but also feel I don’t have to read the rules to be able to play.
 
 4.  I want the game to be fast and compelling.
 
@@ -70,7 +72,9 @@ As the game was developed and tested with family and friends’ children, it bec
 
 7.  I want the ability to stop and start again if I’m losing.
 
-8.  I want a final score and a visual indication of level of achievement. 
+8.  I want a final score and a visual indication of level of achievement.
+
+9. I dont want to feel like learning is a chore.
 
 
 
@@ -78,7 +82,7 @@ As the game was developed and tested with family and friends’ children, it bec
 
 ### Game Research
 
-The main inspiration for this game is a physical card game that I play with my daughter. As I began my research it ocurred to me that there's quite a lot of online 'memory card’ games. Many of them which use the [CSS Flip Card](https://www.w3schools.com/howto/howto_css_flip_card.asp) effect, often used with Bootstrap. In August 2021 I also took part in a [Code Institute retro-gaming hackathon](https://hackathon.codeinstitute.net/teams/76/) and at the kick-off conference the organisers specifically requested “[no flip-card games!](https://youtu.be/MUHgm0B2h-s?t=1188)“
+The main inspiration for this game is a physical card game that I play with my daughter. As I began my research it ocurred to me that there's quite a lot of online 'memory card’ games. Many of them which use the [CSS Flip Card](https://www.w3schools.com/howto/howto_css_flip_card.asp) effect, often used with Bootstrap. In August 2021 I also took part in a [Code Institute retro-gaming hackathon](https://hackathon.codeinstitute.net/teams/76/) and at the kick-off conference the organisers specifically requested “[no flip-card games!](https://youtu.be/MUHgm0B2h-s?t=1188)“. As I developed the game it became more important to consider the [cognitive benefits of memory games](https://www.theottoolbox.com/memory-card-games/) but for it to remain enjoyable. I considered a ["For Parents" button](https://github.com/dandavies23/smoothie-moves/issues/61) but decided it might be too school-like (see point 9 in user stories).
 
  
 
@@ -99,7 +103,7 @@ Although there has always been a slight question mark over how healthy smoothies
 
 ### Graphics (Fruit and veg)
 
-The design considerations for the fruit and veg to bold solid shapes and for them to have a sunny outlook. This was the reason why ginger and apricot were rejected. Solid primary colours added a bold contrast. The favicon was resized in Adobe Photoshop [with guidance](https://webflow.com/blog/favicon-guide) to resize 32x32 to keep the apple sharp.
+The design considerations for the fruit and veg to bold solid shapes and for them to have a sunny outlook. This was the reason why ginger and apricot were rejected. Solid primary colours added a bold contrast. The favicon was resized in Adobe Photoshop [with guidance](https://webflow.com/blog/favicon-guide) to resize 32x32 to keep the apple sharp ![favicon.ico](favicon.ico).
 
 ### Colour References
 
@@ -118,7 +122,7 @@ A variety of colour (“drinking a rainbow”) was important to the game design.
 
  ![fruit and veg Illustrator layout](assets/images/readmeimages/F+TMaster.png)
 
-The original ‘gameboard’ was brown to resemble a chopping board but my mentor Askshat Garg suggested this actually darkened the game. So a the game’s main colour a light fresh green chimed with the health theme. Checking this background on [Coolor](https://coolors.co/contrast-checker/000000-66cc99) determined that the strongest font colour would be black. 
+The original ‘gameboard’ was brown to resemble a chopping board but my mentor Askshat Garg suggested this actually darkened the game. The game’s main colour a light fresh green chimed with the health theme. Checking this background on [Coolor](https://coolors.co/contrast-checker/000000-66cc99) determined that the strongest font colour would be black. 
 
 ![Coolors contrast test green black](assets/images/readmeimages/coolorsbackgroundgreen.png)
  
@@ -132,7 +136,7 @@ Coolors' contrast checker also helped make a decision on changing the standard B
 
 Careful consideration was given to the font. For children just learning to read and write I felt it was important to show letters that can be copied. Serif font was too formal whereas most fonts with a Helvetica root have difficult “a” characters. I wanted to originally to use ‘Schulbuch' but as the name indicates it's a bit "school booky". Instead, I went for 'Comic Neue’ a classier but still informal version of of 'Comic Sans'.
 
-### Game architecture
+### Game skeleton and surface
 
 I wanted the [browser game](https://en.wikipedia.org/wiki/Browser_game) to feel like an arcade game - rather than a website with a game embedded. In the early wireframe game play focus was on having the gameboard as prominent as possible. I also assumed that the game would largely played on mobile or ipad so optimised the space for this. 
 
@@ -145,6 +149,10 @@ A wireframe for desktop was also designed which has a header and footer. But the
 ![desktop start-screen wireframe](assets/images/readmeimages/Desktop-large-startscreen.png)
 
 A full set of Wireframes are available to [view](https://www.dropbox.com/sh/obqgg6aahaonp0a/AADW6nz7zxHI8RmebMSOYO42a?dl=0) or [download](https://www.dropbox.com/sh/obqgg6aahaonp0a/AADW6nz7zxHI8RmebMSOYO42a?dl=1). 
+
+It's very difficult to keep a game viewable and to let it fit on all screensizes. In testing responsiveness I made a decision that at least the game grid should fit on the screen so a child could focus on the game.
+
+![gamegridcheckoniOS](assets/images/wellsizedgamegrid.png)
 
 
 ## Features
