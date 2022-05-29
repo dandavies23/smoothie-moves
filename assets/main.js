@@ -29,7 +29,7 @@ const FRUIT_VEG_LIST = [{
 
 // const HIGH_SCORE = 'highScore';
 
-let highscore = 0;
+let highScore = 0;
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 userStatus: rankStatus,
                 rankMessage: rankMessage,
                 userImage: rankImage,
-                highscore: highscore,
+                highscore: highScore,
                 userIncentive: rankIncentive,
                 userTurns: turns,
                 userTime: timeOver,
@@ -111,6 +111,14 @@ document.addEventListener('DOMContentLoaded', () => {
         alertDisplay.textContent = 'Find your fruit and veg pairs...';
         resultDisplay.textContent = '0';
         movesDisplay.textContent = '0';
+        timeDisplay.textContent = '0';
+        highScoreDisplay.textContent = '0';
+        displayHighscore();
+    }
+
+
+    function displayHighscore(){
+        highScoreDisplay.textContent = getHighScore();
     }
 
     function initialiseTimer () {
@@ -182,27 +190,43 @@ document.addEventListener('DOMContentLoaded', () => {
         rankBadge ();
 
 
-        // localStorage for game data - sketched out by Y0ursTruly adapted for highscore retrieval with Dan Ger (CI)
+        // localStorage for game data - sketched out by Y0ursTruly adapted for highScore retrieval with Dan Ger (CI)
         let lastScore ={ date:new Date().getTime(), seconds:timeOver, turns:movesDisplay.innerText, rank:rankStatus, score:finalScore };
         
+        addScoreToLocalStorage(lastScore);
+
+        highScore = getHighScore();
+
+        highScoreDisplay.textContent = highScore;
+        alertDisplay.textContent = `You scored ${finalScore} - ${rankMessage} `;
+        smoothieProgressBar.item(0).addEventListener('click', resetBar);
+        clearInterval(intervalRef);
+    }
+
+    function addScoreToLocalStorage(lastScore){
+
+
         // Convert to JSON string each key is a score and value is stringified score object
         localStorage[finalScore]=JSON.stringify(lastScore)
         
+   
+    }
+
+    function getHighScore(){
         //'scores' sorted by key and map of score results
+        let highScore = 0;
         let scores=Object.keys(localStorage).sort((a,b)=>parseInt(b)-parseInt(a))
         .map((key,index)=>{
             let score=JSON.parse(localStorage[key])
-            if (key > highscore) {
-                highscore = key
+            if (key > highScore) {
+                highScore = key
             }
             return `(${index+1})\nScore: ${key}\nDate Achieved: ${score.date}\nSeconds taken: ${score.seconds}\nRank: ${score.rank}\nMoves made: ${score.turns}`
         }).join('\n\n')
         console.log("Top scores\n"+scores) //example show of scores
-        console.log(highscore) // REMOVE testing highscore variable 
-        highScoreDisplay.textContent = highscore;
-        alertDisplay.textContent = `You scored ${finalScore} - ${rankMessage} `;
-        smoothieProgressBar.item(0).addEventListener('click', resetBar);
-        clearInterval(intervalRef);
+        console.log(highScore) // REMOVE testing highScore variable 
+        return highScore;
+
     }
 
     // more notes on score in README - calibrated to over 500 with logical system and no mistakes
@@ -285,6 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
         grid.innerHTML = '';
         resultDisplay.textContent = '0';
         movesDisplay.textContent = '0';
+        timeDisplay.textContent = '0';
         alertDisplay.textContent = 'Those cheeky fruit and veg have hidden again! 🙄';
         initialiseGame();
     }
