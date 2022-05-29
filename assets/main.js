@@ -44,6 +44,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let turns = 0;
     var score = 0;
 	let rankImage = 0;
+    let rankStatus = "";
+    let rankIncentive = "";
+    var timeOver = 0;
+    var startTime = 0;
+    var timeDiff = 0;
+    var endTime = 0;
 
      // doubles up array to generate pairs - thanks to CI Mentor Askshat Garg for suggesting
     let fruitVegList = [...FRUIT_VEG_LIST, ...FRUIT_VEG_LIST];
@@ -120,10 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function initialiseTimer () {
-      
-        delete timeDiff;
-
-        startTime = new Date().getTime(); // start timer
+      startTime = new Date().getTime(); // start timer
         intervalRef = setInterval(updateTimer, 1000);
     }
 
@@ -202,12 +205,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function addScoreToLocalStorage(lastScore){
-
-
         // Convert to JSON string each key is a score and value is stringified score object
-        localStorage[finalScore]=JSON.stringify(lastScore)
-        
-   
+        localStorage[finalScore]=JSON.stringify(lastScore);
     }
 
     function getHighScore(){
@@ -215,14 +214,13 @@ document.addEventListener('DOMContentLoaded', () => {
         let highScore = 0;
         let scores=Object.keys(localStorage).sort((a,b)=>parseInt(b)-parseInt(a))
         .map((key,index)=>{
-            let score=JSON.parse(localStorage[key])
+            let score=JSON.parse(localStorage[key]);
             if (key > highScore) {
-                highScore = key
+                highScore = key;
             }
-            return `(${index+1})\nScore: ${key}\nDate Achieved: ${score.date}\nSeconds taken: ${score.seconds}\nRank: ${score.rank}\nMoves made: ${score.turns}`
-        }).join('\n\n')
-        console.log("Top scores\n"+scores) //example show of scores
-        console.log(highScore) // REMOVE testing highScore variable 
+            return `(${index+1})\nScore: ${key}\nDate Achieved: ${score.date}\nSeconds taken: ${score.seconds}\nRank: ${score.rank}\nMoves made: ${score.turns}`;
+        }).join('\n\n');
+        console.log("Top scores\n"+scores); //example show of scores
         return highScore;
 
     }
@@ -241,13 +239,13 @@ document.addEventListener('DOMContentLoaded', () => {
          if (finalScore > 550) {
             rankStatus = "Brilliant Beetroot";
             rankMessage = "you can't beat a beetroot!";
-            rankIncentive = "You can't get beyond a beetroot but perhaps you can get a higher score? Hint - if you'd have completed this one second faster you'd have an extra point!"
+            rankIncentive = "You can't get beyond a beetroot but perhaps you can get a higher score? Hint - if you'd have completed this one second faster you'd have an extra point!";
             rankImage = "best-beetroot.png";
          }
          else if (finalScore > 500) {
             rankStatus = "Cool Carrot";
             rankMessage = "you're one cool carrot!";
-            rankIncentive = "You're so close to being a brilliant beetroot you can almost (literally) taste it! Hint - you're doing fewer moves but to be the best you've got to be faster!"
+            rankIncentive = "You're so close to being a brilliant beetroot you can almost (literally) taste it! Hint - you're doing fewer moves but to be the best you've got to be faster!";
             rankImage = "cool-carrot.png";
          }
          else if (finalScore > 450) {
@@ -303,7 +301,6 @@ document.addEventListener('DOMContentLoaded', () => {
         turns = 0;
         score = 0;
         finalScore = 0;
-        moves = 0;
         grid.innerHTML = '';
         resultDisplay.textContent = '0';
         movesDisplay.textContent = '0';

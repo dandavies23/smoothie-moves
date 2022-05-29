@@ -169,7 +169,7 @@ The main focus of this app is the game it being easy to view and play on any siz
 -   Title of game with a strap-line explanation. 
 ![Title and strap](assets/images/readmeimages/Feature-title-strap.png)
 
--   Clear centre-screen button navigation to game for arcade feel, with icons for visual support. 
+-   Clear centre-screen button navigation to game for arcade feel, with icons for visual support. Further aria description to avoid small screen resizing issue.
 !['arcade buttons'](assets/images/readmeimages/arcade-buttons.png)
 
 -   Button to modal for on page rules.
@@ -183,6 +183,8 @@ The main focus of this app is the game it being easy to view and play on any siz
 -   No need to navigate away from main play loop.
 
 -   Written in an easy to understand rules presented in a clear friendly tone.
+
+- Hints that using you brain is more effective than speed.
 
  
 
@@ -207,7 +209,15 @@ The main focus of this app is the game it being easy to view and play on any siz
 -   Results layout with featured and message which encourages play at any level 
 !['result message](assets/images/readmeimages/results-message.png) 
 
+- Suprise rank badges to represent progress visually
 !['restart quit](assets/images/readmeimages/results-page.png)
+
+- Form capture for EmailJS 
+!['emailJS form'](assets/images/readmeimages/email-game-data.png)
+
+- Receive more 'hint' guidance to game play
+!['Broccoli Email'](assets/images/readmeimages/broccoli-email.png)
+!['Beetrooot Email'](assets/images/readmeimages/beetroot-email.png)
 
 
 ### Scoring and other game dynamics
@@ -277,6 +287,8 @@ Technologies used
 
 [Adobe Illustrator and Photoshop](https://www.adobe.com/uk/creativecloud.html)
 
+[EmailJS](https://www.emailjs.com/)
+
  
 
 Testing
@@ -290,7 +302,7 @@ Testing
 
 -   A [Github project](https://github.com/dandavies23/smoothie-moves/projects/1) using a Kanban Board was created to organise development, track bugs and suggest enhancements.
 
--   Project was deployed early so colleagues, peers and user-testers could give feedback
+-   Project was deployed early so colleagues, peers and user-testers could give feedback. Emails from users informed the calibration of the game.
 
 -   A new and old full size iPads were used as well as a variety of iPhones: 6, X, 13
 
@@ -310,7 +322,7 @@ As a player
 
 2.  I want to easily orientate myself and get into the gameplay quickly.
 
-    -   User journey is only two levels deep: start screen / game / result
+    -   User journey is only two levels deep: start screen / game and result maintains the game grid (for speed and quick restart).
 
     -   Central play button is prominent and not hidden in any navigation convention
 
@@ -343,6 +355,11 @@ As a player
 8.  I want a final score and a visual indication of level of achievement.
 
     -   Result screen has the calculated score and a character to indicate level of success.
+
+9. I dont want to feel like learning is a chore.
+    - Game has a nudge and hint dynamic
+    - Encourages you to think before you move
+    - Removed message to parents - it's important for children to have autonomy
 
 Validation
 ----------
