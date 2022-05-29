@@ -205,7 +205,7 @@ The main focus of this app is the game it being easy to view and play on any siz
 ### Scoring and other game dynamics
 To appeal to a broader age range I felt it was important to bring in a a scorebooard and rank. I identified 500 (Cool Carrot) as a good attainable target for a child with a well developed short term memory, visual attention and good organisation and prioritisation skills. 
 
-Each correct move is 10 points and seconds are effectively 1 point. Which means it's better the make fewer mistakes than it is to make lots of mistakes quickly. In calculateScore this is subtracted from a 'calibration score' of 750. This can be raised to make it easier or lowered to make it harder.  
+Each correct move is 10 points and seconds are effectively 1 point. Which means it's better to make fewer mistakes than it is to make lots of mistakes quickly. In calculateScore this is subtracted from a 'calibration score' of 750. This can be raised to make it easier or lowered to make it harder.  
 
 A user will score 550 (Brilliant Beetroot) if they have a logical system (18 moves) completed in 19 seconds or 16 moves in 40 seconds. Game hints delivered in the email and games instructions. So although the speed appears to be of the essence a good system (smoothie move) is given nurtured. Or you might be lucky... 
 
