@@ -203,10 +203,16 @@ The main focus of this app is the game it being easy to view and play on any siz
 
 
 ### Scoring and other game dynamics
-To appeal to a broader age range I felt it was important to bring in a a scorebooard and rank. I identified 500 (Cool Carrot) as a good attainable target for a child with a well developed short term memory, visual attention and good organisation and prioritisation skills. A user will score 500 if they have a logical system (18 moves) completed in around 20 seconds.
+To appeal to a broader age range I felt it was important to bring in a a scorebooard and rank. I identified 500 (Cool Carrot) as a good attainable target for a child with a well developed short term memory, visual attention and good organisation and prioritisation skills. 
+
+Each correct move is 10 points and seconds are effectively 1 point. Which means it's better the make fewer mistakes than it is to make lots of mistakes quickly. In calculateScore this is subtracted from a 'calibration score' of 750. This can be raised to make it easier or lowered to make it harder.  
+
+A user will score 550 (Brilliant Beetroot) if they have a logical system (18 moves) completed in 19 seconds or 16 moves in 40 seconds. Game hints delivered in the email and games instructions. So although the speed appears to be of the essence a good system (smoothie move) is given nurtured. Or you might be lucky... 
 
 If you are ‘lucky’ you will stumble across a pair randomly which means that you can score over 550 (Brilliant Beetroot), This lucky stroke is a typical game play strategy, a system gets you so far but luck gets you even further. It means the user returns until they strike it lucky!
- 
+
+Email hints are useful to me because it means that I can collect data about how well this is going. This means that in later versions I can tweak the algo if too many people are scoring high quickly and build difficulty level into the game.
+
 
 ### Features to implement
 
@@ -224,9 +230,11 @@ If you are ‘lucky’ you will stumble across a pair randomly which means that 
 
 **Highest score and leaderboard**
 
--   Best score saved to localStorage and then called to show progress
-
 -   Ability to enter name at High Score and display in traditional leaderboard. 
+
+**Difficulty level** 
+
+- User can choose hardness level in a toggle 1-5 which changes the calibration score by 50
 
 Technologies used
 -----------------
