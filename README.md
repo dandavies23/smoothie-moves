@@ -371,7 +371,13 @@ Validation
 -   App passed with [CSS Validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fdandavies23.github.io%2Fsmoothie-moves%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
 !['CSS validator results'](assets/images/readmeimages/CSSResults.png)
 
--   Javascript errors were discovered using [JSHint](https://jshint.com/) 
+-   Javascript errors were discovered using [JSHint](https://jshint.com/)
+
+- No 'Problems' in Gitpod UI
+
+- Scored highly in Chrome Developer Lighthouse report
+!['Lighthouse Desktop summary'](assets/images/readmeimages/lighthouse-desktop.png)
+!['Lighthouse Mobile summary'](assets/images/readmeimages/lighthouse-mobile.png)
 
 Bugs and Fixes
 --------------
@@ -536,11 +542,11 @@ Acknowledgements
 
 Thanks to my daughter for helping suggest the game dynamic user-testing and breaking the early version and exposing bugs! Thanks for me wife for giving me time and encouragement and help with colour schemes.
 
-I’m really grateful for help on Stack Overflow for help with … Y0urs Truly (Paul Taylor) helped me squash a double tap bug that my daughter exposed, and suggested using the null value. I tweaked this code further used it elsewhere with the disable attribute. He also spotted a speed bug which stopped the game if the user tapped too many cards which stopped the game being achievable and suggested a simple <= rule which solved it.
+I’m really grateful for help on Stack Overflow for help with … Y0urs Truly (Paul Taylor) helped me squash a double tap bug that my daughter exposed, and suggested using the null value. I tweaked this code further used it elsewhere with the disable attribute. He also spotted a speed bug which stopped the game if the user tapped too many cards which stopped the game being achievable and suggested a simple <= rule which solved it. He picked up the localStorage idea suggested by my mentor and suggested an implementation which I half used then adapted.
 
-I’m also grateful to Tim Stacy, a friend who gave invaluable advice in the latter stages of this project. 
+I’m also grateful to Tim Stacy, a friend who gave invaluable advice in the latter stages of the first sprint and adding a persistent HighScore last minute this time around. 
 
-W3Schools for further tutorials on JS and JQ, Code Institute’s Slack channel and other CI people who have additionally helped me including Sean Young…. student Tom Nagy who passed on a iPad none interference tip and my mentor Akshat Garg.
+Other resources I used were W3Schools for further tutorials on JS and JQ, Medium articles on localStorage by [Michael Karen](https://michael-karen.medium.com/how-to-save-high-scores-in-local-storage-7860baca9d68) and [Abhishek Srivastava](https://medium.com/swlh/a-complete-guide-to-localstorage-in-javascript-ef65098e5a36). Code Institute’s Slack channel and other CI people who have additionally helped me including tutors Sean Young and Dan G. Also student Tom Nagy who passed on a iPad none interference tip my first mentor Akshat Garg and my second mentor Antonio Rodgriguez for his enthusiasm about the project and getting EmailJS up and running. Finally, I want to thank all the children who enjoyed this game including extended cousins and friends - you're already super smart 🤓
 
 _This browser game was created for Code Institute MS2 Interactive development course._ 
 
